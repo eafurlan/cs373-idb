@@ -1,0 +1,25 @@
+language: python
+
+python:
+    - "3.4"
+
+sudo: false
+
+install:
+    - pip install --upgrade pip
+    - pip --version
+    - pip install coverage
+    - pip install numpy
+    - pip install requests
+
+before_script:
+    - uname -a
+    - printenv
+    - pip list
+
+script:
+    - date
+    - ls -al
+
+notifications:
+  slack: swesquad:KbXXWvyvnkk2Jh7IkxxettzX
