@@ -15,6 +15,8 @@ class SponsorBillAssociation(Base):
 	leg_id = Column(Integer, ForeignKey('legislators.id'), primary_key=True)
 
 	# Put info unique to each Cosponsor / Bill association here
+
+	# type_of_sponsorship is either "Sponsor" or "Cosponsor"
 	type_of_sponsorship = Column(String)
 
 	# Express associations
