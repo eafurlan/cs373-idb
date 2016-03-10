@@ -47,12 +47,14 @@ def getBills():
 		temp['id'] = response[b]['id']			#id for now
 		temp['current_status'] = response[b]['current_status']
 		temp['bill_type'] = response[b]['bill_type']
-		temp['sponsor'] = response[b]['sponsor']
+		temp['sponsor'] = response[b]['sponsor']['id']
 
 		singlebillurl = url + '/' + str(temp['id'])
 		r = requests.get(singlebillurl).json()		
 		temp['terms'] = r['terms']
-		temp['cosponsor'] = r['cosponsors']
+		temp['cosponsor'] = []
+		for person in r['cosponsors']:
+			temp['cosponsor'].append(person['id'])
 
 		billArr.append(temp)
 
