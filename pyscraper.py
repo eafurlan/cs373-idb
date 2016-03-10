@@ -12,7 +12,7 @@ def getPeople():
 	response = requests.get(url).json()['objects']
 	global peopleArr
 
-	for p in range(3):
+	for p in range(len(response)):
 		temp = dict()
 		temp['firstname'] = response[p]['person']['firstname']
 		temp['lastname'] = response[p]['person']['lastname']
@@ -41,7 +41,7 @@ def getBills():
 
 	global billArr
 
-	for b in range(3):
+	for b in range(len(response)):
 		temp = dict()
 		temp['name'] = response[b]['title_without_number']
 		temp['id'] = response[b]['id']			#id for now
@@ -63,13 +63,13 @@ response = requests.get(url).json()
 
 getPeople()
 
-with open('people.txt', 'w') as outfile:
+with open('allPeople.txt', 'w') as outfile:
 	json.dump(peopleArr, outfile)
 
 
 getBills()
 
-with open('bills.txt', 'w') as outfile:
+with open('allBills.txt', 'w') as outfile:
 	json.dump(billArr, outfile)
 	
 
