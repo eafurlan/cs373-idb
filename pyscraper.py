@@ -62,9 +62,15 @@ response = requests.get(url).json()
 
 
 getPeople()
-print(peopleArr)
+
+with open('people.txt', 'w') as outfile:
+	json.dump(peopleArr, outfile)
+
 
 getBills()
-print(billArr)
+
+with open('bills.txt', 'w') as outfile:
+	json.dump(billArr, outfile)
+	
 
 
