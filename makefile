@@ -1,6 +1,12 @@
-FILES :=                              \
-    .travis.yml                       
-   
+FILES :=                            \
+tests.py						\
+models.py						\					                       
+# UML.pdf							\
+# apiary.apib 					\
+# IDB1.log						\
+# model.html						\
+.travis.yml												
+ 
     
 
 check:
@@ -36,12 +42,20 @@ scrub:
 	rm -f  model.html
 	rm -f  IDB1.log
 
+models.html:
+	pydoc3 models.py
+
+IDB1.log:
+		git log > IDB1.log
+
 status:
 	make clean
 	@echo
 	git branch
 	git remote -v
 	git status
+
+
 
 # test: RunNetflix.tmp TestNetflix.tmp
 
