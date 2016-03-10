@@ -9,16 +9,17 @@ Base = declarative_base()
 
 from sqlalchemy import Table, ForeignKey, Column, Integer, String
 
-class CosponsorBillAssociation(Base):
-	__tablename__ = 'cosponsor_bill_association'
+class SponsorBillAssociation(Base):
+	__tablename__ = 'sponsor_bill_association'
 	bill_id = Column(Integer, ForeignKey('bills.id'), primary_key=True)
 	leg_id = Column(Integer, ForeignKey('legislators.id'), primary_key=True)
 
 	# Put info unique to each Cosponsor / Bill association here
+	type_of_sponsorship = Column(String)
 
 	# Express associations
-	legislator = relationship("Legislator", back_populates="cosponsored_bills")
-	bill = relationship("Bill", back_populates="cosponsors")
+	legislator = relationship("Legislator", back_populates="sponsored_bills")
+	bill = relationship("Bill", back_populates="sponsors")
 
 class Bill(Base):
 	__tablename__ = 'bills'
@@ -26,9 +27,8 @@ class Bill(Base):
 	name = Column(String)
 	current_stats = Column(String)
 	bill_type = Column(String)
-	sponsor = Column(String)
 
-	cosponsors = relationship("CosponsorBillAssociation", back_populates="bill")
+	sponsors = relationship("SponsorBillAssociation", back_populates="bill")
 
 class Legislator(Base):
 	__tablename__ = 'legislators'
@@ -46,5 +46,5 @@ class Legislator(Base):
 	start_date = Column(String)
 	website = Column(String)
 
-	cosponsored_bills = relationship("CosponsorBillAssociation", back_populates="legislator")
+	sponsored_bills = relationship("SponsorBillAssociation", back_populates="legislator")
 
