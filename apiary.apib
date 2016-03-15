@@ -4,7 +4,8 @@ HOST: http://polls.apiblueprint.org/
 # ildb
 
 The ILDB - the Internet Legislative Database - is an API that allows users 
-to pull specific legislators, all legislators, specific bills or all bills.
+to pull specific legislators, all congressmen and senators past and present, 
+specific bills or all bills.
 
 ## Legislator Collection [/legislators]
 
@@ -59,48 +60,28 @@ to pull specific legislators, all legislators, specific bills or all bills.
 
 ## Single legislator [/legislators/{legislator_id}]
 
++ Parameters
+    + legislator_id (number) - ID of the legislator
+
 ### Get one legislator [GET]
 
 + Response 200 (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+            "id": 400034,
+            "party": "Republican",
+            "birthday": "1950-01-10",
+            "lastname": "Blunt",
+            "firstname": "Roy",
+            "youtube": "SenatorBlunt",
+            "description": "Junior Senator from Missouri",
+            "title": "Senator",
+            "twitter": "RoyBlunt",
+            "state": "MO",
+            "start_date": "2011-01-05",
+            "website": "http://www.blunt.senate.gov"
+          }
 
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
-            
 ## Bills Collection [/bills]
 
 ### List all bills [GET]
@@ -291,9 +272,98 @@ to pull specific legislators, all legislators, specific bills or all bills.
         ]
 ## Single Bill [/bills/{bill_id}]
 
++ Parameters
+    + bill_id (number) - ID of the bill
+
 ### Get one bill [GET]
 
 + Response 200 (application/json)
 
         {
-        }
+            "id": 127129,
+            "sponsor": 400331,
+            "name": "To amend the Internal Revenue Code of 1986 to exclude from gross income the qualified military benefits received by retired military personnel serving as administrators or instructors in the Junior Reserve Officers’ Training Corps.",
+            "bill_type": "house_bill",
+            "cosponsor": [
+              400055,
+              400261,
+              400397,
+              400603,
+              403545,
+              404097,
+              404520,
+              404587,
+              404634,
+              406790,
+              407838,
+              408109,
+              408476,
+              409633,
+              410147,
+              410529,
+              411065
+            ],
+            "current_status": "referred",
+            "terms": [
+              {
+                "term_type": "old",
+                "id": 50,
+                "term_type_label": "Old",
+                "name": "Retirement income"
+              },
+              {
+                "term_type": "old",
+                "id": 1547,
+                "term_type_label": "Old",
+                "name": "Armed forces reserves"
+              },
+              {
+                "term_type": "old",
+                "id": 1641,
+                "term_type_label": "Old",
+                "name": "Military pay"
+              },
+              {
+                "term_type": "old",
+                "id": 1655,
+                "term_type_label": "Old",
+                "name": "Military training"
+              },
+              {
+                "term_type": "old",
+                "id": 2101,
+                "term_type_label": "Old",
+                "name": "Teachers"
+              },
+              {
+                "term_type": "old",
+                "id": 5102,
+                "term_type_label": "Old",
+                "name": "Income tax"
+              },
+              {
+                "term_type": "old",
+                "id": 5123,
+                "term_type_label": "Old",
+                "name": "Tax exclusion"
+              },
+              {
+                "term_type": "old",
+                "id": 5576,
+                "term_type_label": "Old",
+                "name": "Retired military personnel"
+              },
+              {
+                "term_type": "old",
+                "id": 5582,
+                "term_type_label": "Old",
+                "name": "Veterans' employment"
+              },
+              {
+                "term_type": "new",
+                "id": 6342,
+                "term_type_label": "New",
+                "name": "Taxation"
+              }
+            ]
+          }
