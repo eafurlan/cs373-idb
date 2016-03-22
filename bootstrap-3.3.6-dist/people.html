@@ -14,6 +14,9 @@
     <link href="css/template.css" rel="stylesheet">
     <link href="css/video.css" rel="stylesheet">
 
+    <!-- JS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script src="sortPeople.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,13 +40,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="active navbar-brand" href="index.html">ILDB</a>
+            <a class="navbar-brand" href="index.html">ILDB</a>
 
           </div>
 
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="index.html">Home</a></li>
               <li class="active"><a href="people.html">Members of Congress</a></li>
               <li><a href="bills.html">Bills</a></li>
 
@@ -73,71 +75,98 @@
         </div><!--/.container-fluid -->
       </nav>
 
-    <!-- Breadcrumb -->
-    <ol class="breadcrumb">
-      <li><a href="index.html#">Home</a></li>
-      <li class="active">Members of Congress</li>    
-    </ol>
-
     <!-- Table -->
-    <div class="container-fluid">
-      <table class="table table-bordered table-hover table-striped">
+    <div class="container" ng-app="sortApp" ng-controller="mainController">
+      
+      <table class="table table-bordered table-striped">
+
         <thead>
           <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Title</th>
-            <th>Party</th>
-            <th>Start Date</th>
-            <th>State</th>
-            <th>Legislation</th>
-            <th>Website</th>
-            <th>Youtube</th>
-            <th>Twitter</th>
+            <td>
+              <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+                ID
+                <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td>
+              <a href="#" ng-click="sortType = 'firstname'; sortReverse = !sortReverse">
+                First Name
+                <span ng-show="sortType == 'firstname' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'firstname' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td>
+              <a href="#" ng-click="sortType = 'lastname'; sortReverse = !sortReverse">
+                Last Name
+                <span ng-show="sortType == 'lastname' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'lastname' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td>
+              <a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse">
+                Title
+                <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>  
+            <td>
+              <a href="#" ng-click="sortType = 'party'; sortReverse = !sortReverse">
+                Party
+                <span ng-show="sortType == 'party' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'party' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td>
+              <a href="#" ng-click="sortType = 'start_date'; sortReverse = !sortReverse">
+                Start Date
+                <span ng-show="sortType == 'start_date' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'start_date' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td>
+              <a href="#" ng-click="sortType = 'state'; sortReverse = !sortReverse">
+                State
+                <span ng-show="sortType == 'state' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'state' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td>
+              <a href="#" ng-click="sortType = 'website'; sortReverse = !sortReverse">
+                Website
+                <span ng-show="sortType == 'website' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'website' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td>
+              <a href="#" ng-click="sortType = 'youtube'; sortReverse = !sortReverse">
+                Youtube
+                <span ng-show="sortType == 'youtube' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'youtube' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>  
+            <td>
+              <a href="#" ng-click="sortType = 'twitter'; sortReverse = !sortReverse">
+                Twitter
+                <span ng-show="sortType == 'twitter' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'twitter' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>                              
           </tr>
         </thead>
+
         <tbody>
-          <tr class="clickable-row" data-href="400034.html#">
-            <th>400034</th>
-            <th>Roy</th>
-            <th>Blunt</th>
-            <th>Senator</th>
-            <th>Republican</th>
-            <th>1950-01-10</th>
-            <th>MO</th>
-            <th><a href="#">#####</a></th>
-            <th><a href="http://www.blunt.senate.gov">http://www.blunt.senate.gov</a></th>
-            <th><a href="http://www.youtube.com/SenatorBlunt">SenatorBlunt</a></th>
-            <th><a href="http://www.twitter.com/RoyBlunt">@RoyBlunt</a></th>
-          </tr>
-
-          <tr class="clickable-row" data-href="400040.html#">
-            <th>400040</th>
-            <th>John</th>
-            <th>Boozman</th>
-            <th>Senior Senator from Arkansas</th>
-            <th>Republican</th>
-            <th>11950-12-10</th>
-            <th>AR</th>
-            <th><a href="127130.html#">127130</a></th>
-            <th><a href="http://www.boozman.senate.gov">http://www.boozman.senate.gov</a></th>
-            <th><a href="http://www.youtube.com/BoozmanPressOffice">BoozmanPressOffice</a></th>
-            <th><a href="http://www.twitter.com/JohnBoozman">@JohnBoozman</a></th>
-          </tr>
-
-          <tr class="clickable-row" data-href="400054.html#">
-            <th>400054</th>
-            <th>Richard</th>
-            <th>Burr</th>
-            <th>Senator</th>
-            <th>Republican</th>
-            <th>1955-11-30</th>
-            <th>NC</th>
-            <th><a href="#">#####</a></th>
-            <th><a href="http://www.burr.senate.gov">http://www.burr.senate.gov</a></th>
-            <th><a href="http://www.youtube.com/SenatorRichardBurr">SenatorRichardBurr</a></th>
-            <th><a href="http://www.twitter.com/SenatorBurr">@SenatorBurr</a></th>
+          <tr class="clickable-row" data-href={{roll.id}}.html ng-repeat="roll in people | orderBy:sortType:sortReverse">
+            <td>{{ roll.id }}</td>
+            <td>{{ roll.firstname }}</td>
+            <td>{{ roll.lastname }}</td>
+            <td>{{ roll.title }}</td>
+            <td>{{ roll.party }}</td>
+            <td>{{ roll.start_date }}</td>
+            <td>{{ roll.state }}</td>
+            <td>{{ roll.website }}</td>
+            <td>{{ roll.youtube }}</td>
+            <td>{{ roll.twitter }}</td>
           </tr>
         </tbody>
       </table>
