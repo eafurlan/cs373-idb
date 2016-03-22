@@ -48,6 +48,7 @@ def getBills():
 		temp['current_status'] = response[b]['current_status']
 		temp['bill_type'] = response[b]['bill_type']
 		temp['sponsor'] = response[b]['sponsor']['id']
+		temp['link'] = response[b]['link']
 
 		singlebillurl = url + '/' + str(temp['id'])
 		r = requests.get(singlebillurl).json()		
