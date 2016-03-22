@@ -8,7 +8,7 @@ engine = create_engine('sqlite:///:memory:', echo=True)
 Base = declarative_base()
 
 from sqlalchemy import Table, ForeignKey, Column, Integer, String
-
+#TODO - add in repr methods
 class SponsorBillAssociation(Base):
 	__tablename__ = 'sponsor_bill_association'
 	bill_id = Column(Integer, ForeignKey('bills.id'), primary_key=True)
