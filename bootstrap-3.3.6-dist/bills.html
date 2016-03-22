@@ -14,6 +14,9 @@
     <link href="css/template.css" rel="stylesheet">
     <link href="css/video.css" rel="stylesheet">
 
+    <!-- JS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script src="sortBills.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,13 +41,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="active navbar-brand" href="index.html">ILDB</a>
+            <a class="navbar-brand" href="index.html">ILDb</a>
 
           </div>
 
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="index.html">Home</a></li>
               <li><a href="people.html">Members of Congress</a></li>
               <li class="active"><a href="bills.html">Bills</a></li>
 
@@ -74,50 +76,62 @@
         </div><!--/.container-fluid -->
       </nav>
 
-    <!-- Breadcrumb -->
-    <ol class="breadcrumb">
-      <li><a href="index.html#">Home</a></li>
-      <li class="active">Bills</li>    
-    </ol>
-
     <!-- Table -->
-    <div class="container-fluid">
-      <table class="table table-bordered table-hover table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Status</th>
-            <th>Type</th>
-            <th>Sponsors</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="clickable-row" data-href="127129.html#">
-            <th>127129</th>
-            <th>To amend the Internal Revenue Code of 1986 to exclude from gross income the qualified military benefits received by retired military personnel serving as administrators or instructors in the Junior Reserve Officers' Training Corps.</th>
-            <th>referred</th>
-            <th>house</th>
-            <th><a href="#">400331</a>, <a href="#">400055</a>, <a href="#">400261</a>, <a href="#">400397</a>, <a href="#">400603</a>, <a href="#">403545</a>, <a href="#">404097</a>, <a href="#">404520</a>, <a href="#">404587</a>, <a href="#">404634</a>, <a href="#">406790</a>, <a href="#">407838</a>, <a href="#">408109</a>, <a href="#">408476</a>, <a href="#">409633</a>, <a href="#">410147</a>, <a href="#">410529</a>, <a href="#">411065</a></th>
-          </tr>
+    <div class="container-fluid" ng-app="sortApp" ng-controller="mainController">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
 
-          <tr class="clickable-row" data-href="127130.html#">
-            <th>127130</th>
-            <th>Swain County Settlement Act of 1993</th>
-            <th>referred</th>
-            <th>senate</th>
-            <th><a href="#">300154</a></th>
-          </tr>
+          <thead>
+            <tr>
+              <th class="col-xs-3 col-sm-3">
+                <a href="" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+                  ID
+                  <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th class="col-xs-3 col-sm-3">
+                <a href="" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                  Title
+                  <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th class="col-xs-3 col-sm-3">
+                <a href="" ng-click="sortType = 'current_status'; sortReverse = !sortReverse">
+                  Status
+                  <span ng-show="sortType == 'current_status' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'current_status' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th class="col-xs-3 col-sm-3">
+                <a href="" ng-click="sortType = 'bill_type'; sortReverse = !sortReverse">
+                  Type
+                  <span ng-show="sortType == 'bill_type' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'bill_type' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>  
+              <th class="col-xs-3 col-sm-3">
+                <a href="" ng-click="sortType = 'date'; sortReverse = !sortReverse">
+                  Date Introduced
+                  <span ng-show="sortType == 'date' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'date' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>                            
+            </tr>
+          </thead>
 
-          <tr class="clickable-row" data-href="127131.html#">
-            <th>127131</th>
-            <th>A bill to extend the existing suspension of duty on (6R,7R)-7-{(R)-2-Amino-phenylacetamido}-3-methyl-8-oxo-5-thia-1-azabicyclo{4.2.0}oct-2-ene-2-carboxylic acid disolvate.</th>
-            <th>referred</th>
-            <th>senate</th>
-            <th><a href="400040.html#">400040</a></th>
-          </tr>
-        </tbody>
-      </table>
+          <tbody>
+            <tr class="clickable-row" data-href={{roll.id}}.html ng-repeat="roll in bills | orderBy:sortType:sortReverse">
+              <td>{{ roll.id }}</td>
+              <td>{{ roll.name }}</td>
+              <td>{{ roll.current_status }}</td>
+              <td>{{ roll.bill_type }}</td>
+              <td>{{ roll.date }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- Footer -->
