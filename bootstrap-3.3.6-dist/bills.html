@@ -81,40 +81,57 @@
     </ol>
 
     <!-- Table -->
-    <div class="container-fluid">
-      <table class="table table-bordered table-hover table-striped">
+    <div class="container" ng-app="sortApp" ng-controller="mainController">
+      
+      <table class="table table-bordered table-striped">
+
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Status</th>
-            <th>Type</th>
-            <th>Sponsors</th>
+            <td>
+              <a href="#" ng-click="sortType = 'ID'; sortReverse = !sortReverse">
+                ID
+                <span ng-show="sortType == 'ID' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'ID' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td>
+              <a href="#" ng-click="sortType = 'Title'; sortReverse = !sortReverse">
+                Title
+                <span ng-show="sortType == 'Title' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'Title' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td>
+              <a href="#" ng-click="sortType = 'Status'; sortReverse = !sortReverse">
+                Status
+                <span ng-show="sortType == 'Status' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'Status' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td>
+              <a href="#" ng-click="sortType = 'Type'; sortReverse = !sortReverse">
+                Type
+                <span ng-show="sortType == 'Type' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'Type' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>  
+            <td>
+              <a href="#" ng-click="sortType = 'Date_Introduced'; sortReverse = !sortReverse">
+                Date Introduced
+                <span ng-show="sortType == 'Date_Introduced' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'Date_Introduced' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>                            
           </tr>
         </thead>
+
         <tbody>
-          <tr class="clickable-row" data-href="127129.html#">
-            <th>127129</th>
-            <th>To amend the Internal Revenue Code of 1986 to exclude from gross income the qualified military benefits received by retired military personnel serving as administrators or instructors in the Junior Reserve Officers' Training Corps.</th>
-            <th>referred</th>
-            <th>house</th>
-            <th><a href="#">400331</a>, <a href="#">400055</a>, <a href="#">400261</a>, <a href="#">400397</a>, <a href="#">400603</a>, <a href="#">403545</a>, <a href="#">404097</a>, <a href="#">404520</a>, <a href="#">404587</a>, <a href="#">404634</a>, <a href="#">406790</a>, <a href="#">407838</a>, <a href="#">408109</a>, <a href="#">408476</a>, <a href="#">409633</a>, <a href="#">410147</a>, <a href="#">410529</a>, <a href="#">411065</a></th>
-          </tr>
-
-          <tr class="clickable-row" data-href="127130.html#">
-            <th>127130</th>
-            <th>Swain County Settlement Act of 1993</th>
-            <th>referred</th>
-            <th>senate</th>
-            <th><a href="#">300154</a></th>
-          </tr>
-
-          <tr class="clickable-row" data-href="127131.html#">
-            <th>127131</th>
-            <th>A bill to extend the existing suspension of duty on (6R,7R)-7-{(R)-2-Amino-phenylacetamido}-3-methyl-8-oxo-5-thia-1-azabicyclo{4.2.0}oct-2-ene-2-carboxylic acid disolvate.</th>
-            <th>referred</th>
-            <th>senate</th>
-            <th><a href="400040.html#">400040</a></th>
+          <tr ng-repeat="roll in bills | orderBy:sortType:sortReverse">
+            <td>{{ roll.ID }}</td>
+            <td>{{ roll.Title }}</td>
+            <td>{{ roll.Status }}</td>
+            <td>{{ roll.Type }}</td>
+            <td>{{ roll.Date_Introduced }}</td>
           </tr>
         </tbody>
       </table>
