@@ -40,7 +40,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">ILDB</a>
+            <a class="navbar-brand" href="index.html">ILDb</a>
 
           </div>
 
@@ -77,99 +77,100 @@
 
     <!-- Table -->
     <div class="container" ng-app="sortApp" ng-controller="mainController">
-      
-      <table class="table table-bordered table-striped">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
 
-        <thead>
-          <tr>
-            <td>
-              <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
-                ID
-                <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
-              </a>
-            </td>
-            <td>
-              <a href="#" ng-click="sortType = 'firstname'; sortReverse = !sortReverse">
-                First Name
-                <span ng-show="sortType == 'firstname' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'firstname' && sortReverse" class="fa fa-caret-up"></span>
-              </a>
-            </td>
-            <td>
-              <a href="#" ng-click="sortType = 'lastname'; sortReverse = !sortReverse">
-                Last Name
-                <span ng-show="sortType == 'lastname' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'lastname' && sortReverse" class="fa fa-caret-up"></span>
-              </a>
-            </td>
-            <td>
-              <a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse">
-                Title
-                <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
-              </a>
-            </td>  
-            <td>
-              <a href="#" ng-click="sortType = 'party'; sortReverse = !sortReverse">
-                Party
-                <span ng-show="sortType == 'party' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'party' && sortReverse" class="fa fa-caret-up"></span>
-              </a>
-            </td>
-            <td>
-              <a href="#" ng-click="sortType = 'start_date'; sortReverse = !sortReverse">
-                Start Date
-                <span ng-show="sortType == 'start_date' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'start_date' && sortReverse" class="fa fa-caret-up"></span>
-              </a>
-            </td>
-            <td>
-              <a href="#" ng-click="sortType = 'state'; sortReverse = !sortReverse">
-                State
-                <span ng-show="sortType == 'state' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'state' && sortReverse" class="fa fa-caret-up"></span>
-              </a>
-            </td>
-            <td>
-              <a href="#" ng-click="sortType = 'website'; sortReverse = !sortReverse">
-                Website
-                <span ng-show="sortType == 'website' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'website' && sortReverse" class="fa fa-caret-up"></span>
-              </a>
-            </td>
-            <td>
-              <a href="#" ng-click="sortType = 'youtube'; sortReverse = !sortReverse">
-                Youtube
-                <span ng-show="sortType == 'youtube' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'youtube' && sortReverse" class="fa fa-caret-up"></span>
-              </a>
-            </td>  
-            <td>
-              <a href="#" ng-click="sortType = 'twitter'; sortReverse = !sortReverse">
-                Twitter
-                <span ng-show="sortType == 'twitter' && !sortReverse" class="fa fa-caret-down"></span>
-                <span ng-show="sortType == 'twitter' && sortReverse" class="fa fa-caret-up"></span>
-              </a>
-            </td>                              
-          </tr>
-        </thead>
+          <thead>
+            <tr>
+              <th>
+                <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+                  ID
+                  <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th>
+                <a href="#" ng-click="sortType = 'firstname'; sortReverse = !sortReverse">
+                  First Name
+                  <span ng-show="sortType == 'firstname' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'firstname' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th>
+                <a href="#" ng-click="sortType = 'lastname'; sortReverse = !sortReverse">
+                  Last Name
+                  <span ng-show="sortType == 'lastname' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'lastname' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th>
+                <a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse">
+                  Title
+                  <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>  
+              <th>
+                <a href="#" ng-click="sortType = 'party'; sortReverse = !sortReverse">
+                  Party
+                  <span ng-show="sortType == 'party' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'party' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th>
+                <a href="#" ng-click="sortType = 'start_date'; sortReverse = !sortReverse">
+                  Start Date
+                  <span ng-show="sortType == 'start_date' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'start_date' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th>
+                <a href="#" ng-click="sortType = 'state'; sortReverse = !sortReverse">
+                  State
+                  <span ng-show="sortType == 'state' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'state' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th>
+                <a href="#" ng-click="sortType = 'website'; sortReverse = !sortReverse">
+                  Website
+                  <span ng-show="sortType == 'website' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'website' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th>
+                <a href="#" ng-click="sortType = 'youtube'; sortReverse = !sortReverse">
+                  Youtube
+                  <span ng-show="sortType == 'youtube' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'youtube' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>  
+              <th>
+                <a href="#" ng-click="sortType = 'twitter'; sortReverse = !sortReverse">
+                  Twitter
+                  <span ng-show="sortType == 'twitter' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'twitter' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>                              
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr class="clickable-row" data-href={{roll.id}}.html ng-repeat="roll in people | orderBy:sortType:sortReverse">
-            <td>{{ roll.id }}</td>
-            <td>{{ roll.firstname }}</td>
-            <td>{{ roll.lastname }}</td>
-            <td>{{ roll.title }}</td>
-            <td>{{ roll.party }}</td>
-            <td>{{ roll.start_date }}</td>
-            <td>{{ roll.state }}</td>
-            <td>{{ roll.website }}</td>
-            <td>{{ roll.youtube }}</td>
-            <td>{{ roll.twitter }}</td>
-          </tr>
-        </tbody>
-      </table>
+          <tbody>
+            <tr class="clickable-row" data-href={{roll.id}}.html ng-repeat="roll in people | orderBy:sortType:sortReverse">
+              <td>{{ roll.id }}</td>
+              <td>{{ roll.firstname }}</td>
+              <td>{{ roll.lastname }}</td>
+              <td>{{ roll.title }}</td>
+              <td>{{ roll.party }}</td>
+              <td>{{ roll.start_date }}</td>
+              <td>{{ roll.state }}</td>
+              <td>{{ roll.website }}</td>
+              <td>{{ roll.youtube }}</td>
+              <td>{{ roll.twitter }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- Footer -->
