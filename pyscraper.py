@@ -49,6 +49,7 @@ def getBills():
 		temp['bill_type'] = response[b]['bill_type']
 		temp['sponsor'] = response[b]['sponsor']['id']
 		temp['link'] = response[b]['link']
+		temp['date'] = response[b]['introduced_date']
 
 		singlebillurl = url + '/' + str(temp['id'])
 		r = requests.get(singlebillurl).json()		
@@ -72,7 +73,7 @@ with open('allPeople.txt', 'w') as outfile:
 
 getBills()
 
-with open('allBills.txt', 'w') as outfile:
+with open('bills.txt', 'w') as outfile:
 	json.dump(billArr, outfile)
 	
 
