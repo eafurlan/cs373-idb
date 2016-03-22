@@ -31,9 +31,9 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="index.html#">ILDb</a></li>
+              <li><a href="index.html#">ILDb</a></li>
               <li><a href="people.html#">Members of Congress</a></li>
-              <li><a href="bills.html#">Bills</a></li>
+              <li class="active"><a href="bills.html#">Bills</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
               <div class="form-group">
@@ -42,7 +42,7 @@
               <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">About Us</a></li>
+              <li><a href="about.html#">About Us</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -52,8 +52,48 @@
     <!-- Breadcrumb -->
     <ol class="breadcrumb">
       <li><a href="index.html#">Home</a></li>
-      <li class="active">Template</li>  
+      <li class="active">Bills</li>    
     </ol>
+
+    <!-- Table -->
+    <div class="container-fluid">
+      <table class="table table-bordered table-hover table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Type</th>
+            <th>Sponsors</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="clickable-row" data-href="127129.html#">
+            <th>127129</th>
+            <th>To amend the Internal Revenue Code of 1986 to exclude from gross income the qualified military benefits received by retired military personnel serving as administrators or instructors in the Junior Reserve Officers' Training Corps.</th>
+            <th>referred</th>
+            <th>house</th>
+            <th><a href="#">400331</a>, <a href="#">400055</a>, <a href="#">400261</a>, <a href="#">400397</a>, <a href="#">400603</a>, <a href="#">403545</a>, <a href="#">404097</a>, <a href="#">404520</a>, <a href="#">404587</a>, <a href="#">404634</a>, <a href="#">406790</a>, <a href="#">407838</a>, <a href="#">408109</a>, <a href="#">408476</a>, <a href="#">409633</a>, <a href="#">410147</a>, <a href="#">410529</a>, <a href="#">411065</a></th>
+          </tr>
+
+          <tr class="clickable-row" data-href="127130.html#">
+            <th>127130</th>
+            <th>Swain County Settlement Act of 1993</th>
+            <th>referred</th>
+            <th>senate</th>
+            <th><a href="#">300154</a></th>
+          </tr>
+
+          <tr class="clickable-row" data-href="127131.html#">
+            <th>127131</th>
+            <th>A bill to extend the existing suspension of duty on (6R,7R)-7-{(R)-2-Amino-phenylacetamido}-3-methyl-8-oxo-5-thia-1-azabicyclo{4.2.0}oct-2-ene-2-carboxylic acid disolvate.</th>
+            <th>referred</th>
+            <th>senate</th>
+            <th><a href="40040.html#">400040</a></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <!-- Footer -->
     <nav class="navbar navbar-fixed-bottom">
@@ -64,6 +104,7 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="clickable.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
   </body>
