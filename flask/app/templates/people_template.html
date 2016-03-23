@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+
+{% extends "navbar.html" %}
+
+{% block content %}
+	<div class="container-fluid col-md-6">
+      <img src="{{person.photo_link}}" class="img-responsive img-thumbnail center-block" alt="Roy Blunt">
+    </div>
+
+    <div class="container-fluid col-md-6">
+      <h1>Richard Burr</h1>
+      <h4><div class="text-muted">ID: </div>{{person.id}}</h4>
+      <h4><div class="text-muted">Title: </div>{{person.title}}</h4>
+      <h4><div class="text-muted">Party: </div>{{person.party}}</h4>
+      <h4><div class="text-muted">Start Date: </div>{{person.start_date}}</h4>
+      <h4><div class="text-muted">State: </div>{{person.state}}</h4>
+      <h4><div class="text-muted">Bills: </div><a href="#">#####</a></h4>
+      <h4><div class="text-muted">Website: </div><a href={{person.website}}>{{person.website}}</a></h4>
+      <h4><div class="text-muted">Youtube: </div><a href="http://www.youtube.com/{{person.youtube}}">{{person.youtube}}</a></h4>
+      <h4><div class="text-muted">Twitter: </div><a href="http://www.twitter.com/{{person.twitter}}">@{{person.twitter}}</a></h4>
+	</div>
+{% endblock %}
+
