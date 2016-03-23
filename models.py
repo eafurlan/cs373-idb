@@ -8,6 +8,17 @@ engine = create_engine('sqlite:///:memory:', echo=True)
 Base = declarative_base()
 
 from sqlalchemy import Table, ForeignKey, Column, Integer, String
+
+def model_repr(yourself):
+	val = "%s:\n" % (yourself.__class__)
+	def stupid(you):
+		for attr, value in yourself.__dict__.items():
+			yield attr, value
+	val =  "".join([str((a,b)) for a,b in stupid(yourself) if not a.startswith('__') and not callable(getattr(yourself,a))])
+	val = val + "\n%s\n" % (str (('__tablename__',yourself.__tablename__)) )
+	return val
+
+
 #TODO - add in repr methods
 class SponsorBillAssociation(Base):
 	__tablename__ = 'sponsor_bill_association'
@@ -22,6 +33,9 @@ class SponsorBillAssociation(Base):
 	# Express associations
 	legislator = relationship("Legislator", back_populates="sponsored_bills")
 	bill = relationship("Bill", back_populates="sponsors")
+
+	def __repr__(self):
+		return model_repr(self)
 
 class Bill(Base):
 	__tablename__ = 'bills'
@@ -38,6 +52,9 @@ class Bill(Base):
 		self.current_status = current_status
 		self.bill_type = bill_type
 		self.sponsors = sponsors
+
+	def __repr__(self):
+		return model_repr(self)
 
 class Legislator(Base):
 	__tablename__ = 'legislators'
@@ -72,3 +89,5 @@ class Legislator(Base):
 		self.website = website
 		self.sponsored_bills = sponsored_bills
 
+	def __repr__(self):
+		return model_repr(self)
