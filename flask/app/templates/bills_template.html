@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+
+{% extends "navbar.html" %}
+
+{% block content %}
+
+	<div class="container-fluid col-md-6">
+      <h1>{{bill.name}}</h1>
+      <h4><div class="text-muted">ID: </div>{{bill.id}}</h4>
+      <h4><div class="text-muted">Status: </div>{{bill.current_status}}</h4>
+      <h4><div class="text-muted">Type: </div>{{bill.bill_type}}</h4>
+      <h4><div class="text-muted">Date Introduced: </div>{{bill.date}}</h4>
+      <h4><div class="text-muted">Sponsors: </div><a href="400040.html#">{{bill.cosponsors}}</a></h4>
+      <h4><div class="text-muted">Link to more information: </div> <a href="{{bill.link}}">{{bill.link}}</a></h4>
+    </div>
+
+{% endblock %}
+

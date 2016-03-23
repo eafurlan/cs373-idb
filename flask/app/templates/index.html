@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  {% extends "navbar.html" %}
+
+  
+  {% block content %}
+
+    <!-- Video -->
+    <video autoplay loop muted poster="{{ url_for('static', filename='img/screenshot.jpg') }}" id="background">
+        <source src="{{ url_for('static', filename='img/dc-short.mp4') }}" type="video/mp4">
+    </video>
+
+    <!-- Header -->
+    <div class="container-fluid">
+      <h1 class="text-center text-primary">Internet Legislative Database</h1>
+      <h3 class="text-center text-muted">A collection of the United States' federal bills and members of the House and Senate.</h3>
+    </div>
+  {% endblock %}
+    
+
+
+
+
+    
+</html>

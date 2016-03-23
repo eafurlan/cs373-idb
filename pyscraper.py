@@ -26,6 +26,7 @@ def getPeople():
 		temp['start_date'] = response[p]['startdate']
 		temp['website'] = response[p]['website']
 		temp['id'] = response[p]['person']['id']		#id for now
+		temp['photo_link'] = "https://www.govtrack.us/data/photos/"+str(temp['id'])+"-200px.jpeg"
 		
 		"""
 		singlepersonurl = 'https://www.govtrack.us/api/v2/person/' + str(temp['id'])
@@ -73,7 +74,7 @@ with open('allPeople.txt', 'w') as outfile:
 
 getBills()
 
-with open('bills.txt', 'w') as outfile:
+with open('allBills.txt', 'w') as outfile:
 	json.dump(billArr, outfile)
 	
 
