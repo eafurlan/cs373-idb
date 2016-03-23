@@ -27,11 +27,11 @@ def about():
     
     return render_template("about.html")
 
-@app.route('/people/400040')
+@app.route('/people/400034')
 def render_person1():
     return render_template('people_template.html', person=people[0])
 
-@app.route('/people/400034')
+@app.route('/people/400040')
 def render_person2():
     return render_template('people_template.html', person=people[1])
 
