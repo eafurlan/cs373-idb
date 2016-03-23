@@ -5,19 +5,18 @@ import json
 data = open('../people.txt').read()
 people = json.loads(data)
 
-data = open('../bills.txt').read()
-bills = json.loads(data)
+data1 = open('../people.txt').read()
+bills = json.loads(data1)
 
 @app.route('/')
 @app.route('/index')
 @app.route('/index.html')
 def index():
-    
-    return render_template("index.html")
+	return render_template("index.html")
 
 @app.route('/people')
 @app.route('/people.html')
-def bills():
+def people():
     
     return render_template("people.html")
 
@@ -27,27 +26,33 @@ def about():
     
     return render_template("about.html")
 
-@app.route('/people/400034')
+@app.route('/bills')
+@app.route('/bills.html')
+def bills():
+    
+    return render_template("bills.html")
+
+@app.route('/people/412378')
 def render_person1():
     return render_template('people_template.html', person=people[0])
 
-@app.route('/people/400040')
+@app.route('/people/412542')
 def render_person2():
     return render_template('people_template.html', person=people[1])
 
-@app.route('/people/400054')
+@app.route('/people/412493')
 def render_person3():
     return render_template('people_template.html', person=people[2])
 
-@app.route('/bills/127131')
+@app.route('/bills/334618')
 def render_bill1():
 	return render_template('bills_template.html', bill=bills[0])
 
-@app.route('/bills/127130')
+@app.route('/bills/336967')
 def render_bill2():
 	return render_template('bills_template.html', bill=bills[1])
 
-@app.route('/bills/127129')
+@app.route('/bills/13153')
 def render_bill3():
 	return render_template('bills_template.html', bill=bills[2])
 
