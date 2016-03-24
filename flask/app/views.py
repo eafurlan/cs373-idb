@@ -2,10 +2,10 @@ from flask import render_template
 from app import app
 import json
 
-data = open('../people.txt').read()
+data = open('people.txt').read()
 people = json.loads(data)
 
-data1 = open('../bills.txt').read()
+data1 = open('bills.txt').read()
 bills = json.loads(data1)
 
 @app.route('/')
