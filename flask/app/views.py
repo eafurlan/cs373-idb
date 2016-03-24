@@ -8,9 +8,6 @@ people = json.loads(data)
 data1 = open('../bills.txt').read()
 bills = json.loads(data1)
 
-data2 = open('../about.txt').read()
-group = json.loads(data2)
-
 @app.route('/')
 @app.route('/index/')
 @app.route('/index.html')
