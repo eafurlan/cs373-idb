@@ -19,7 +19,11 @@ def model_repr(yourself):
 	return val
 
 
-#TODO - add in repr methods
+'''
+	SponsorBillAssociation object expresses the many-to-many relationship between Bills and Legislators.
+	Expresses sponsorship or co-sponsorship as an attribute of each relationship.
+'''
+
 class SponsorBillAssociation(Base):
 	__tablename__ = 'sponsor_bill_association'
 	bill_id = Column(Integer, ForeignKey('bills.id'), primary_key=True)
@@ -37,6 +41,11 @@ class SponsorBillAssociation(Base):
 	def __repr__(self):
 		return model_repr(self)
 
+'''
+	Bill object represents a bill in the legislative system.
+	Has associated attributes, such as name and status.
+	Contains 'sponsors' which is a list of Legislator objects.
+'''
 class Bill(Base):
 	__tablename__ = 'bills'
 	id = Column(Integer, primary_key=True)
@@ -56,6 +65,11 @@ class Bill(Base):
 	def __repr__(self):
 		return model_repr(self)
 
+'''
+	Legislator object represents a legislator in the legislative system.
+	Has associated attributes, such as name, party, and role.
+	Contains 'sponsored_bills' which is a list of Bill objects.
+'''
 class Legislator(Base):
 	__tablename__ = 'legislators'
 
