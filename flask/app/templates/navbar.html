@@ -15,30 +15,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/video.css') }}">
 
-
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="../static/scripts/navbar.js"></script>
 
-
-      
   </head>
 
 <!-- Static navbar -->
   <body>
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-default" ng-controller="HeaderController">
         <div class="container-fluid">
 
           <div class="navbar-header">
@@ -48,47 +34,40 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">ILDb</a>
 
+            <a class="navbar-brand" ng-class="{ active: isActive('/')}" href="/">ILDb</a>
           </div>
 
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/people.html">Members of Congress</a></li>
-              <li><a href="/bills.html">Bills</a></li>
-
+              <li ng-class="{ active: isActive('/people')}"><a href="/people.html">Members of Congress</a></li>
+              <li ng-class="{ active: isActive('/bills')}"><a href="/bills.html">Bills</a></li>
               <li>
                   <form class="navbar-form navbar-left" role="search">
                   <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
                   </div>
-                  <!-- <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> -->
                 </form>
               </li>
 
             </ul>
             
             <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a href="/about.html">About Us</a>
-              </li>
+              <li  ng-class="{ active: isActive('/about')}"><a href="/about.html">About Us</a></li>
             </ul>
-
-<!--               <li><a href="../navbar-static-top/">Static top</a></li>
-              <li><a href="../navbar-fixed-top/">Fixed top</a></li> -->
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
+          </div>
+        </div>
       </nav>
+      <div ng-view></div>
 
-
+    <!-- Actual Content -->
     <div id="content">{% block content %}{% endblock %}</div>
 
-    
+    <!-- Footer -->
     <nav class="navbar navbar-fixed-bottom">
         <div class="container-fluid col-lg-12">
           <h5 class="text-center text-primary"><a href="/about.html">SWESquad</a></h5>
         </div>
     </nav>
   </body>
-
+</html>
