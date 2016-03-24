@@ -1,11 +1,11 @@
 FROM python:3.4
 
-ENV PYTHONUNBUFFERED 1
+COPY . /app
 
-ADD . /src
-
-WORKDIR /src
+WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-CMD gunicorn app:app -b 0.0.0.0:8000
+ENTRYPOINT ["python3"]
+
+CMD ["run.py"]
