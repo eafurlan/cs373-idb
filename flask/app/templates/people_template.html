@@ -17,8 +17,15 @@
       <h4><div class="text-muted">State: </div>{{person.state}}</h4>
       <h4><div class="text-muted">Bills: </div><a href="#">#####</a></h4>
       <h4><div class="text-muted">Website: </div><a href={{person.website}}>{{person.website}}</a></h4>
+      
+      {% if person.youtube != None %}
       <h4><div class="text-muted">Youtube: </div><a href="http://www.youtube.com/{{person.youtube}}">{{person.youtube}}</a></h4>
+      {% endif %}
+      
+      {% if person.twitter != None %}
       <h4><div class="text-muted">Twitter: </div><a href="http://www.twitter.com/{{person.twitter}}">@{{person.twitter}}</a></h4>
+      {% endif %}
+
 	</div>
 {% endblock %}
 

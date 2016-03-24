@@ -5,8 +5,9 @@ import json
 data = open('../people.txt').read()
 people = json.loads(data)
 
-data1 = open('../people.txt').read()
+data1 = open('../bills.txt').read()
 bills = json.loads(data1)
+
 
 @app.route('/')
 @app.route('/index')
@@ -16,7 +17,7 @@ def index():
 
 @app.route('/people')
 @app.route('/people.html')
-def people():
+def people_page():
     
     return render_template("people.html")
 
@@ -28,7 +29,7 @@ def about():
 
 @app.route('/bills')
 @app.route('/bills.html')
-def bills():
+def bills_page():
     
     return render_template("bills.html")
 
