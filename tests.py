@@ -42,10 +42,43 @@ class TestQuery(unittest.TestCase):
 		test_bill.sponsors.append(sba)
 		session.add(test_bill)
 		session.add(test_legis)
+		session.commit()
 		
-		query = session.query(Bill).all() + session.query(Legislator).all() + session.query(SponsorBillAssociation).all()
-		self.assertEqual(query[-1].bill_id,2)
-		self.assertEqual(query[-1].leg_id,2)
+		cur_sba = session.query(SponsorBillAssociation).first()
+		self.assertEqual(cur_sba.bill_id,2)
+		self.assertEqual(cur_sba.leg_id,2)
+
+	def test6_delete_bill(self):
+		test_bill = Bill(id=3)
+		session.add(test_bill)
+		session.commit()
+
+		cur_bill = session.query(Bill).filter_by(id=3).first()
+		self.assertEqual(cur_bill.id,3)
+
+		session.delete(cur_bill)
+
+		cur_bill = session.query(Bill).filter_by(id=3).first()
+		self.assertEqual(cur_bill,None)
+
+	def test7_delete_multiple(self):
+		
+		test_bill_1 = Bill(id=4)
+		test_bill_2 = Bill(id=5)
+		session.add(test_bill_1)
+		session.add(test_bill_2)
+		session.commit()
+
+		session.query(Bill).filter(Bill.id > 3).delete()
+
+		cur_bill = session.query(Bill).filter_by(id=4).first()
+		self.assertEqual(cur_bill,None)
+		print(cur_bill)
+		cur_bill = session.query(Bill).filter_by(id=5).first()
+		self.assertEqual(cur_bill,None)
+
+
+
 
 if __name__ == "__main__":
 	#TODO - see if we have to create a different SQL DB
