@@ -5,77 +5,86 @@
 
   
   {% block content %}
+    <script src="{{ url_for('static', filename='scripts/sortPeople.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/clickable.js') }}"></script>
 
     <!-- Table -->
-    <div class="container-fluid">
-      <table class="table table-bordered table-hover table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Title</th>
-            <th>Party</th>
-            <th>Start Date</th>
-            <th>State</th>
-            <th>Legislation</th>
-            <th>Website</th>
-            <th>Youtube</th>
-            <th>Twitter</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="clickable-row" data-href="people/412378">
-            <th>412378</th>
-            <th>Franken</th>
-            <th>Alan</th>
-            <th>Senator</th>
-            <th>Democrat</th>
-            <th>1951-05-21</th>
-            <th>MN</th>
-            <th><a href="#">#####</a></th>
-            <th><a href="http://www.franken.senate.gov">http://www.franken.senate.gov</a></th>
-            <th><a href="http://www.youtube.com/SenatorFranken">SenatorFranken</a></th>
-            <th></th>
-          </tr>
+    <div class="container" ng-app="sortApp" ng-controller="mainController">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
 
-          <tr class="clickable-row" data-href="people/412542">
-            <th>412542</th>
-            <th>Elizabeth</th>
-            <th>Warren</th>
-            <th>Senator</th>
-            <th>Democrat</th>
-            <th>1949-06-22</th>
-            <th>AR</th>
-            <th><a href="127130.html#">127130</a></th>
-            <th><a href="http://www.warren.senate.gov">http://www.warren.senate.gov</a></th>
-            <th><a href="http://www.youtube.com/senelizabethwarren">senelizabethwarren</a></th>
-            <th><a href="http://www.twitter.com/SenWarren">@SenWarren</a></th>
-          </tr>
+          <thead>
+            <tr>
+              <th>
+                <a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+                  ID
+                  <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th>
+                <a href="#" ng-click="sortType = 'firstname'; sortReverse = !sortReverse">
+                  First Name
+                  <span ng-show="sortType == 'firstname' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'firstname' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th>
+                <a href="#" ng-click="sortType = 'lastname'; sortReverse = !sortReverse">
+                  Last Name
+                  <span ng-show="sortType == 'lastname' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'lastname' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th>
+                <a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse">
+                  Title
+                  <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>  
+              <th>
+                <a href="#" ng-click="sortType = 'party'; sortReverse = !sortReverse">
+                  Party
+                  <span ng-show="sortType == 'party' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'party' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th>
+                <a href="#" ng-click="sortType = 'start_date'; sortReverse = !sortReverse">
+                  Start Date
+                  <span ng-show="sortType == 'start_date' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'start_date' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+              <th>
+                <a href="#" ng-click="sortType = 'state'; sortReverse = !sortReverse">
+                  State
+                  <span ng-show="sortType == 'state' && !sortReverse" class="fa fa-caret-down"></span>
+                  <span ng-show="sortType == 'state' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+              </th>
+                                  
+            </tr>
+          </thead>
 
-          <tr class="clickable-row" data-href="people/400054">
-            <th>412247</th>
-            <th>Sheldon</th>
-            <th>Whitehouse</th>
-            <th>Senator</th>
-            <th>Democrat</th>
-            <th>1955-10-20</th>
-            <th>RI</th>
-            <th><a href="#">#####</a></th>
-            <th><a href="http://www.whitehouse.senate.gov/">http://www.whitehouse.senate.gov/</a></th>
-            <th><a href="http://www.youtube.com/SenatorWhitehouse">SenatorWhitehouse</a></th>
-            <th><a href="http://www.twitter.com/SenWhitehouse">@SenWhitehouse</a></th>
-            <th></th>
-          </tr>
-        </tbody>
-      </table>
+          <tbody>
+            {% raw %}
+            <tr class="clickable-row" data-href=people/{{roll.id}} ng-repeat="roll in people | orderBy:sortType:sortReverse">
+              <td>{{ roll.id }}</td>
+              <td>{{ roll.firstname }}</td>
+              <td>{{ roll.lastname }}</td>
+              <td>{{ roll.title }}</td>
+              <td>{{ roll.party }}</td>
+              <td>{{ roll.start_date }}</td>
+              <td>{{ roll.state }}</td>
+            </tr>
+            {% endraw %}
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <script type="text/javascript">jQuery(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.document.location = $(this).data("href");
-    });
-});</script>
   {% endblock %}
     
 
