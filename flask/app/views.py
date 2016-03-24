@@ -24,7 +24,7 @@ def people_page():
 @app.route('/about.html')
 def about():
     
-    return render_template("about.html", group=group)
+    return render_template("about.html")
 
 @app.route('/bills/')
 @app.route('/bills.html')
