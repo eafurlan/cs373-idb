@@ -10,6 +10,10 @@ Base = declarative_base()
 from sqlalchemy import Table, ForeignKey, Column, Integer, String
 
 def model_repr(yourself):
+	"""
+		model_repr automatically generates the body of __repr__ methods for a class
+		yourself
+	"""
 	val = "%s:\n" % (yourself.__class__)
 	def stupid(you):
 		for attr, value in yourself.__dict__.items():
@@ -19,12 +23,11 @@ def model_repr(yourself):
 	return val
 
 
-'''
-SponsorBillAssociation object expresses the many-to-many relationship between Bills and Legislators.
-Expresses sponsorship or co-sponsorship as an attribute of each relationship.
-'''
-
 class SponsorBillAssociation(Base):
+	"""
+		SponsorBillAssociation object expresses the many-to-many relationship between Bills and Legislators.
+		Expresses sponsorship or co-sponsorship as an attribute of each relationship.
+	"""
 	__tablename__ = 'sponsor_bill_association'
 	bill_id = Column(Integer, ForeignKey('bills.id'), primary_key=True)
 	leg_id = Column(Integer, ForeignKey('legislators.id'), primary_key=True)
@@ -41,12 +44,12 @@ class SponsorBillAssociation(Base):
 	def __repr__(self):
 		return model_repr(self)
 
-'''
-Bill object represents a bill in the legislative system.
-Has associated attributes, such as name and status.
-Contains 'sponsors' which is a list of Legislator objects.
-'''
 class Bill(Base):
+	"""
+		Bill object represents a bill in the legislative system.
+		Has associated attributes, such as name and status.
+		Contains 'sponsors' which is a list of Legislator objects.
+	"""
 	__tablename__ = 'bills'
 	id = Column(Integer, primary_key=True)
 	name = Column(String)
@@ -65,12 +68,13 @@ class Bill(Base):
 	def __repr__(self):
 		return model_repr(self)
 
-'''
-Legislator object represents a legislator in the legislative system.
-Has associated attributes, such as name, party, and role.
-Contains 'sponsored_bills' which is a list of Bill objects.
-'''
 class Legislator(Base):
+	"""
+		Legislator object represents a legislator in the legislative system.
+		Has associated attributes, such as name, party, and role.
+		Contains 'sponsored_bills' which is a list of Bill objects.
+	"""
+
 	__tablename__ = 'legislators'
 
 	id = Column(Integer, primary_key=True)
