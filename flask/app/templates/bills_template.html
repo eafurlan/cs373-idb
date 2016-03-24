@@ -11,7 +11,12 @@
       <h4><div class="text-muted">Status: </div>{{bill.current_status}}</h4>
       <h4><div class="text-muted">Type: </div>{{bill.bill_type}}</h4>
       <h4><div class="text-muted">Date Introduced: </div>{{bill.date}}</h4>
-      <h4><div class="text-muted">Sponsors: </div><a href="400040.html#">{{bill.cosponsors}}</a></h4>
+      <h4><div class="text-muted">Sponsor: </div><a href="/people/{{bill.sponsor}}">{{bill.sponsor}}</a></h4>
+      <h4><div class="text-muted">Cosponsors: </div>
+      	{% for c in bill.cosponsor %}
+      	<a href="/people/{{c}}">{{c}}</a>
+      	{%  endfor %}
+      </h4>
       <h4><div class="text-muted">Link to more information: </div> <a href="{{bill.link}}">{{bill.link}}</a></h4>
     </div>
 

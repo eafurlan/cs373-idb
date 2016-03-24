@@ -25,7 +25,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="clickable-row" data-href="/412378">
+          <tr class="clickable-row" data-href="people/412378">
             <th>412378</th>
             <th>Franken</th>
             <th>Alan</th>
@@ -39,7 +39,7 @@
             <th></th>
           </tr>
 
-          <tr class="clickable-row" data-href="/412542">
+          <tr class="clickable-row" data-href="people/412542">
             <th>412542</th>
             <th>Elizabeth</th>
             <th>Warren</th>
@@ -53,24 +53,32 @@
             <th><a href="http://www.twitter.com/SenWarren">@SenWarren</a></th>
           </tr>
 
-          <tr class="clickable-row" data-href="400054.html#">
-            <th>412493</th>
-            <th>Kelly</th>
-            <th>Ayotte</th>
+          <tr class="clickable-row" data-href="people/400054">
+            <th>412247</th>
+            <th>Sheldon</th>
+            <th>Whitehouse</th>
             <th>Senator</th>
-            <th>Republican</th>
-            <th>1968-06-27</th>
-            <th>NC</th>
+            <th>Democrat</th>
+            <th>1955-10-20</th>
+            <th>RI</th>
             <th><a href="#">#####</a></th>
-            <th><a href="http://www.ayotte.senate.gov">http://www.ayotte.senate.gov</a></th>
-            <th><a href="http://www.youtube.com/SenatorAyotte">SenatorAyotte</a></th>
+            <th><a href="http://www.whitehouse.senate.gov/">http://www.whitehouse.senate.gov/</a></th>
+            <th><a href="http://www.youtube.com/SenatorWhitehouse">SenatorWhitehouse</a></th>
+            <th><a href="http://www.twitter.com/SenWhitehouse">@SenWhitehouse</a></th>
             <th></th>
           </tr>
         </tbody>
       </table>
     </div>
 
-    
+    <script type="text/javascript">jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});</script>
   {% endblock %}
     
+
+
+
 </html>

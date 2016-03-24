@@ -40,7 +40,7 @@ def getPeople():
 
 def getThreePeople():
 
-	p_ids = [412378, 412542, 412493]
+	p_ids = [412378, 412542, 412247]
 
 	global threePpl
 
@@ -96,7 +96,7 @@ def getBills():
 
 def getThreeBills():
 
-	b_ids = [334618, 336967, 13153]
+	b_ids = [343921, 336967, 343960]
 	
 	global threeBil
 
