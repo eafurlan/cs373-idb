@@ -43,7 +43,7 @@ scrub:
 	rm -f  IDB1.log
 
 models.html:
-	pydoc3 models.py
+	pydoc -w models
 
 IDB1.log:
 		git log > IDB1.log
