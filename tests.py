@@ -11,17 +11,30 @@ def single_session(func):
 		Makes sure each test runs with an empty DB
 	'''
 	def launch_session(*args,**kwargs):
-		session.query(Bill).delete()
-		session.query(Legislator).delete()
-		session.query(SponsorBillAssociation).delete()
+		if(session.query(SponsorBillAssociation)):
+			session.query(SponsorBillAssociation).delete()
+		if(session.query(Bill)):
+			session.query(Bill).delete()
+		if(session.query(Legislator)):
+			session.query(Legislator).delete()
+		
+		print(func.__name__)
 		func(*args,**kwargs)
+
+		if(session.query(SponsorBillAssociation)):
+			session.query(SponsorBillAssociation).delete()
+		if(session.query(Bill)):
+			session.query(Bill).delete()
+		if(session.query(Legislator)):
+			session.query(Legislator).delete()
+
 		
 	return launch_session
 
 
 class TestQuery(unittest.TestCase):
 
-	
+	@single_session
 	def test1_create_session_test(self):
 		no_instances = session.query(Bill).all()
 		self.assertEqual(0, len(no_instances))
@@ -44,11 +57,11 @@ class TestQuery(unittest.TestCase):
 
 	@single_session
 	def test4_create_one_legislator(self):
-		test_legis = Legislator(id = 0)
+		test_legis = Legislator(id = 2000)
 		session.add(test_legis)
 		session.commit()
 		query = session.query(Legislator).all()
-		self.assertEqual(0,query[0].id)
+		self.assertEqual(2000,query[0].id)
 
 	@single_session
 	def test5_create_bill_relation(self):
@@ -151,10 +164,10 @@ class TestQuery(unittest.TestCase):
 
 if __name__ == "__main__":
 	#TODO - see if we have to create a different SQL DB
-	engine = create_engine('sqlite:///:memory:')
+	engine = create_engine('mysql://dev1:swesquad@172.99.70.111:3306/ildb_dev')
 	Session = sessionmaker(bind=engine)
 	session = Session()
-	Base.metadata.drop_all(engine)
+	#Base.metadata.drop_all(engine)
 	Base.metadata.create_all(engine)
 	unittest.main()
 	Base.metadata.drop_all(engine)
