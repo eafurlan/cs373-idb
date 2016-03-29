@@ -1,4 +1,5 @@
 import sqlalchemy
+import datetime
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -7,7 +8,7 @@ engine = create_engine('sqlite:///:memory:', echo=True)
 
 Base = declarative_base()
 
-from sqlalchemy import Table, ForeignKey, Column, Integer, String
+from sqlalchemy import Table, ForeignKey, Column, Integer, String, Date
 
 def model_repr(yourself):
 	"""
@@ -55,15 +56,17 @@ class Bill(Base):
 	name = Column(String(255))
 	current_status = Column(String(255))
 	bill_type = Column(String(255))
+	date = Column(Date)
 
 	sponsors = relationship("SponsorBillAssociation", back_populates="bill")
 
-	def __init__(self, id=None, name=None, current_status=None, bill_type=None, sponsors=[]):
+	def __init__(self, id=None, name=None, current_status=None, bill_type=None, date =None, sponsors=[]):
 		self.id = id
 		self.name = name
 		self.current_status = current_status
 		self.bill_type = bill_type
 		self.sponsors = sponsors
+		self.date = date
 
 	def __repr__(self):
 		return model_repr(self)
