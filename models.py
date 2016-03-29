@@ -35,7 +35,7 @@ class SponsorBillAssociation(Base):
 	# Put info unique to each Cosponsor / Bill association here
 
 	# Type_of_sponsorship is either "Sponsor" or "Cosponsor"
-	type_of_sponsorship = Column(String)
+	type_of_sponsorship = Column(String(255))
 
 	# Express associations
 	legislator = relationship("Legislator", back_populates="sponsored_bills")
@@ -52,9 +52,9 @@ class Bill(Base):
 	"""
 	__tablename__ = 'bills'
 	id = Column(Integer, primary_key=True)
-	name = Column(String)
-	current_status = Column(String)
-	bill_type = Column(String)
+	name = Column(String(255))
+	current_status = Column(String(255))
+	bill_type = Column(String(255))
 
 	sponsors = relationship("SponsorBillAssociation", back_populates="bill")
 
@@ -78,17 +78,17 @@ class Legislator(Base):
 	__tablename__ = 'legislators'
 
 	id = Column(Integer, primary_key=True)
-	firstname = Column(String)
-	lastname = Column(String)
-	party = Column(String)
-	description = Column(String)
-	title = Column(String)
-	state = Column(String)
-	birthday = Column(String)
-	twitter = Column(String)
-	youtube = Column(String)
-	start_date = Column(String)
-	website = Column(String)
+	firstname = Column(String(255))
+	lastname = Column(String(255))
+	party = Column(String(255))
+	description = Column(String(255))
+	title = Column(String(255))
+	state = Column(String(255))
+	birthday = Column(String(255))
+	twitter = Column(String(255))
+	youtube = Column(String(255))
+	start_date = Column(String(255))
+	website = Column(String(255))
 
 	sponsored_bills = relationship("SponsorBillAssociation", back_populates="legislator")
 
