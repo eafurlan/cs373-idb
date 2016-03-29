@@ -11,12 +11,6 @@ def single_session(func):
 		Makes sure each test runs with an empty DB
 	'''
 	def launch_session(*args,**kwargs):
-		if(session.query(SponsorBillAssociation)):
-			session.query(SponsorBillAssociation).delete()
-		if(session.query(Bill)):
-			session.query(Bill).delete()
-		if(session.query(Legislator)):
-			session.query(Legislator).delete()
 		
 		print(func.__name__)
 		func(*args,**kwargs)
@@ -27,7 +21,7 @@ def single_session(func):
 			session.query(Bill).delete()
 		if(session.query(Legislator)):
 			session.query(Legislator).delete()
-
+		session.commit()
 		
 	return launch_session
 
@@ -158,16 +152,12 @@ class TestQuery(unittest.TestCase):
 		self.assertEqual(0, len(no_instances))
 
 
-
-
-
-
 if __name__ == "__main__":
 	#TODO - see if we have to create a different SQL DB
 	engine = create_engine('mysql://dev1:swesquad@172.99.70.111:3306/ildb_dev')
 	Session = sessionmaker(bind=engine)
 	session = Session()
-	#Base.metadata.drop_all(engine)
+	Base.metadata.drop_all(engine)
 	Base.metadata.create_all(engine)
 	unittest.main()
 	Base.metadata.drop_all(engine)
