@@ -1,5 +1,6 @@
 import unittest
 import json
+import datetime
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, relationship
@@ -30,7 +31,18 @@ def add_legislators() :
 		session.commit()
 		# print(temp)
 
-
+def add_bills() :
+	data = open('flask/bills.txt').read()
+	bills = json.loads(data)
+	for bill in bills :
+		temp = Bill(id = bill['id'],
+		name = bill['name'],
+		current_status = bill['current_status'],
+		bill_type = bill['bill_type'],
+		date = bill['date']
+	)
+		session.add(temp)
+		session.commit()
 
 
 
@@ -39,5 +51,7 @@ engine = create_engine('mysql://dev1:swesquad@172.99.70.111:3306/ildb_prod')
 Session = sessionmaker(bind=engine)
 session = Session()
 
-add_legislators()
+# add_legislators()
+add_bills()
+
 	#TODO - see if we have to create a different SQL DB
