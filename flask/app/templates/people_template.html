@@ -15,7 +15,7 @@
       <h4><div class="text-muted">Party: </div>{{person.party}}</h4>
       <h4><div class="text-muted">Start Date: </div>{{person.start_date}}</h4>
       <h4><div class="text-muted">State: </div>{{person.state}}</h4>
-      <h4><div class="text-muted">Bills: </div><a href="#">#####</a></h4>
+      <h4><div class="text-muted">Bills: </div><a href="/bills/{{person.bill}}">{{person.bill}}</a></h4>
       <h4><div class="text-muted">Website: </div><a href={{person.website}}>{{person.website}}</a></h4>
       
       {% if person.youtube != None %}
