@@ -44,14 +44,38 @@ def add_bills() :
 		session.add(temp)
 		session.commit()
 
+def add_relations() :
+	data = open('flask/bills.txt').read()
+	bills = json.loads(data)
 
+	for bill in bills :
+		# print(bill['name'])
+		# print(type(bill['id']))
+		# print(bill['id'])
+		temp = SponsorBillAssociation(
+		bill_id = bill['id'],
+		leg_id = bill['sponsor'],
+		type_of_sponsorship = 'sponsor'
+		)
 
+		# session.merge(temp)
+		# session.commit()		
+
+		for cosponsor in bill['cosponsor']:
+			temp = SponsorBillAssociation(
+			bill_id = bill['id'],
+			leg_id = cosponsor,
+			type_of_sponsorship = "cosponsor"
+			)
+
+			session.merge(temp)
+			session.commit()	
 
 engine = create_engine('mysql://dev1:swesquad@172.99.70.111:3306/ildb_prod')
 Session = sessionmaker(bind=engine)
 session = Session()
 
 # add_legislators()
-add_bills()
-
+# add_bills()
+add_relations()
 	#TODO - see if we have to create a different SQL DB
