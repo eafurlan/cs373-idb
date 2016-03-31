@@ -4,6 +4,8 @@
   {% extends "navbar.html" %}
 
   {%block content%}
+  <script src="{{ url_for('static', filename='../static/scripts/displayTests.js') }}"></script>
+
 
     <div class="container">
 
@@ -158,10 +160,21 @@
       </div>
     </div>
 
+    <!-- Tests -->
+    <div class="well">
+      <div class="container-fluid">
+        <h4>Run Our Unit Tests:</h4>
+        <h4>
+          <button type="button" id="unitTestButton" class="btn btn-primary">Run</button>
+        </h4>
+        <div class="alert" id="unitTestAlert" role="alert">
+          <span></span>
+        </div>
+      </div>
     </div>
 
+  </div>
     
-
     {% endblock %}
 
 </html>
