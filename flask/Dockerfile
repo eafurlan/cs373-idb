@@ -6,6 +6,7 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python3"]
+ENTRYPOINT ["bash"]
 
-CMD ["run.py"]
+
+CMD ["guni_run.sh"]
