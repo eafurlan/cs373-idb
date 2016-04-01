@@ -23,7 +23,8 @@ def add_legislators() :
 			twitter = leg['twitter'], 
 			youtube = leg['youtube'], 
 			start_date = leg['start_date'], 
-			website = leg['website']
+			website = leg['website'],
+			photo_link = leg['photo_link']
 			# sponsored_bills = leg['sponsored_bills'], 
 			)
 
@@ -61,15 +62,15 @@ def add_relations() :
 		# session.merge(temp)
 		# session.commit()		
 
-		for cosponsor in bill['cosponsor']:
-			temp = SponsorBillAssociation(
-			bill_id = bill['id'],
-			leg_id = cosponsor,
-			type_of_sponsorship = "cosponsor"
-			)
+		# for cosponsor in bill['cosponsor']:
+		# 	temp = SponsorBillAssociation(
+		# 	bill_id = bill['id'],
+		# 	leg_id = cosponsor,
+		# 	type_of_sponsorship = "cosponsor"
+		# 	)
 
-			session.merge(temp)
-			session.commit()	
+		# 	session.merge(temp)
+		# 	session.commit()	
 
 engine = create_engine('mysql://dev1:swesquad@172.99.70.111:3306/ildb_dev')
 Session = sessionmaker(bind=engine)
