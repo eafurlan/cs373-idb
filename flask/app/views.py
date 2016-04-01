@@ -1,4 +1,4 @@
-from app.models import Bill, Legislator
+from app.models import *
 from flask import render_template, jsonify
 from app import app
 
@@ -43,9 +43,30 @@ def bills_page():
 
 @app.route('/people/<person_id>')
 def render_person(person_id):
-	leg_obj = session.query(Legislator).filter_by(id=person_id).first()
+	leg_query = session.query(Legislator).filter_by(id=person_id)
+	leg_obj = leg_query.first()
 	leg_dict = leg_obj.__dict__
-	return render_template('people_template.html', person = leg_dict)
+
+	#IGNORE THIS STUFFz
+	# query_assoc = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation)
+	# first_tuple = query_assoc.first()
+	# print(first_tuple)
+	# print(type(leg_obj))
+	# print(type(query_assoc))
+
+	# this would find the id of first bill that this leg sponsord
+	assoc_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(Legislator.id == person_id)
+	
+	# the sponsor bill association is the second tuple.
+	assoc_obj = assoc_query.first()[1]
+	assoc_obj_dict = assoc_obj.__dict__
+	# assoc_dict = assoc_result.__dict__
+	# print(type(leg_obj))
+	# print(type(assoc_obj))
+
+
+
+	return render_template('people_template.html', person = leg_dict, sponsored_bill_association = assoc_obj_dict)
 
 @app.route('/bills/<bill_id>')
 def render_bill(bill_id):

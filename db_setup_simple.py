@@ -59,8 +59,8 @@ def add_relations() :
 		type_of_sponsorship = 'sponsor'
 		)
 
-		# session.merge(temp)
-		# session.commit()		
+		session.merge(temp)
+		session.commit()		
 
 		# for cosponsor in bill['cosponsor']:
 		# 	temp = SponsorBillAssociation(
@@ -72,11 +72,14 @@ def add_relations() :
 		# 	session.merge(temp)
 		# 	session.commit()	
 
-engine = create_engine('mysql://dev1:swesquad@172.99.70.111:3306/ildb_dev')
+engine = create_engine('mysql://dev1:swesquad@172.99.70.111:3306/ildb_prod')
 Session = sessionmaker(bind=engine)
 session = Session()
 
+# if tables not created, run this:
+# Base.metadata.create_all(engine)
+
 # add_legislators()
-add_bills()
-# add_relations()
+# add_bills()
+add_relations()
 	#TODO - see if we have to create a different SQL DB
