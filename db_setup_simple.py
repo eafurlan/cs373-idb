@@ -71,11 +71,11 @@ def add_relations() :
 			session.merge(temp)
 			session.commit()	
 
-engine = create_engine('mysql://dev1:swesquad@172.99.70.111:3306/ildb_prod')
+engine = create_engine('mysql://dev1:swesquad@172.99.70.111:3306/ildb_dev')
 Session = sessionmaker(bind=engine)
 session = Session()
 
 # add_legislators()
-# add_bills()
-add_relations()
+add_bills()
+# add_relations()
 	#TODO - see if we have to create a different SQL DB
