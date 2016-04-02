@@ -56,7 +56,7 @@ class Bill(Base):
 	name = Column(String(255))
 	current_status = Column(String(255))
 	bill_type = Column(String(255))
-	date = Column(Date)
+	date = Column(String(255))
 
 	sponsors = relationship("SponsorBillAssociation", back_populates="bill")
 
@@ -96,7 +96,7 @@ class Legislator(Base):
 
 	sponsored_bills = relationship("SponsorBillAssociation", back_populates="legislator")
 
-	def __init__(self, id=None, firstname=None, lastname=None, party=None, description=None, title=None, state=None, birthday=None, twitter=None, youtube=None, start_date=None, website=None, sponsored_bills=[]):
+	def __init__(self, id=None, firstname=None, lastname=None, party=None, description=None, title=None, state=None, birthday=None, twitter=None, youtube=None, start_date=None, website=None, photo_link = None, sponsored_bills=[]):
 		self.id = id
 		self.firstname = firstname
 		self.lastname = lastname
@@ -110,6 +110,7 @@ class Legislator(Base):
 		self.start_date = start_date
 		self.website = website
 		self.sponsored_bills = sponsored_bills
+		self.photo_link = photo_link
 
 	def __repr__(self):
 		return model_repr(self)
