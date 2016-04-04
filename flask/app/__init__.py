@@ -3,9 +3,10 @@ import subprocess
 import os
 from flask_restful import Api, Resource
 
+
 app = Flask(__name__)
 from app import views
-
+from app.api import *
 api = Api(app)
 
 class TestResource(Resource):
@@ -17,7 +18,7 @@ class TestResource(Resource):
                 
                 shell=True)
             # Runs from the flask directory
-            return {'test_text': str(output_text)}
+            return {'test_text\n': str(output_text)}
         except subprocess.CalledProcessError:
             return {'test_text':'The process returned with an error'}
         except subprocess.TimeoutExpired:
@@ -26,5 +27,10 @@ class TestResource(Resource):
         #    return {'test_text':'something unkown went wrong trying to run the tests'}
 
 api.add_resource(TestResource,'/test')
+
+api.add_resource(AllBills, '/api/bills')
+api.add_resource(AllLeg, '/api/legislators')
+api.add_resource(OneBill, '/api/bills/<int:bill_id>')
+api.add_resource(OneLeg, '/api/legislators/<int:leg_id>')
 
     
