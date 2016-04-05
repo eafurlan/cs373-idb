@@ -2,6 +2,8 @@ from app.models import *
 from flask import render_template, jsonify
 from app import app
 from flask import make_response
+import subprocess
+import os
 
 import json
 from sqlalchemy import create_engine
@@ -28,7 +30,29 @@ def people_page():
 @app.route('/about.html')
 def about():
 	
-	return render_template("about.html")
+	return render_template("about.html", output_text = runTests())
+
+def runTests():
+	try:
+		# output_text = subprocess.check_output('python3 static/scripts/tests.py',
+			#     stderr=subprocess.STDOUT,
+			#     universal_newlines=True,
+				
+			#     shell=True)
+		path = os.path.dirname(os.path.realpath(__file__))
+		process = subprocess.Popen('python3 ' +path+'/tests.py', shell=True,
+					   stdout=subprocess.PIPE, 
+					   stderr=subprocess.PIPE)
+		# Runs from the flask directory
+		output_text, err = process.communicate()
+	  	
+		output = {'results': err.decode('utf-8'), 'output': output_text.decode('utf-8')}
+
+		return output
+	except subprocess.CalledProcessError:
+		return {'test_text':'The process returned with an error'}
+	except subprocess.TimeoutExpired:
+		return {'test_text':'The tests took too long to run. Check the server'}
 
 @app.route('/bills/')
 @app.route('/bills.html')
@@ -72,4 +96,4 @@ def render_bill(bill_id):
 
 @app.errorhandler(404)
 def not_found(error):
-    return render_template('404.html')
+	return render_template('404.html')
