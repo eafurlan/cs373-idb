@@ -1,13 +1,13 @@
 FILES :=                            \
 tests.py						\
-models.py						\					                       
-# UML.pdf							\
-# apiary.apib 					\
-# IDB1.log						\
-# model.html						\
-.travis.yml												
- 
-    
+models.py						\
+uml.pdf							\
+apiary.apib 					\
+IDB1.log						\
+models.html						\
+.travis.yml
+
+
 
 check:
 	@not_found=0;                                 \
@@ -36,6 +36,9 @@ clean:
 
 config:
 	git config -l
+
+tests:
+	python3 tests.py
 
 scrub:
 	make clean

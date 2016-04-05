@@ -8,9 +8,12 @@ sudo: false
 install:
     - pip install --upgrade pip
     - pip --version
-    - pip install coverage
-    - pip install numpy
     - pip install requests
+    - pip install Flask
+    - pip install Flask-Script
+    - pip install Flask-SQLAlchemy
+    - pip install flask-restful
+    - pip install PyMySQL
 
 before_script:
     - uname -a
@@ -19,7 +22,9 @@ before_script:
 
 script:
     - date
-    - ls -al
+    - make check
+    - make clean
+    - make tests
 
 notifications:
   slack: swesquad:KbXXWvyvnkk2Jh7IkxxettzX

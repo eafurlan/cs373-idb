@@ -6,7 +6,7 @@ from app.models import *
 from app import app
 
 
-engine = create_engine('mysql://dev1:swesquad@172.99.70.111:3306/ildb_prod')
+engine = create_engine('mysql+pymysql://dev1:swesquad@172.99.70.111:3306/ildb_prod')
 Session = sessionmaker(bind=engine)
 session = Session()
 
