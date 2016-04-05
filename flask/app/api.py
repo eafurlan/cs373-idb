@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, abort
 from flask_restful import Resource, Api
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, relationship
@@ -25,6 +25,10 @@ class AllBills(Resource):
 class OneBill(Resource):
 	def get(self, bill_id):
 		bill_obj =session.query(Bill).filter_by(id=bill_id).first()
+
+		if bill_obj is None:
+			abort(404)
+
 		bill_dict = bill_obj.__dict__
 		del bill_dict['_sa_instance_state']
 		return bill_dict
@@ -47,9 +51,16 @@ class AllLeg(Resource):
 class OneLeg(Resource):
 	def get(self, leg_id):
 		leg_obj = session.query(Legislator).filter_by(id=leg_id).first()
+		print(leg_obj is None)
+		if leg_obj is None:
+			abort(404)
+
 		leg_dict = leg_obj.__dict__
 		print(leg_dict.keys())
 		del leg_dict['_sa_instance_state']
+
+
+
 		return leg_dict
 	
 

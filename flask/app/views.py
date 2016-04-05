@@ -1,6 +1,7 @@
 from app.models import *
 from flask import render_template, jsonify
 from app import app
+from flask import make_response
 
 import json
 from sqlalchemy import create_engine
@@ -69,3 +70,6 @@ def render_bill(bill_id):
 	print(str(bill_dict))
 	return render_template('bills_template.html', bill = bill_dict)
 
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('404.html')

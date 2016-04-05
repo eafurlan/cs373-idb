@@ -28,9 +28,9 @@ class TestResource(Resource):
 
 api.add_resource(TestResource,'/test')
 
-api.add_resource(AllBills, '/api/bills')
-api.add_resource(AllLeg, '/api/legislators')
-api.add_resource(OneBill, '/api/bills/<int:bill_id>')
-api.add_resource(OneLeg, '/api/legislators/<int:leg_id>')
+api.add_resource(AllBills, '/api/bills', '/api/bills/')
+api.add_resource(AllLeg, '/api/legislators', '/api/legislators/')
+api.add_resource(OneBill, '/api/bills/<int:bill_id>', '/api/bills/<int:bill_id>/')
+api.add_resource(OneLeg, '/api/legislators/<int:leg_id>', '/api/legislators/<int:leg_id>/')
 
     
