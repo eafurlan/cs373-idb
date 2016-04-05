@@ -29,7 +29,7 @@ def getPeople():
 		temp['website'] = response[p]['website']
 		temp['id'] = response[p]['person']['id']		#id for now
 		temp['photo_link'] = "https://www.govtrack.us/data/photos/"+str(temp['id'])+"-200px.jpeg"
-		
+
 		"""
 		singlepersonurl = 'https://www.govtrack.us/api/v2/person/' + str(temp['id'])
 		r = requests.get(url).json()
@@ -86,7 +86,7 @@ def getBills():
 		temp['date'] = response[b]['introduced_date']
 
 		singlebillurl = url + '/' + str(temp['id'])
-		r = requests.get(singlebillurl).json()		
+		r = requests.get(singlebillurl).json()
 		temp['terms'] = r['terms']
 		temp['cosponsor'] = []
 		for person in r['cosponsors']:
@@ -97,13 +97,13 @@ def getBills():
 def getThreeBills():
 
 	b_ids = [343921, 336967, 343960]
-	
+
 	global threeBil
 
 	for b in b_ids:
 		url = 'https://www.govtrack.us/api/v2/bill/'+str(b)
 		response = requests.get(url).json()
-		
+
 		temp = dict()
 		temp['name'] = response['title_without_number']
 		temp['id'] = response['id']			#id for now
@@ -113,7 +113,7 @@ def getThreeBills():
 		temp['link'] = response['link']
 		temp['date'] = response['introduced_date']
 
-		
+
 		temp['terms'] = response['terms']
 		temp['cosponsor'] = []
 		for person in response['cosponsors']:
@@ -131,7 +131,7 @@ def getThreeBills():
 # getBills()
 # with open('allBills.txt', 'w') as outfile:
 # 	json.dump(billArr, outfile)
-	
+
 getThreePeople()
 with open('people.txt', 'w') as outfile:
 	json.dump(threePpl, outfile)
@@ -139,4 +139,3 @@ with open('people.txt', 'w') as outfile:
 getThreeBills()
 with open('bills.txt', 'w') as outfile:
 	json.dump(threeBil, outfile)
-

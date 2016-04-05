@@ -1,13 +1,13 @@
 FILES :=                            \
 tests.py						\
-models.py						\					                       
+models.py						\
 # UML.pdf							\
 # apiary.apib 					\
 # IDB1.log						\
 # model.html						\
-.travis.yml												
- 
-    
+.travis.yml
+
+
 
 check:
 	@not_found=0;                                 \
