@@ -22,8 +22,9 @@ before_script:
 
 script:
     - date
-    - ls -al
-    - python3 tests.py
+    - make check
+    - make clean
+    - make tests
 
 notifications:
   slack: swesquad:KbXXWvyvnkk2Jh7IkxxettzX

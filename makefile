@@ -1,10 +1,10 @@
 FILES :=                            \
 tests.py						\
 models.py						\
-# UML.pdf							\
-# apiary.apib 					\
-# IDB1.log						\
-# model.html						\
+uml.pdf							\
+apiary.apib 					\
+IDB1.log						\
+models.html						\
 .travis.yml
 
 
@@ -36,6 +36,9 @@ clean:
 
 config:
 	git config -l
+
+tests:
+	python3 tests.py
 
 scrub:
 	make clean
