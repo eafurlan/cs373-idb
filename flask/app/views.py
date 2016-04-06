@@ -14,6 +14,9 @@ engine = create_engine('mysql+pymysql://dev1:swesquad@172.99.70.111:3306/ildb_pr
 Session = sessionmaker(bind=engine)
 session = Session()
 
+data = open('about.txt').read()
+group = json.loads(data)
+
 @app.route('/')
 @app.route('/index/')
 @app.route('/index.html')
@@ -30,7 +33,7 @@ def people_page():
 @app.route('/about.html')
 def about():
 	
-	return render_template("about.html", output_text = runTests())
+	return render_template("about.html", group = group, output_text = runTests())
 
 def runTests():
 	try:

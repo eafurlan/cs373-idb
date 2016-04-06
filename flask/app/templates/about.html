@@ -8,115 +8,37 @@
 
 
     <div class="container">
-
-      <!-- Arman Baratifar -->
+    {% for person in group %}
       <div class="well well-lg">
         <div class="container-fluid">
           <div class="col-md-3">
-            <img src="http://abaratif.github.io/images/headshot.jpg" class="img-responsive img-thumbnail center-block" height="222" width="222">
+            <img src={{person.pic}} height="222" width="222">
           </div>
           <div class="col-md-8">
-            <h4>Arman Baratifar</h4>
-            <h5>Arman is a Senior graduating in May. His responsibilities for the project included hosting the pages using Flask, deploying the app, and doing some front end development and testing.</h5>
+            <h4>{{person.name}}</h4>
+            <h5>{{person.bio}}</h5>
 
-            <!-- git shortlog -s -n --all returns commits for all authors-->
+            <!-- >>git shortlog -s -n --all << returns commits for all authors-->
           </div>
 
           <div class="col-md-9">
-            <div class="col-md-4">commits: 21</div>
-            <div class="col-md-4">issues: 3</div>
-            <div class="col-md-4">unit tests: 0</div>
+            <div class="col-md-4">commits: {{person.commits}}</div>
+            <div class="col-md-4">issues: {{person.issues}}</div>
+            <div class="col-md-4">unit tests: {{person.unittests}}</div>
           </div>
 
         </div>
       </div>
+      {% endfor %}
 
-      <!-- Brian Hodge -->
-      <div class="well well-lg">
-        <div class="container-fluid">
-          <div class="col-md-3">
-            <img src="https://raw.githubusercontent.com/eafurlan/cs373-idb/master/flask/app/static/img/brian2.JPG" class="img-responsive img-thumbnail center-block" height="222" width="222">
-          </div>
-          <div class="col-md-8">
-            <h4>Brian Hodge</h4>
-            <h5>Brian is a senior graduating in December. He studies Computer Science and Linguistics. His responsibilities for the project were designing the models, writing unit tests, and writing the technical report.</h5>
-          </div>
-
-          <div class="col-md-9">
-            <div class="col-md-4">commits: 15</div>
-            <div class="col-md-4">issues: 1</div>
-            <div class="col-md-4">unit tests: 3</div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Liz Furlan -->
-      <div class="well well-lg">
-        <div class="container-fluid">
-          <div class="col-md-3">
-            <img src="{{ url_for('static', filename='img/liz.jpg') }}" class="img-responsive img-thumbnail center-block" height="222" width="222">
-          </div>
-          <div class="col-md-8">
-            <h4>Liz Furlan</h4>
-            <h5>Liz is a senior, graduating this May. She is also taking Computational Brain and Networks this semester. Her primary responsibility for the ILDb has been front-end work; she created the html and css for most of the pages you see here, as well as incorporating AngularJS and jQuery to add functionality to the pages.</h5>
-          </div>
-
-          <div class="col-md-9">
-            <div class="col-md-4">commits: 23</div>
-            <div class="col-md-4">issues: 16 (but these were made collaboratively)</div>
-            <div class="col-md-4">unit tests: none so far!</div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Oliver Croomes -->
-      <div class="well well-lg">
-        <div class="container-fluid">
-          <div class="col-md-3">
-            <img src="{{ url_for('static', filename='img/oliver.jpg') }}" class="img-responsive img-thumbnail center-block" height="222" width="222">
-          </div>
-          <div class="col-md-8">
-            <h4>Oliver Croomes II</h4>
-            <h5>Oliver Croomes is a Senior.  He's interned at TasteBud (when it was Azul) and at Tableau Software. His responsibilities have been writing tests, developing models, and contributing front-end code.</h5>
-          </div>
-
-          <div class="col-md-9">
-            <div class="col-md-4">commits: 12</div>
-            <div class="col-md-4">issues: 0 (I joined late)</div>
-            <div class="col-md-4">unit tests: 7</div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Lan Nguyen -->
-      <div class="well well-lg">
-        <div class="container-fluid">
-          <div class="col-md-3">
-            <img src="http://chareth.github.io/cs373-extra-credit-blog/images/me.jpg" class="img-responsive img-thumbnail center-block" height="222" width="222">
-          </div>
-          <div class="col-md-8">
-            <h4>Lan Nguyen</h4>
-            <h5>Lan is a junior currently studying computer science at UT Austin. She was responsible for templating and routing the web pages using Flask and writing the Apiary API document. </h5>
-          </div>
-
-          <div class="col-md-9">
-            <div class="col-md-4">commits: 44</div>
-            <div class="col-md-4">issues: 3</div>
-            <div class="col-md-4">unit tests: 0</div>
-          </div>
-
-        </div>
-      </div>
+      
 
       <div class="well well-lg">
         <div class="container-fluid">
           <div class="col-md-12">
             <div class="col-md-4">
               <h4>Statistics</h4>
-                <p> total commits: 95 </p> <!-- git rev-list --all --count returns total commits-->
+                <p> total commits: 161 </p> <!-- >> git rev-list --all --count <<returns total commits-->
                 <p> total issues: 23</p>
                 <p> total no. of unit tests: 10</p>
                 <p><a href="https://jsapi.apiary.io/previews/ildb12/reference">Apiary API</a></p>
