@@ -93,10 +93,11 @@ class Legislator(Base):
 	start_date = Column(String(255))
 	website = Column(String(255))
 	photo_link = Column(String(255))
+	bioguide_id = Column(String(255))
 
 	sponsored_bills = relationship("SponsorBillAssociation", back_populates="legislator")
 
-	def __init__(self, id=None, firstname=None, lastname=None, party=None, description=None, title=None, state=None, birthday=None, twitter=None, youtube=None, start_date=None, website=None, photo_link = None, sponsored_bills=[]):
+	def __init__(self, id=None, firstname=None, lastname=None, party=None, description=None, title=None, state=None, birthday=None, twitter=None, youtube=None, start_date=None, website=None, photo_link = None, sponsored_bills=[], bioguide_id = None):
 		self.id = id
 		self.firstname = firstname
 		self.lastname = lastname
@@ -111,6 +112,7 @@ class Legislator(Base):
 		self.website = website
 		self.sponsored_bills = sponsored_bills
 		self.photo_link = photo_link
+		self.bioguide_id = bioguide_id
 
 	def __repr__(self):
 		return model_repr(self)
