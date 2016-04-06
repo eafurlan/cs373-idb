@@ -23,8 +23,8 @@ group = json.loads(data)
 def index():
 	return render_template("index.html")
 
-@app.route('/people/')
-@app.route('/people.html')
+@app.route('/legislators/')
+@app.route('/legislators.html')
 def people_page():
 	
 	return render_template("people.html")
@@ -37,11 +37,7 @@ def about():
 
 def runTests():
 	try:
-		# output_text = subprocess.check_output('python3 static/scripts/tests.py',
-			#     stderr=subprocess.STDOUT,
-			#     universal_newlines=True,
-				
-			#     shell=True)
+		
 		path = os.path.dirname(os.path.realpath(__file__))
 		process = subprocess.Popen('python3 ' +path+'/tests.py', shell=True,
 					   stdout=subprocess.PIPE, 
@@ -53,9 +49,9 @@ def runTests():
 
 		return output
 	except subprocess.CalledProcessError:
-		return {'test_text':'The process returned with an error'}
+		return {'results':'The process returned with an error'}
 	except subprocess.TimeoutExpired:
-		return {'test_text':'The tests took too long to run. Check the server'}
+		return {'results':'The tests took too long to run. Check the server'}
 
 @app.route('/bills/')
 @app.route('/bills.html')
@@ -63,7 +59,7 @@ def bills_page():
 	
 	return render_template("bills.html")
 
-@app.route('/people/<person_id>')
+@app.route('/legislators/<person_id>')
 def render_person(person_id):
 	leg_query = session.query(Legislator).filter_by(id=person_id)
 	leg_obj = leg_query.first()
