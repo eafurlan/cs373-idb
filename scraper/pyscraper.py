@@ -3,9 +3,9 @@
 import requests
 import json
 
-from frozendict import frozendict
 
 billArr = []
+assocArray = []
 threePpl = []
 threeBil = []
 
@@ -16,30 +16,29 @@ def printDebug(str) :
 
 def getPeople():
 	url = 'https://www.govtrack.us/api/v2/role?current=true&limit=600'
-	response = requests.get(url).json()['objects']
+	people_response = requests.get(url).json()['objects']
 	
 	peopleArr = []
 	billsNeeded = []
 
-
-	
-	for p in range(len(response)):
+	#for p in range(1):
+	for p in range(len(people_response)):
 
 		temp = dict()
-		temp['firstname'] = response[p]['person']['firstname']
-		temp['lastname'] = response[p]['person']['lastname']
-		temp['party'] = response[p]['party']
-		temp['description'] = response[p]['description']
-		temp['title'] = response[p]['title_long']
-		temp['state'] = response[p]['state']
-		temp['birthday'] = response[p]['person']['birthday']
-		temp['twitter'] = response[p]['person']['twitterid']
-		temp['youtube'] = response[p]['person']['youtubeid']
-		temp['start_date'] = response[p]['startdate'] 	
-		temp['website'] = response[p]['website']
-		temp['id'] = response[p]['person']['id']		#id for now
+		temp['firstname'] = people_response[p]['person']['firstname']
+		temp['lastname'] = people_response[p]['person']['lastname']
+		temp['party'] = people_response[p]['party']
+		temp['description'] = people_response[p]['description']
+		temp['title'] = people_response[p]['title_long']
+		temp['state'] = people_response[p]['state']
+		temp['birthday'] = people_response[p]['person']['birthday']
+		temp['twitter'] = people_response[p]['person']['twitterid']
+		temp['youtube'] = people_response[p]['person']['youtubeid']
+		temp['start_date'] = people_response[p]['startdate'] 	
+		temp['website'] = people_response[p]['website']
+		temp['id'] = people_response[p]['person']['id']		#id for now
 		temp['photo_link'] = "https://www.govtrack.us/data/photos/"+str(temp['id'])+"-200px.jpeg"
-		temp['bioguide_id'] = response[p]['person']['bioguideid']
+		temp['bioguide_id'] = people_response[p]['person']['bioguideid']
 		"""
 		singlepersonurl = 'https://www.govtrack.us/api/v2/person/' + str(temp['id'])
 		r = requests.get(url).json()
@@ -54,52 +53,79 @@ def getPeople():
 		peopleArr.append(temp)
 		
 
-		# add the bills that this person sponsors
-		sponsored_bill_url = 'https://www.govtrack.us/api/v2/bill?sponsor=%s' % temp['id']
+		# add the bills that this person sponsors from this session of congress
+		sponsored_bill_url = 'https://www.govtrack.us/api/v2/bill?limit=6000&congress=114&sponsor=%s' % temp['id']
 		sponsored_response = requests.get(sponsored_bill_url).json()['objects']
 		
 
-
-
+		print("STARTING SPONSORED BILLS")
 		for b in sponsored_response:
-			temp = {}
-			temp['name'] = b['title_without_number']
-			temp['id'] = b['id']
-			temp['current_status'] = b['current_status']
-			temp['bill_type'] = b['bill_type']
-			temp['sponsor'] = b['sponsor']['id']
-			temp['link'] = b['link']
-			temp['date'] = b['introduced_date']
+			bill_to_add = {}
+			bill_to_add ['name'] = b['title_without_number']
+			bill_to_add['id'] = b['id']
+			bill_to_add['current_status'] = b['current_status']
+			bill_to_add['bill_type'] = b['bill_type']
+			bill_to_add['sponsor'] = b['sponsor']['id']
+			bill_to_add['link'] = b['link']
+			bill_to_add['date'] = b['introduced_date']
 
-			if temp not in billsNeeded :
-				billsNeeded.append(temp)
+			if bill_to_add not in billsNeeded :
+				print("Adding bill: %s" % b['id'])
+				billsNeeded.append(bill_to_add)
+
+			tempAssoc = {}
+			tempAssoc['bill_id'] = b['id']
+			tempAssoc['leg_id'] = people_response[p]['id']
+			tempAssoc['type_of_sponsorship'] = 'sponsor'
+
+			if tempAssoc not in assocArray:
+				print("Adding sponsor association between bill %s and legislator %s" % (b['id'], people_response[p]['id']))
+				assocArray.append(tempAssoc)
 
 		#add the bills that this person co-sponsors
-		cosponsored_bill_url = 'https://www.govtrack.us/api/v2/bill?limit=6000&cosponsors=%s' % temp['id']
+		cosponsored_bill_url = 'https://www.govtrack.us/api/v2/bill?limit=6000&congress=114&cosponsors=%s' % temp['id']
 		cosponsored_response = requests.get(cosponsored_bill_url).json()['objects']
-		
-		
-		
-		for c in cosponsored_response:
-			temp = {}
-			temp['name'] = c['title_without_number']
-			temp['id'] = c['id']
-			temp['current_status'] = c['current_status']
-			temp['bill_type'] = c['bill_type']
-			temp['sponsor'] = c['sponsor']['id']
-			temp['link'] = c['link']
-			temp['date'] = c['introduced_date']
+		# print("cosponsored response for person id:%s len = %d" % (temp['id'], len(cosponsored_response)) )
 
-			if temp not in billsNeeded :
-				billsNeeded.append(temp)
+		# roy blunt example: all the bills he has cosponsored
+		# https://www.govtrack.us/api/v2/bill?limit=6000&congress=114&cosponsors=400034
+		
+		print("STARTING COSPONSORED BILLS")
+		for c in cosponsored_response:
+			bill_to_add = {}
+			bill_to_add['name'] = c['title_without_number']
+			bill_to_add['id'] = c['id']
+			bill_to_add['current_status'] = c['current_status']
+			bill_to_add['bill_type'] = c['bill_type']
+			bill_to_add['sponsor'] = c['sponsor']['id']
+			bill_to_add['link'] = c['link']
+			bill_to_add['date'] = c['introduced_date']
+
+			if bill_to_add not in billsNeeded :
+				billsNeeded.append(bill_to_add)
+
+			tempAssoc = {}
+			tempAssoc['bill_id'] = c['id']
+			tempAssoc['leg_id'] = people_response[p]['id'] # person id
+			tempAssoc['type_of_sponsorship'] = 'cosponsor'
+
+			if tempAssoc not in assocArray:
+				print("Adding cosponsor association between bill %s and legislator %s" % (c['id'], people_response[p]['id']))
+				assocArray.append(tempAssoc)
+
 
 	#write the people
-	with open('../flask/allPeople2.txt', 'w') as outfile:
+	with open('../flask/allPeople3.txt', 'w') as outfile:
 		json.dump(peopleArr, outfile)
 
 	#write the bills
-	with open('../flask/allBills2.txt', 'w') as outfile:
+	with open('../flask/allBills3.txt', 'w') as outfile:
 		json.dump(billsNeeded, outfile)
+
+	#write the associations
+	with open('../flask/allAssocs3.txt', 'w') as outfile:
+		json.dump(assocArray, outfile)
+
 
 		
 
