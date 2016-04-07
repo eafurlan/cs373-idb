@@ -1,5 +1,5 @@
 from flask import Flask, abort
-from flask_restful import Resource, Api
+from flask_restful import Resource, Api, reqparse
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, relationship
 from app.models import *
@@ -13,8 +13,17 @@ session = Session()
 
 class AllBills(Resource):
 	def get(self):
-		bill_list = session.query(Bill).all()
+		parser = reqparse.RequestParser()
+		parser.add_argument('limit', type=int, help="limit must be a number")
+		args = parser.parse_args()
 
+		limit = args.get('limit')
+		bill_list = []
+		if limit is None:
+			bill_list = session.query(Bill).all()		
+		elif limit > 0:
+			bill_list = session.query(Bill).limit(limit)
+			
 		bill_dict_list = [x.__dict__ for x in bill_list]
 
 		for x in bill_dict_list:
@@ -36,7 +45,17 @@ class OneBill(Resource):
 class AllLeg(Resource):
 	
 	def get(self):
-		leg_list = session.query(Legislator).all()
+		parser = reqparse.RequestParser()
+		parser.add_argument('limit', type=int, help="limit must be a number")
+		args = parser.parse_args()
+
+		limit = args.get('limit')
+		leg_list = []
+		if limit is None:
+			leg_list = session.query(Legislator).all()
+		elif limit >0:
+			leg_list = session.query(Legislator).limit(limit)
+
 		
 		leg_dict_list = [x.__dict__ for x in  leg_list]
 
@@ -45,7 +64,6 @@ class AllLeg(Resource):
 
 		# return leg_dict
 		return leg_dict_list
-
 	
 
 class OneLeg(Resource):
