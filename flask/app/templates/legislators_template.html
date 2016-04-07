@@ -5,19 +5,27 @@
 
 {% block content %}
 	<div class="container-fluid col-md-6">
-      <img src="{{person.photo_link}}" class="img-responsive img-thumbnail center-block" alt="Roy Blunt">
+      <h1 style="text-align: center;">{{person.firstname}} {{person.lastname}}</h1>
+      <img src="{{person.photo_link}}" class="img-responsive img-thumbnail center-block" alt="{{person.firstname}} {{person.lastname}}">
+      <h4 style="text-align: center;">{{person.party}} {{person.description}}</h4>
     </div>
 
     <div class="container-fluid col-md-6">
-      <h1>{{person.firstname}} {{person.lastname}}</h1>
-      <h4><div class="text-muted">ID: </div>{{person.id}}</h4>
-      <h4><div class="text-muted">Title: </div>{{person.title}}</h4>
-      <h4><div class="text-muted">Party: </div>{{person.party}}</h4>
+      
       <h4><div class="text-muted">Start Date: </div>{{person.start_date}}</h4>
-      <h4><div class="text-muted">State: </div>{{person.state}}</h4>
 
       {% if sponsored_bill_association != None %}
-      <h4><div class="text-muted">Bills: </div><a href="/bills/{{sponsored_bill_association.bill_id}}">{{sponsored_bill_association.bill_id}} {{sponsored_bill_association.type_of_sponsorship}}</a></h4>
+      <h4><div class="text-muted">Bills Sponsored: </div>
+
+
+        {% for bill in sponsored_bill_association%}
+        <a href="/bills/{{bill.bill_id}}">{{bill.bill_id}}</a>
+        {% endfor %}
+      </h4>
+      {% endif %}
+
+      {% if cosponsored_bill_association != None %}
+      <h4><div class="text-muted">Bills Cosponsored: </div>
       {% endif %}
 
       <h4><div class="text-muted">Website: </div><a href={{person.website}}>{{person.website}}</a></h4>
@@ -29,6 +37,7 @@
       {% if person.twitter != None %}
       <h4><div class="text-muted">Twitter: </div><a href="http://www.twitter.com/{{person.twitter}}">@{{person.twitter}}</a></h4>
       {% endif %}
+
 
 	</div>
 {% endblock %}
