@@ -44,6 +44,7 @@ def add_bills(bills_file) :
 		print(bill['current_status'])
 		print(bill['bill_type'])
 		print(bill['date'])
+		print(bill['link'])
 		print("***************************")
 
 		temp = Bill(id = bill['id'],
@@ -51,6 +52,7 @@ def add_bills(bills_file) :
 					current_status = bill['current_status'],
 					bill_type = bill['bill_type'],
 					date = bill['date']
+					link = bill['link']
 	)
 		session.merge(temp)
 		session.commit()
