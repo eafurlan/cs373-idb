@@ -3,6 +3,7 @@ import unittest
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, relationship
+from flask import Flask
 
 from models import *
 
