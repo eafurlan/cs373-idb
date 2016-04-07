@@ -91,8 +91,8 @@
         </h4>
         <div class="alert" id="unitTestAlert" role="alert">
           <span>
-            {{output_text.results}}
-            {{output_text.output}}
+            {{output_text.output|safe}}
+            {{output_text.results|safe}}
           </span>
         </div>
       </div>

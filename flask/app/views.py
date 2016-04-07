@@ -2,9 +2,9 @@ from app.models import *
 from flask import render_template, jsonify
 from app import app
 from flask import make_response
+from flask_restful import Resource, Api
 import subprocess
 import os
-
 import json
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, relationship
@@ -14,8 +14,6 @@ engine = create_engine('mysql+pymysql://dev1:swesquad@172.99.70.111:3306/ildb_pr
 Session = sessionmaker(bind=engine)
 session = Session()
 
-data = open('about.txt').read()
-group = json.loads(data)
 
 @app.route('/')
 @app.route('/index/')
@@ -27,12 +25,13 @@ def index():
 @app.route('/legislators.html')
 def people_page():
 	
-	return render_template("people.html")
+	return render_template("legislators.html")
 
 @app.route('/about/')
 @app.route('/about.html')
 def about():
-	
+	data = open('about.txt').read()
+	group = json.loads(data)
 	return render_template("about.html", group = group, output_text = runTests())
 
 def runTests():
@@ -43,15 +42,22 @@ def runTests():
 					   stdout=subprocess.PIPE, 
 					   stderr=subprocess.PIPE)
 		# Runs from the flask directory
+		
 		output_text, err = process.communicate()
-	  	
-		output = {'results': err.decode('utf-8'), 'output': output_text.decode('utf-8')}
+		tmperr = err.decode('utf-8')
+		tmperr = tmperr.replace('\n','<br/>')
+		tmpres = output_text.decode('utf-8')
+		tmpres = tmpres.replace('\n','<br/>')
+		test_text = tmpres + '<br/>' + tmperr
+		# output = {'results': str(tmperr.encode('ascii', 'xmlcharrefreplace')), 'output': tmpout.encode('ascii', 'xmlcharrefreplace')}
 
+		
+		output = {'output' : tmpres, 'results': tmperr}
 		return output
 	except subprocess.CalledProcessError:
-		return {'results':'The process returned with an error'}
+		return {'test_text':'The process returned with an error'}
 	except subprocess.TimeoutExpired:
-		return {'results':'The tests took too long to run. Check the server'}
+		return {'test_text':'The tests took too long to run. Check the server'}
 
 @app.route('/bills/')
 @app.route('/bills.html')
@@ -82,9 +88,7 @@ def render_person(person_id):
 	# print(type(leg_obj))
 	# print(type(assoc_obj))
 
-
-
-	return render_template('people_template.html', person = leg_dict, sponsored_bill_association = assoc_obj_dict)
+	return render_template('legislators_template.html', person = leg_dict, sponsored_bill_association = assoc_obj_dict)
 
 @app.route('/bills/<bill_id>')
 def render_bill(bill_id):
@@ -96,3 +100,7 @@ def render_bill(bill_id):
 @app.errorhandler(404)
 def not_found(error):
 	return render_template('404.html')
+
+
+
+

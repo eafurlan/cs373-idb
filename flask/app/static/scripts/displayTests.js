@@ -1,11 +1,14 @@
 
 jQuery(document).ready(function($) {
+    $("#unitTestAlert").hide();
     $("button").click(function(){    
-    	var $btn = $(this).button('Running...')
+    	var $btn = $(this).button('Running...');
 
-    	$.get("/test", function(data){
-    		$("#unitTestAlert").text( data.test_text );
+    	
+    	$("#unitTestAlert").slideToggle( "slow",function(){
+
     	});
+    	
 
 	    // output = "hello" + " world "; //call python function here
 	    // $("#unitTestAlert").text(output);
