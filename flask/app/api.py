@@ -88,16 +88,19 @@ class TestResource(Resource):
 		try:
 		
 			path = os.path.dirname(os.path.realpath(__file__))
-			process = subprocess.Popen('python3 ' +path+'/tests.py', shell=True,
+			process = subprocess.Popen('coverage3 run --include ' +path+'/models.py '+ path+'/tests.py && coverage3 report -m', shell=True,
 						   stdout=subprocess.PIPE, 
 						   stderr=subprocess.PIPE)
 			# Runs from the flask directory
 			
 			output_text, err = process.communicate()
+			tmpout = output_text.decode('utf-8')
+			tmpout = tmpout.replace('\n','<br/>')
 			tmperr = err.decode('utf-8')
 			tmperr = tmperr.replace('\n','<br/>')
-			
-			return {'test_text': tmperr}
+			print("output_text:\n" + str(output_text), "stderr:\n" + str(err))
+			test_text = tmpout + "<br/>" + tmperr
+			return {'test_text': test_text}
 		except subprocess.CalledProcessError:
 			return {'test_text':'The process returned with an error'}
 		except subprocess.TimeoutExpired:

@@ -38,7 +38,7 @@
 
         <!-- {% raw %} -->
 
-          <tr class="clickable-row" data-href=bills/{{roll.id}} dir-paginate="roll in bills | orderBy:sortKey:reverse | filter:search | itemsPerPage:10">
+          <tr dir-paginate="roll in bills | orderBy:sortKey:reverse | filter:search | itemsPerPage:10" ng-click="makeLink();">
             <td>{{ roll.id }}</td>
             <td>{{ roll.name }}</td>
             <td>{{ roll.current_status }}</td>
@@ -55,7 +55,6 @@
       </dir-pagination-controls>
 
     </div>
-
 
     <div class="container col-md-3">
       <div class="input-group">

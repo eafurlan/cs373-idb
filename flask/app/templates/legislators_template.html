@@ -7,7 +7,13 @@
 	<div class="container-fluid col-md-6">
       <h1 style="text-align: center;">{{person.firstname}} {{person.lastname}}</h1>
       <img src="{{person.photo_link}}" class="img-responsive img-thumbnail center-block" alt="{{person.firstname}} {{person.lastname}}">
-      <h4 style="text-align: center;">{{person.party}} {{person.description}}</h4>
+      <h4 style="text-align: center;">
+        {% if person.party == 'Democrat' %}
+          {{person.party}}ic {{person.description}}
+        {% else%}
+          {{person.party}} {{person.description}}
+        {% endif %}
+      </h4>
     </div>
 
     <div class="container-fluid col-md-6">
@@ -24,12 +30,19 @@
       </h4>
       {% endif %}
 
-      {% if cosponsored_bill_association != None %}
+      {% if cosponsored_bill_association%}
       <h4><div class="text-muted">Bills Cosponsored: </div>
+
+        {% for bill in cosponsored_bill_association%}
+        <a href="/bills/{{bill.bill_id}}">{{bill.bill_id}}</a>
+        {% endfor %}
+
       {% endif %}
 
+      {% if person.website %}
       <h4><div class="text-muted">Website: </div><a href={{person.website}}>{{person.website}}</a></h4>
-      
+      {% endif %}
+
       {% if person.youtube != None %}
       <h4><div class="text-muted">Youtube: </div><a href="http://www.youtube.com/{{person.youtube}}">{{person.youtube}}</a></h4>
       {% endif %}
