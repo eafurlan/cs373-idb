@@ -4,7 +4,7 @@
 {% extends "navbar.html" %}
 
 {% block content %}
-	<div class="container-fluid col-md-6">
+	<div class="container-fluid col-md-4">
       <h1 style="text-align: center;">{{person.firstname}} {{person.lastname}}</h1>
       <img src="{{person.photo_link}}" class="img-responsive img-thumbnail center-block" alt="{{person.firstname}} {{person.lastname}}">
       <h4 style="text-align: center;">
@@ -16,26 +16,33 @@
       </h4>
     </div>
 
-    <div class="container-fluid col-md-6">
+    <div class="container-fluid col-md-4">
       
       <h4><div class="text-muted">Start Date: </div>{{person.start_date}}</h4>
 
       {% if sponsored_bill_association != None %}
-      <h4><div class="text-muted">Bills Sponsored: </div>
 
+     
 
+      <h4><a class="text-muted" data-toggle="collapse" role="button" data-target="#sponsored">Bills Sponsored </a>
+
+        <div id="sponsored" class="collapse">
         {% for bill in sponsored_bill_association%}
-        <a href="/bills/{{bill.bill_id}}">{{bill.bill_id}}</a>
+        <a href="/bills/{{bill.bill_id}}">{{bill.bill_id}},</a>
         {% endfor %}
+        </div>
+
       </h4>
       {% endif %}
 
       {% if cosponsored_bill_association%}
-      <h4><div class="text-muted">Bills Cosponsored: </div>
-
-        {% for bill in cosponsored_bill_association%}
-        <a href="/bills/{{bill.bill_id}}">{{bill.bill_id}}</a>
-        {% endfor %}
+      <h4><div class="text-muted"  data-toggle="collapse" role="button" data-target="#sponsored">Bills Cosponsored </div>
+        <div id="sponsored" class="collapse">
+          {% for bill in cosponsored_bill_association%}
+          <a href="/bills/{{bill.bill_id}}">{{bill.bill_id}},</a>
+          {% endfor %}
+        </div>
+        
 
       {% endif %}
 
@@ -47,11 +54,27 @@
       <h4><div class="text-muted">Youtube: </div><a href="http://www.youtube.com/{{person.youtube}}">{{person.youtube}}</a></h4>
       {% endif %}
       
-      {% if person.twitter != None %}
-      <h4><div class="text-muted">Twitter: </div><a href="http://www.twitter.com/{{person.twitter}}">@{{person.twitter}}</a></h4>
-      {% endif %}
+
 
 
 	</div>
+  {% if person.twitter != None %}
+      <div class="container col-md-4" >
+        <a class="twitter-timeline" href="https://twitter.com/{{person.twitter}}" data-screen-name="{{person.twitter}}"  data-height="500" >Tweets by @{{person.twitter}}</a>
+        <script>
+          ! function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+              p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+              js = d.createElement(s);
+              js.id = id;
+              js.src = p + "://platform.twitter.com/widgets.js";
+              fjs.parentNode.insertBefore(js, fjs);
+            }
+          }(document, "script", "twitter-wjs");
+        </script>
+      </div>
+      
+      {% endif %}
 {% endblock %}
 
