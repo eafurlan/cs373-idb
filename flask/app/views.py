@@ -3,8 +3,6 @@ from flask import render_template, jsonify
 from app import app
 from flask import make_response
 from flask_restful import Resource, Api
-import subprocess
-import os
 import json
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, relationship
@@ -32,32 +30,8 @@ def people_page():
 def about():
 	data = open('about.txt').read()
 	group = json.loads(data)
-	return render_template("about.html", group = group, output_text = runTests())
+	return render_template("about.html", group = group)
 
-def runTests():
-	try:
-		
-		path = os.path.dirname(os.path.realpath(__file__))
-		process = subprocess.Popen('python3 ' +path+'/tests.py', shell=True,
-					   stdout=subprocess.PIPE, 
-					   stderr=subprocess.PIPE)
-		# Runs from the flask directory
-		
-		output_text, err = process.communicate()
-		tmperr = err.decode('utf-8')
-		tmperr = tmperr.replace('\n','<br/>')
-		tmpres = output_text.decode('utf-8')
-		tmpres = tmpres.replace('\n','<br/>')
-		test_text = tmpres + '<br/>' + tmperr
-		# output = {'results': str(tmperr.encode('ascii', 'xmlcharrefreplace')), 'output': tmpout.encode('ascii', 'xmlcharrefreplace')}
-
-		
-		output = {'output' : tmpres, 'results': tmperr}
-		return output
-	except subprocess.CalledProcessError:
-		return {'test_text':'The process returned with an error'}
-	except subprocess.TimeoutExpired:
-		return {'test_text':'The tests took too long to run. Check the server'}
 
 @app.route('/bills/')
 @app.route('/bills.html')
