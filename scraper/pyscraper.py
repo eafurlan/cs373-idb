@@ -21,8 +21,8 @@ def getPeople():
 	peopleArr = []
 	billsNeeded = []
 
-	#for p in range(1):
-	for p in range(len(people_response)):
+	# for p in range(1):
+	for p in range(300, 542):
 
 		temp = dict()
 		temp['firstname'] = people_response[p]['person']['firstname']
@@ -49,8 +49,8 @@ def getPeople():
 		printDebug("Person: %s %s" % (temp['firstname'], temp['lastname']))
 		printDebug(p)
 
-
-		peopleArr.append(temp)
+		# write the people
+		# peopleArr.append(temp)
 		
 
 		# add the bills that this person sponsors from this session of congress
@@ -69,17 +69,20 @@ def getPeople():
 			bill_to_add['link'] = b['link']
 			bill_to_add['date'] = b['introduced_date']
 
-			if bill_to_add not in billsNeeded :
-				print("Adding bill: %s" % b['id'])
-				billsNeeded.append(bill_to_add)
+			# write the bills
+			# if bill_to_add not in billsNeeded :
+			# 	print("Adding bill: %s" % b['id'])
+			# 	billsNeeded.append(bill_to_add)
 
 			tempAssoc = {}
 			tempAssoc['bill_id'] = b['id']
-			tempAssoc['leg_id'] = people_response[p]['id']
+			tempAssoc['leg_id'] = temp['id']
 			tempAssoc['type_of_sponsorship'] = 'sponsor'
 
+
+
 			if tempAssoc not in assocArray:
-				print("Adding sponsor association between bill %s and legislator %s" % (b['id'], people_response[p]['id']))
+				print("Adding sponsor association between bill %s and legislator %s" % (b['id'], temp['id']))
 				assocArray.append(tempAssoc)
 
 		#add the bills that this person co-sponsors
@@ -106,24 +109,24 @@ def getPeople():
 
 			tempAssoc = {}
 			tempAssoc['bill_id'] = c['id']
-			tempAssoc['leg_id'] = people_response[p]['id'] # person id
+			tempAssoc['leg_id'] = temp['id'] # person id
 			tempAssoc['type_of_sponsorship'] = 'cosponsor'
 
 			if tempAssoc not in assocArray:
-				print("Adding cosponsor association between bill %s and legislator %s" % (c['id'], people_response[p]['id']))
+				print("Adding cosponsor association between bill %s and legislator %s" % (c['id'], temp['id']))
 				assocArray.append(tempAssoc)
 
 
-	#write the people
-	with open('../flask/allPeople3.txt', 'w') as outfile:
-		json.dump(peopleArr, outfile)
+	# #write the people
+	# with open('../flask/allPeople4.txt', 'w') as outfile:
+	# 	json.dump(peopleArr, outfile)
 
-	#write the bills
-	with open('../flask/allBills3.txt', 'w') as outfile:
-		json.dump(billsNeeded, outfile)
+	# #write the bills
+	# with open('../flask/allBills4.txt', 'w') as outfile:
+	# 	json.dump(billsNeeded, outfile)
 
 	#write the associations
-	with open('../flask/allAssocs3.txt', 'w') as outfile:
+	with open('../flask/allAssocs4_300-542.txt', 'w') as outfile:
 		json.dump(assocArray, outfile)
 
 
