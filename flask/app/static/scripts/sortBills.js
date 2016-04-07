@@ -1,8 +1,7 @@
-angular.module('sortApp', [])
+angular.module('sortApp', ['angularUtils.directives.dirPagination'])
 
 .controller('mainController', function($scope, $http) {
-  $scope.sortType     = 'name'; // set the default sort type
-  $scope.sortReverse  = false;  // set the default sort order
+ 	$scope.bills = [];
   
   // Load bills from our API
 	$http({
@@ -11,6 +10,11 @@ angular.module('sortApp', [])
 	}).success(function (result){
 		$scope.bills = result;
 	});
+
+	$scope.sort = function(keyname){
+		$scope.sortKey     = keyname; // set the default sort type
+  		$scope.reverse  = !$scope.reverse;  // set the default sort order
+	}
   
 });
 
