@@ -65,7 +65,11 @@ def render_person(person_id):
 
 	spon_query = session.query(SponsorBillAssociation).filter_by(leg_id=person_id).filter_by(type_of_sponsorship='sponsor')
 	spon_dict_list = [x.__dict__ for x in spon_query]
-	return render_template('legislators_template.html', person = leg_dict, sponsored_bill_association = spon_dict_list)
+
+	# TODO: query db for cosponsored bills
+	cospon_query = session.query(SponsorBillAssociation).filter_by(leg_id=person_id).filter_by(type_of_sponsorship='cosponsor')
+	cospon = [x.__dict__ for x in cospon_query]
+	return render_template('legislators_template.html', person = leg_dict, sponsored_bill_association = spon_dict_list,cosponsored_bill_association=cospon)
 	# return render_template('legislators_template.html', person = leg_dict, sponsored_bill_association = assoc_obj_dict)
 
 
@@ -81,7 +85,8 @@ def render_bill(bill_id):
 	bill_dict['sponsor'] = {'id': spon_dict['leg_id'] , 'name':name}
 
 	# TODO: pull list of cosponsors
-	cospon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='cosponsor').first()
+	# cospon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='cosponsor')
+	# cospon_dict_list = [x.__dict__ for x in cospon_query[]]
 
 	return render_template('bills_template.html', bill = bill_dict)
 
