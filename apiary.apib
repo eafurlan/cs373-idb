@@ -4,273 +4,128 @@ HOST: http://polls.apiblueprint.org/
 # ildb
 
 The ILDB - the Internet Legislative Database - is an API that allows users 
-to pull specific legislators, all congressmen and senators past and present, 
+to pull specific legislators, all present congressmen and senators, 
 specific bills or all bills.
 
-## Legislator Collection [/legislators]
+## Legislator Collection [/api/legislators{?limit}]
+Calling with no limit argument returns all legislators in the databse.
 
 ### List all legislators [GET]
+
++ Parameters
+    + limit (number) - optional argument specifying the number of legislators to retrieve
 
 + Response 200 (application/json)
 
         [
-          {
-            "id": 400034,
-            "party": "Republican",
-            "birthday": "1950-01-10",
-            "lastname": "Blunt",
-            "firstname": "Roy",
-            "youtube": "SenatorBlunt",
-            "description": "Junior Senator from Missouri",
-            "title": "Senator",
-            "twitter": "RoyBlunt",
-            "state": "MO",
-            "start_date": "2011-01-05",
-            "website": "http://www.blunt.senate.gov"
-          },
-          {
-            "id": 400040,
-            "party": "Republican",
-            "birthday": "1950-12-10",
-            "lastname": "Boozman",
-            "firstname": "John",
-            "youtube": "BoozmanPressOffice",
-            "description": "Senior Senator from Arkansas",
-            "title": "Senator",
-            "twitter": "JohnBoozman",
-            "state": "AR",
-            "start_date": "2011-01-05",
-            "website": "http://www.boozman.senate.gov"
-          },
-          {
-            "id": 400054,
-            "party": "Republican",
-            "birthday": "1955-11-30",
-            "lastname": "Burr",
-            "firstname": "Richard",
-            "youtube": "SenatorRichardBurr",
-            "description": "Senior Senator from North Carolina",
-            "title": "Senator",
-            "twitter": "SenatorBurr",
-            "state": "NC",
-            "start_date": "2011-01-05",
-            "website": "http://www.burr.senate.gov"
-          }
+            {
+                "birthday": "1947-01-23",
+                "description": "Senior Senator from Delaware",
+                "firstname": "Thomas",
+                "id": 300019,
+                "lastname": "Carper",
+                "party": "Democrat",
+                "photo_link": "https://www.govtrack.us/data/photos/300019-200px.jpeg",
+                "start_date": "2013-01-03",
+                "state": "DE",
+                "title": "Senator",
+                "twitter": "SenatorCarper",
+                "website": "http://www.carper.senate.gov",
+                "youtube": "senatorcarper"
+            },
+            {
+                "birthday": "1937-12-07",
+                "description": "Senior Senator from Mississippi",
+                "firstname": "Thad",
+                "id": 300023,
+                "lastname": "Cochran",
+                "party": "Republican",
+                "photo_link": "https://www.govtrack.us/data/photos/300023-200px.jpeg",
+                "start_date": "2015-01-06",
+                "state": "MS",
+                "title": "Senator",
+                "twitter": "SenThadCochran",
+                "website": "http://www.cochran.senate.gov",
+                "youtube": "sencochran"
+            },
+            {
+                "birthday": "1952-12-07",
+                "description": "Senior Senator from Maine",
+                "firstname": "Susan",
+                "id": 300025,
+                "lastname": "Collins",
+                "party": "Republican",
+                "photo_link": "https://www.govtrack.us/data/photos/300025-200px.jpeg",
+                "start_date": "2015-01-06",
+                "state": "ME",
+                "title": "Senator",
+                "twitter": "SenatorCollins",
+                "website": "http://www.collins.senate.gov",
+                "youtube": "SenatorSusanCollins"
+            }
         ]
 
-## Single legislator [/legislators/{legislator_id}]
+## Single legislator [/api/legislators/{legislator_id}]
 
 + Parameters
     + legislator_id (number) - ID of the legislator
 
 ### Get one legislator [GET]
-
+Use the legislator id listed in the legislators table to retrieve that specific person.
 + Response 200 (application/json)
 
         {
-            "id": 400034,
-            "party": "Republican",
-            "birthday": "1950-01-10",
-            "lastname": "Blunt",
-            "firstname": "Roy",
-            "youtube": "SenatorBlunt",
-            "description": "Junior Senator from Missouri",
-            "title": "Senator",
-            "twitter": "RoyBlunt",
-            "state": "MO",
+            "birthday": "1940-11-11",
+            "description": "Junior Senator from California",
+            "firstname": "Barbara",
+            "id": 300011,
+            "lastname": "Boxer",
+            "party": "Democrat",
+            "photo_link": "https://www.govtrack.us/data/photos/300011-200px.jpeg",
             "start_date": "2011-01-05",
-            "website": "http://www.blunt.senate.gov"
-          }
+            "state": "CA",
+            "title": "Senator",
+            "twitter": "SenatorBoxer",
+            "website": "http://www.boxer.senate.gov",
+            "youtube": "SenatorBoxer"
+        }
 
-## Bills Collection [/bills]
+## Bills Collection [/api/bills{?limit}]
+Calling with no limit argument will return all the bills in the database.
+
++ Parameters
+    + limit (number) - optional argument specifying the number of bills to retrieve
 
 ### List all bills [GET]
 
 + Response 200 (application/json)
 
         [
-          {
-            "id": 127129,
-            "sponsor": 400331,
-            "name": "To amend the Internal Revenue Code of 1986 to exclude from gross income the qualified military benefits received by retired military personnel serving as administrators or instructors in the Junior Reserve Officers’ Training Corps.",
-            "bill_type": "house_bill",
-            "cosponsor": [
-              400055,
-              400261,
-              400397,
-              400603,
-              403545,
-              404097,
-              404520,
-              404587,
-              404634,
-              406790,
-              407838,
-              408109,
-              408476,
-              409633,
-              410147,
-              410529,
-              411065
-            ],
-            "current_status": "referred",
-            "terms": [
-              {
-                "term_type": "old",
-                "id": 50,
-                "term_type_label": "Old",
-                "name": "Retirement income"
-              },
-              {
-                "term_type": "old",
-                "id": 1547,
-                "term_type_label": "Old",
-                "name": "Armed forces reserves"
-              },
-              {
-                "term_type": "old",
-                "id": 1641,
-                "term_type_label": "Old",
-                "name": "Military pay"
-              },
-              {
-                "term_type": "old",
-                "id": 1655,
-                "term_type_label": "Old",
-                "name": "Military training"
-              },
-              {
-                "term_type": "old",
-                "id": 2101,
-                "term_type_label": "Old",
-                "name": "Teachers"
-              },
-              {
-                "term_type": "old",
-                "id": 5102,
-                "term_type_label": "Old",
-                "name": "Income tax"
-              },
-              {
-                "term_type": "old",
-                "id": 5123,
-                "term_type_label": "Old",
-                "name": "Tax exclusion"
-              },
-              {
-                "term_type": "old",
-                "id": 5576,
-                "term_type_label": "Old",
-                "name": "Retired military personnel"
-              },
-              {
-                "term_type": "old",
-                "id": 5582,
-                "term_type_label": "Old",
-                "name": "Veterans' employment"
-              },
-              {
-                "term_type": "new",
-                "id": 6342,
-                "term_type_label": "New",
-                "name": "Taxation"
-              }
-            ]
-          },
-          {
-            "id": 127130,
-            "sponsor": 300154,
-            "name": "Swain County Settlement Act of 1993",
-            "bill_type": "senate_bill",
-            "cosponsor": [],
-            "current_status": "referred",
-            "terms": [
-              {
-                "term_type": "old",
-                "id": 986,
-                "term_type_label": "Old",
-                "name": "Historic sites"
-              },
-              {
-                "term_type": "old",
-                "id": 2193,
-                "term_type_label": "Old",
-                "name": "Dams"
-              },
-              {
-                "term_type": "old",
-                "id": 3238,
-                "term_type_label": "Old",
-                "name": "Highway engineering"
-              },
-              {
-                "term_type": "old",
-                "id": 3252,
-                "term_type_label": "Old",
-                "name": "Reservoirs"
-              },
-              {
-                "term_type": "old",
-                "id": 3300,
-                "term_type_label": "Old",
-                "name": "Claims"
-              },
-              {
-                "term_type": "old",
-                "id": 3681,
-                "term_type_label": "Old",
-                "name": "Government liability"
-              },
-              {
-                "term_type": "old",
-                "id": 4284,
-                "term_type_label": "Old",
-                "name": "Federal-Indian relations"
-              },
-              {
-                "term_type": "old",
-                "id": 4291,
-                "term_type_label": "Old",
-                "name": "Indian lands"
-              },
-              {
-                "term_type": "new",
-                "id": 6253,
-                "term_type_label": "New",
-                "name": "Law"
-              }
-            ]
-          },
-          {
-            "id": 127131,
-            "sponsor": 402675,
-            "name": "A bill to extend the existing suspension of duty on (6R,7R)-7-{(R)-2-Amino-phenylacetamido}-3-methyl-8-oxo-5-thia-1-azabicyclo{4.2.0}oct-2-ene-2-carboxylic acid disolvate.",
-            "bill_type": "senate_bill",
-            "cosponsor": [],
-            "current_status": "referred",
-            "terms": [
-              {
-                "term_type": "old",
-                "id": 2871,
-                "term_type_label": "Old",
-                "name": "Chemicals"
-              },
-              {
-                "term_type": "old",
-                "id": 5332,
-                "term_type_label": "Old",
-                "name": "Tariff"
-              },
-              {
-                "term_type": "new",
-                "id": 6081,
-                "term_type_label": "New",
-                "name": "Foreign Trade and International Finance"
-              }
-            ]
-          }
+            {
+                "bill_type": "house_bill",
+                "current_status": "referred",
+                "date": "2010-07-01",
+                "id": 4,
+                "name": "One Global Internet Act of 2010"
+            },
+            {
+                "bill_type": "house_bill",
+                "current_status": "referred",
+                "date": "2009-01-09",
+                "id": 6,
+                "name": "Prevention Through Affordable Access Act of 2009"
+            },
+            {
+                "bill_type": "house_resolution",
+                "current_status": "reported",
+                "date": "2009-05-21",
+                "id": 7,
+                "name": "Directing the Secretary of Defense to transmit to the House of Representatives the fiscal year 2010 30-year shipbuilding plan relating to the long-term shipbuilding strategy of the Department of Defense, as required by section 231 of title 10, United Stat"
+            }
         ]
-## Single Bill [/bills/{bill_id}]
+
+## Single Bill [/api/bills/{bill_id}]
+Use the bill id listed in the bills table to retrieve that specific bill.
 
 + Parameters
     + bill_id (number) - ID of the bill
@@ -280,90 +135,9 @@ specific bills or all bills.
 + Response 200 (application/json)
 
         {
-            "id": 127129,
-            "sponsor": 400331,
-            "name": "To amend the Internal Revenue Code of 1986 to exclude from gross income the qualified military benefits received by retired military personnel serving as administrators or instructors in the Junior Reserve Officers’ Training Corps.",
             "bill_type": "house_bill",
-            "cosponsor": [
-              400055,
-              400261,
-              400397,
-              400603,
-              403545,
-              404097,
-              404520,
-              404587,
-              404634,
-              406790,
-              407838,
-              408109,
-              408476,
-              409633,
-              410147,
-              410529,
-              411065
-            ],
             "current_status": "referred",
-            "terms": [
-              {
-                "term_type": "old",
-                "id": 50,
-                "term_type_label": "Old",
-                "name": "Retirement income"
-              },
-              {
-                "term_type": "old",
-                "id": 1547,
-                "term_type_label": "Old",
-                "name": "Armed forces reserves"
-              },
-              {
-                "term_type": "old",
-                "id": 1641,
-                "term_type_label": "Old",
-                "name": "Military pay"
-              },
-              {
-                "term_type": "old",
-                "id": 1655,
-                "term_type_label": "Old",
-                "name": "Military training"
-              },
-              {
-                "term_type": "old",
-                "id": 2101,
-                "term_type_label": "Old",
-                "name": "Teachers"
-              },
-              {
-                "term_type": "old",
-                "id": 5102,
-                "term_type_label": "Old",
-                "name": "Income tax"
-              },
-              {
-                "term_type": "old",
-                "id": 5123,
-                "term_type_label": "Old",
-                "name": "Tax exclusion"
-              },
-              {
-                "term_type": "old",
-                "id": 5576,
-                "term_type_label": "Old",
-                "name": "Retired military personnel"
-              },
-              {
-                "term_type": "old",
-                "id": 5582,
-                "term_type_label": "Old",
-                "name": "Veterans' employment"
-              },
-              {
-                "term_type": "new",
-                "id": 6342,
-                "term_type_label": "New",
-                "name": "Taxation"
-              }
-            ]
-          }
+            "date": "2010-07-01",
+            "id": 4,
+            "name": "One Global Internet Act of 2010"
+        }
