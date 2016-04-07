@@ -1,19 +1,30 @@
-angular.module('sortApp', ['angularUtils.directives.dirPagination'])
+var sortApp = angular.module('sortApp', ['angularUtils.directives.dirPagination']);
 
-.controller('mainController', function($scope, $http) {  
-	$scope.people = [];
-	
-  	// Load legislators from our API
-  	$http({
+sortApp.config(['$locationProvider', function($locationProvider) {
+     $locationProvider.html5Mode(true);
+}]);
+
+sortApp.controller('mainController', function($scope, $http, $location) {
+ 	$scope.people = [];
+  
+  // Load people from our API
+	$http({
 		method: 'GET',
 		url: '/api/legislators'
 	}).success(function (result){
 		$scope.people = result;
 	});
 
-    $scope.sort = function(keyname){
-        $scope.sortKey = keyname;   //set the sortKey to the param passed
-        $scope.reverse = !$scope.reverse; //if true make it false and vice versa
-    }
+	$scope.sort = function(keyname){
+		$scope.sortKey     = keyname; // set the default sort type
+  		$scope.reverse  = !$scope.reverse;  // set the default sort order
+	}
 
+	$scope.makeLink = function () {
+  		$scope.selected = this.roll;
+        path_to_person = $scope.selected.id + "";
+        window.location.replace("legislators/"+path_to_person);
+	};
+  
 });
+

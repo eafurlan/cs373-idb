@@ -45,8 +45,8 @@
 
           <tbody>
             <!-- {% raw %} -->
-            <tr class="clickable-row" data-href='legislators/{{roll.id}}' dir-paginate="roll in people | orderBy:sortKey:reverse | filter:search | itemsPerPage:10">
-              <td>{{ roll.id }}</td>
+            <tr dir-paginate="roll in people | orderBy:sortKey:reverse | filter:search | itemsPerPage:10" ng-click="makeLink();">
+            <td>{{ roll.id }}</td>
               <td>{{ roll.firstname }}</td>
               <td>{{ roll.lastname }}</td>
               <td>{{ roll.title }}</td>

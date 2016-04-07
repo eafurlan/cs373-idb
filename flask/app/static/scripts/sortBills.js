@@ -1,6 +1,10 @@
-angular.module('sortApp', ['angularUtils.directives.dirPagination'])
+var sortApp = angular.module('sortApp', ['angularUtils.directives.dirPagination']);
 
-.controller('mainController', function($scope, $http) {
+sortApp.config(['$locationProvider', function($locationProvider) {
+     $locationProvider.html5Mode(true);
+}]);
+
+sortApp.controller('mainController', function($scope, $http, $location) {
  	$scope.bills = [];
   
   // Load bills from our API
@@ -15,6 +19,12 @@ angular.module('sortApp', ['angularUtils.directives.dirPagination'])
 		$scope.sortKey     = keyname; // set the default sort type
   		$scope.reverse  = !$scope.reverse;  // set the default sort order
 	}
+
+	$scope.makeLink = function () {
+  		$scope.selected = this.roll;
+        path_to_bill = $scope.selected.id + "";
+        window.location.replace("bills/"+path_to_bill);
+	};
   
 });
 
