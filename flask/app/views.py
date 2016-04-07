@@ -3,8 +3,6 @@ from flask import render_template, jsonify
 from app import app
 from flask import make_response
 from flask_restful import Resource, Api
-import subprocess
-import os
 import json
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, relationship
@@ -32,32 +30,8 @@ def people_page():
 def about():
 	data = open('about.txt').read()
 	group = json.loads(data)
-	return render_template("about.html", group = group, output_text = runTests())
+	return render_template("about.html", group = group)
 
-def runTests():
-	try:
-		
-		path = os.path.dirname(os.path.realpath(__file__))
-		process = subprocess.Popen('python3 ' +path+'/tests.py', shell=True,
-					   stdout=subprocess.PIPE, 
-					   stderr=subprocess.PIPE)
-		# Runs from the flask directory
-		
-		output_text, err = process.communicate()
-		tmperr = err.decode('utf-8')
-		tmperr = tmperr.replace('\n','<br/>')
-		tmpres = output_text.decode('utf-8')
-		tmpres = tmpres.replace('\n','<br/>')
-		test_text = tmpres + '<br/>' + tmperr
-		# output = {'results': str(tmperr.encode('ascii', 'xmlcharrefreplace')), 'output': tmpout.encode('ascii', 'xmlcharrefreplace')}
-
-		
-		output = {'output' : tmpres, 'results': tmperr}
-		return output
-	except subprocess.CalledProcessError:
-		return {'test_text':'The process returned with an error'}
-	except subprocess.TimeoutExpired:
-		return {'test_text':'The tests took too long to run. Check the server'}
 
 @app.route('/bills/')
 @app.route('/bills.html')
@@ -91,7 +65,11 @@ def render_person(person_id):
 
 	spon_query = session.query(SponsorBillAssociation).filter_by(leg_id=person_id).filter_by(type_of_sponsorship='sponsor')
 	spon_dict_list = [x.__dict__ for x in spon_query]
-	return render_template('legislators_template.html', person = leg_dict, sponsored_bill_association = spon_dict_list)
+
+	# TODO: query db for cosponsored bills
+	cospon_query = session.query(SponsorBillAssociation).filter_by(leg_id=person_id).filter_by(type_of_sponsorship='cosponsor')
+	cospon = [x.__dict__ for x in cospon_query]
+	return render_template('legislators_template.html', person = leg_dict, sponsored_bill_association = spon_dict_list,cosponsored_bill_association=cospon)
 	# return render_template('legislators_template.html', person = leg_dict, sponsored_bill_association = assoc_obj_dict)
 
 
@@ -107,7 +85,8 @@ def render_bill(bill_id):
 	bill_dict['sponsor'] = {'id': spon_dict['leg_id'] , 'name':name}
 
 	# TODO: pull list of cosponsors
-	cospon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='cosponsor').first()
+	# cospon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='cosponsor')
+	# cospon_dict_list = [x.__dict__ for x in cospon_query[]]
 
 	return render_template('bills_template.html', bill = bill_dict)
 

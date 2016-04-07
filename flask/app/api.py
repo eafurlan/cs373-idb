@@ -4,7 +4,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, relationship
 from app.models import *
 from app import app
-
+import subprocess
+import os
 
 engine = create_engine('mysql+pymysql://dev1:swesquad@172.99.70.111:3306/ildb_prod')
 Session = sessionmaker(bind=engine)
@@ -81,4 +82,24 @@ class OneLeg(Resource):
 
 		return leg_dict
 	
-
+class TestResource(Resource):
+	"""docstring for TestResource"""
+	def get(self):
+		try:
+		
+			path = os.path.dirname(os.path.realpath(__file__))
+			process = subprocess.Popen('python3 ' +path+'/tests.py', shell=True,
+						   stdout=subprocess.PIPE, 
+						   stderr=subprocess.PIPE)
+			# Runs from the flask directory
+			
+			output_text, err = process.communicate()
+			tmperr = err.decode('utf-8')
+			tmperr = tmperr.replace('\n','<br/>')
+			
+			return {'test_text': tmperr}
+		except subprocess.CalledProcessError:
+			return {'test_text':'The process returned with an error'}
+		except subprocess.TimeoutExpired:
+			return {'test_text':'The tests took too long to run. Check the server'}
+			

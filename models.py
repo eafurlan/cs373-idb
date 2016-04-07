@@ -57,16 +57,18 @@ class Bill(Base):
 	current_status = Column(String(255))
 	bill_type = Column(String(255))
 	date = Column(String(255))
+	link = Column(String(255))
 
 	sponsors = relationship("SponsorBillAssociation", back_populates="bill")
 
-	def __init__(self, id=None, name=None, current_status=None, bill_type=None, date =None, sponsors=[]):
+	def __init__(self, id=None, name=None, current_status=None, bill_type=None, date =None, link=None, sponsors=[]):
 		self.id = id
 		self.name = name
 		self.current_status = current_status
 		self.bill_type = bill_type
 		self.sponsors = sponsors
 		self.date = date
+		self.link = link
 
 	def __repr__(self):
 		return model_repr(self)
