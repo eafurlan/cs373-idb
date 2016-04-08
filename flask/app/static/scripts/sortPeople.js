@@ -23,7 +23,7 @@ sortApp.controller('mainController', function($scope, $http, $location) {
 	$scope.makeLink = function () {
   		$scope.selected = this.roll;
         path_to_person = $scope.selected.id + "";
-        window.location.replace("legislators/"+path_to_person);
+        window.location = "legislators/"+path_to_person;
 	};
   
 });
