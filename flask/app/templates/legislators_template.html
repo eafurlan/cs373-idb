@@ -4,6 +4,8 @@
 {% extends "navbar.html" %}
 
 {% block content %}
+  <script src="{{ url_for('static', filename='scripts/toggle.js') }}"></script>
+
 	<div class="container-fluid col-md-4">
       <h1 style="text-align: center;">{{person.firstname}} {{person.lastname}}</h1>
       <img src="{{person.photo_link}}" class="img-responsive img-thumbnail center-block" alt="{{person.firstname}} {{person.lastname}}">
@@ -16,7 +18,7 @@
       </h4>
     </div>
 
-    <div class="container-fluid col-md-4">
+    <div class="container-fluid col-md-4" ng-app="toggleApp" ng-controller="mainController">
       
       <h4><div class="text-muted">Start Date: </div>{{person.start_date}}</h4>
 
@@ -24,7 +26,13 @@
 
      
 
-      <h4><a class="text-muted" data-toggle="collapse" role="button" data-target="#sponsored">Bills Sponsored </a>
+      <h4>
+
+        <a class="text-muted" data-toggle="collapse" role="button" data-target="#sponsored" ng-click="collapsed = !collapsed">
+          Bills Sponsored
+          <span ng-show="collapsed" class="glyphicon glyphicon-chevron-down"></span>
+          <span ng-show="!collapsed" class="glyphicon glyphicon-chevron-up"></span>
+        </a>
 
         <div id="sponsored" class="collapse">
         {% for bill in sponsored_bill_association%}
@@ -36,7 +44,11 @@
       {% endif %}
 
       {% if cosponsored_bill_association%}
-      <h4><div class="text-muted"  data-toggle="collapse" role="button" data-target="#sponsored">Bills Cosponsored </div>
+      <h4><div class="text-muted"  data-toggle="collapse" role="button" data-target="#sponsored" ng-click="collapsed = !collapsed">
+        Bills Cosponsored
+          <span ng-show="collapsed" class="glyphicon glyphicon-chevron-down"></span>
+          <span ng-show="!collapsed" class="glyphicon glyphicon-chevron-up"></span>
+        </div>
         <div id="sponsored" class="collapse">
           {% for bill in cosponsored_bill_association%}
           <a href="/bills/{{bill.bill_id}}">{{bill.bill_id}},</a>
