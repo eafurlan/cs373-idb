@@ -1,3 +1,165 @@
+commit f8c382ac951f44413785d548da4b5c498b169bd4
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Apr 7 21:32:41 2016 -0500
+
+    travis status in readme
+
+commit 709b2999a1373e5c31143899a9d3bed93f5e7897
+Merge: 87b52d8 7ea12f8
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Apr 7 21:31:24 2016 -0500
+
+    Merge dev into master. v2
+
+commit 7ea12f8b19824271135b3d03407803b83d47df09
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Apr 7 21:27:24 2016 -0500
+
+    template fix
+
+commit e72186740eb3f5c9e7ea0465c9d943c2952201d7
+Merge: 85fe27c 01a09cd
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Apr 7 21:18:38 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 85fe27cf6f3a91755343ab46c926e4f445abe4c6
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Apr 7 21:18:00 2016 -0500
+
+    fixed cosponsor bug
+
+commit 01a09cda4a4547410440998765ea6dcb762f7bd8
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Apr 7 21:09:34 2016 -0500
+
+    fix for reqs
+
+commit 0516a6c62146b2b5a0cf6b737baafd9615d68c97
+Author: oliver <olive.croomes@utexas.edu>
+Date:   Thu Apr 7 21:05:20 2016 -0500
+
+    added coverage requirement
+
+commit 9bd1f308b05be475e43405912a33b9a0d3f0ec9a
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Apr 7 20:56:51 2016 -0500
+
+    fix back button issue
+
+commit 8726af3869560a8885c630e3ad7555068bfe80a3
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Apr 7 20:51:37 2016 -0500
+
+    yay cosponsors! for bills
+
+commit 8a96cdc2f7de6a0bc106e6fcc7ee69491f1e9bc8
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Apr 7 20:44:26 2016 -0500
+
+    bill template fix
+
+commit 00387752300ca3bba281f610760f330aae2bc4ce
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Apr 7 20:11:43 2016 -0500
+
+    More changes to scraper and db setup
+
+commit 0453d6adf8cf25f33f85ad4cbe17797a46e68bde
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 19:51:29 2016 -0500
+
+    forgot to add collapsing on bills page
+
+commit e95188ad1277087f826512e210656b7676ecce24
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Apr 7 19:37:33 2016 -0500
+
+    toggle button for Bills Sponsored, Bills Cosponsored, and Cosponsors
+
+commit e75fade0ad54b329282b2b969190fff0b876f833
+Merge: 4675ffa 24780c7
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 18:52:50 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 4675ffaf85802c0c396231921164b5709f302cbb
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 18:52:36 2016 -0500
+
+    collapsible bills sponsored on a legislator's page
+
+commit 24780c7fa45872fc5879c6206dbde314378e4040
+Merge: 8cdbdc5 8e97286
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Apr 7 18:06:36 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 8cdbdc55ed0cc5e0097b38939d71c930dcf857cc
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Apr 7 18:06:23 2016 -0500
+
+    Changes to scraper and load script
+
+commit 8e97286851a8c5b76ca480248cd29a136f0ff83f
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 16:49:37 2016 -0500
+
+    another symlink
+
+commit be199e2c6f306a441c669497659621958547b52a
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 16:47:54 2016 -0500
+
+    removed old test file, replaced it with a symlink
+
+commit 20896f5b512f859c36e4a85902cbb5e221399248
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 16:42:34 2016 -0500
+
+    Symlinks are great!
+
+commit 5f9f37cfa6f9a664e17b35c40de391b1be57971f
+Merge: dcb9b72 a0662da
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 16:27:07 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit dcb9b72498cc0653e4903bfd097f1dfaea5e6592
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 16:26:51 2016 -0500
+
+    added coverage to running tests on about page
+
+commit a0662dab2415d4f34a4ce17e845e2d68abe37afe
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Apr 7 16:21:10 2016 -0500
+
+    added gunicorn to tools
+
+commit 8305ab63ad09c922cd76bf3c3c1d99c276839117
+Merge: bc71229 2600927
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Apr 7 15:20:02 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit bc7122951d395d55e76714077e9a72c074ed80d2
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Apr 7 15:19:38 2016 -0500
+
+    clickable rows! closes #36
+
+commit 26009276e5ec2b2b5c5d7ac68e970399f9aac56f
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 15:12:20 2016 -0500
+
+    updated makefile to make IDB2 log and IDB2 log
+
 commit 47dbc7f400f7b9b4a3a4ff9e7dd671454bd2d017
 Author: Lan Nguyen <lnguyen@cs.utexas.edu>
 Date:   Thu Apr 7 15:00:47 2016 -0500
@@ -56,6 +218,12 @@ Date:   Thu Apr 7 12:09:59 2016 -0500
     
     need to figure out different way of displaying all bills sponsored
 
+commit 87b52d89a11210394401476d7029197fa83aedde
+Author: chareth <lan.nguyen@utexas.edu>
+Date:   Thu Apr 7 11:12:04 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
 commit 96decf92c2e0425ad1857ed516c6dc1d2af410c1
 Author: Chareth Cutestory <nuugit@gmail.com>
 Date:   Thu Apr 7 09:44:21 2016 -0500
@@ -92,11 +260,23 @@ Date:   Wed Apr 6 15:36:20 2016 -0500
 
     Changes to scraper and db load
 
+commit 4ea3fc9ce2058689f0f2d96c706eb879b9f4f4cd
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Wed Apr 6 12:01:37 2016 -0500
+
+    Update README.md
+
 commit 0b9df004e5de3ebd9a17e0ce3c8d4a5781d67b8e
 Author: Arman Baratifar <arman.baratifar@utexas.edu>
 Date:   Wed Apr 6 12:01:13 2016 -0500
 
     Create README.md
+
+commit ff7310ac5a644aee3315541c94101c39cd67cc99
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Wed Apr 6 12:00:23 2016 -0500
+
+    Update README.md
 
 commit e9ed0c6e2005b974a6d51a464166d76d97182bca
 Author: Arman B <arman.baratifar@utexas.edu>
@@ -205,6 +385,12 @@ Author: Arman Baratifar <arman.baratifar@utexas.edu>
 Date:   Fri Apr 1 12:28:11 2016 -0500
 
     Changed db_setup to use dev db
+
+commit 79ce77332c84c4dbeca2c963713582184e105e49
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 31 22:21:40 2016 -0500
+
+    Create README.md
 
 commit b0455d63d11a2c35e557d7debd5f8df782948d80
 Merge: 19a93c6 819564b
