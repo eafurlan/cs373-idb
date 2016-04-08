@@ -22,7 +22,7 @@ def index():
 @app.route('/legislators/')
 @app.route('/legislators.html')
 def people_page():
-	
+
 	return render_template("legislators.html")
 
 @app.route('/about/')
@@ -36,7 +36,7 @@ def about():
 @app.route('/bills/')
 @app.route('/bills.html')
 def bills_page():
-	
+
 	return render_template("bills.html")
 
 @app.route('/legislators/<person_id>')
@@ -54,7 +54,7 @@ def render_person(person_id):
 
 	# this would find the id of first bill that this leg sponsord
 	# assoc_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(Legislator.id == person_id)
-	
+
 	# the sponsor bill association is the second tuple.
 	# assoc_obj = assoc_query.first()[1]
 	# assoc_obj_dict = assoc_obj.__dict__
@@ -91,7 +91,7 @@ def render_bill(bill_id):
 		name = spon_query_name_dict['firstname'] + " " + spon_query_name_dict['lastname']
 		bill_dict['sponsor'] = {'id': spon_dict['leg_id'] , 'name':name}
 	else :
-		bill_dict['sponsor'] = -1
+		bill_dict['sponsor'] = None
 
 	cospon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='cosponsor').all()
 	if cospon_query:
@@ -100,14 +100,10 @@ def render_bill(bill_id):
 		cospon_dict_list_abbr = [{"name" : x["firstname"] +" " +x["lastname"], 'id':x["id"]} for x in cospon_dict_list]
 		bill_dict['cosponsor'] = cospon_dict_list_abbr
 	else:
-		bill_dict['cosponsor'] = -1
+		bill_dict['cosponsor'] = None
 
 	return render_template('bills_template.html', bill = bill_dict)
 
 @app.errorhandler(404)
 def not_found(error):
 	return render_template('404.html')
-
-
-
-
