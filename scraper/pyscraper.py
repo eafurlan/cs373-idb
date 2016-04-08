@@ -22,7 +22,7 @@ def getPeople():
 	billsNeeded = []
 
 	# for p in range(1):
-	for p in range(300, 542):
+	for p in range(0, 100):
 
 		temp = dict()
 		temp['firstname'] = people_response[p]['person']['firstname']
@@ -126,7 +126,7 @@ def getPeople():
 	# 	json.dump(billsNeeded, outfile)
 
 	#write the associations
-	with open('../flask/allAssocs4_300-542.txt', 'w') as outfile:
+	with open('../flask/allAssocs4_0-100.txt', 'w') as outfile:
 		json.dump(assocArray, outfile)
 
 

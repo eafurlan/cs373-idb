@@ -14,6 +14,7 @@ def add_legislators(people_file) :
 	data = open(people_file).read()
 	legislators = json.loads(data)
 	for leg in legislators :
+		print("Adding %s" % leg['lastname'])
 		temp = Legislator(id = leg['id'], 
 			firstname = leg['firstname'], 
 			lastname = leg['lastname'], 
@@ -31,8 +32,7 @@ def add_legislators(people_file) :
 			)
 
 		session.merge(temp)
-		session.commit()
-		# print(temp)
+	session.commit()
 
 def add_bills(bills_file) :
 	data = open(bills_file).read()
@@ -55,7 +55,7 @@ def add_bills(bills_file) :
 					link = bill['link']
 	)
 		session.merge(temp)
-		session.commit()
+	session.commit()
 
 def add_relations(relations_file) :
 	data = open(relations_file).read()
@@ -77,44 +77,16 @@ def add_relations(relations_file) :
 											)
 
 			session.merge(temp)
-			session.commit()
 		except :
+			print("Failed.")
 			# print("fail for bill_id=%d leg_id=%d" & (relation['bill_id'], relation['leg_id']))
 			pass
 
 		print("________________________________-")
 
+	session.commit()	
 
-
-	# for bill in bills :
-	# 	print(bill['name'])
-	# 	# print(bill['id'])
-	# 	print("Sponsor ID: %s" % bill['sponsor'])
-	# 	# print(bill['sponsor'])
 		
-	# 	temp = SponsorBillAssociation(
-	# 	bill_id = bill['id'],
-	# 	leg_id = bill['sponsor'],
-	# 	type_of_sponsorship = 'sponsor'
-	# 	)
-
-	# 	session.merge(temp)
-	# 	session.commit()		
-		
-	# 	# print(type(bill['cosponsor']))
-	# 	# for cosponsor in bill['cosponsor']:
-	# 	# 	print("***Cosponsors***")
-	# 		# print(bill['cosponsor'])
-	# 		# temp = SponsorBillAssociation(
-	# 		# bill_id = bill['id'],
-	# 		# leg_id = cosponsor,
-	# 		# type_of_sponsorship = "cosponsor"
-	# 		# )
-
-	# 		# session.merge(temp)
-	# 		# session.commit()
-		print("___________________________________________")
-
 	# DANGEROUS!!!
 def create_schemas():
 	Base.metadata.drop_all(engine)
@@ -129,7 +101,7 @@ session = Session()
 
 people_file = 'allPeople3.txt'
 bills_file = 'allBills3.txt'
-relations_file = 'allAssocs4_100-300.txt'
+relations_file = 'allAssocs4_300-542.txt'
 
 # add_legislators(people_file)
 # add_bills(bills_file)
