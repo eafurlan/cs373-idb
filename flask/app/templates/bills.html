@@ -7,76 +7,63 @@
   {% block content %}
   <script src="{{ url_for('static', filename='../static/scripts/sortBills.js') }}"></script>
   <script src="{{ url_for('static', filename='../static/scripts/clickable.js') }}"></script>
+  <script src="{{ url_for('static', filename='../static/scripts/dirPagination.js') }}"></script>
    
 	<div class="container-fluid" ng-app="sortApp" ng-controller="mainController">
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover">
 
-          <thead>
-            <tr>
-              <th class="col-xs-3 col-sm-3">
-                <a href="" ng-click="sortType = 'id'; sortReverse = !sortReverse">
-                  ID
-                  <span ng-show="sortType == 'id' && !sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="sortType == 'id' && sortReverse" class="fa fa-caret-up"></span>
-                </a>
-              </th>
-              <th class="col-xs-3 col-sm-3">
-                <a href="" ng-click="sortType = 'name'; sortReverse = !sortReverse">
-                  Title
-                  <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
-                </a>
-              </th>
-              <th class="col-xs-3 col-sm-3">
-                <a href="" ng-click="sortType = 'current_status'; sortReverse = !sortReverse">
-                  Status
-                  <span ng-show="sortType == 'current_status' && !sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="sortType == 'current_status' && sortReverse" class="fa fa-caret-up"></span>
-                </a>
-              </th>
-              <th class="col-xs-3 col-sm-3">
-                <a href="" ng-click="sortType = 'bill_type'; sortReverse = !sortReverse">
-                  Type
-                  <span ng-show="sortType == 'bill_type' && !sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="sortType == 'bill_type' && sortReverse" class="fa fa-caret-up"></span>
-                </a>
-              </th>  
-              <th class="col-xs-3 col-sm-3">
-                <a href="" ng-click="sortType = 'date'; sortReverse = !sortReverse">
-                  Date Introduced
-                  <span ng-show="sortType == 'date' && !sortReverse" class="fa fa-caret-down"></span>
-                  <span ng-show="sortType == 'date' && sortReverse" class="fa fa-caret-up"></span>
-                </a>
-              </th>                            
-            </tr>
-          </thead>
+    <div class="table-responsive col-md-9">
+      <table class="table table-bordered table-hover">
 
-          <tbody>
+        <thead>
+          <tr>
+            <th ng-click="sort('id')"><a href="">ID</a>
+              <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
+            <th ng-click="sort('name')"><a href="">Title</a>
+              <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
+            <th ng-click="sort('current_status')"><a href="">Status</a>
+              <span class="glyphicon sort-icon" ng-show="sortKey=='current_status'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
+            <th ng-click="sort('bill_type')"><a href="">Type</a>
+              <span class="glyphicon sort-icon" ng-show="sortKey=='bill_type'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
+            <th ng-click="sort('date')"><a href="">Date</a>
+              <span class="glyphicon sort-icon" ng-show="sortKey=='date'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
+          </tr>
+        </thead>
 
-          {% raw %}
+        <tbody>
 
-            <tr class="clickable-row" data-href=bills/{{roll.id}} ng-repeat="roll in bills | orderBy:sortType:sortReverse">
-              <td>{{ roll.id }}</td>
-              <td>{{ roll.name }}</td>
-              <td>{{ roll.current_status }}</td>
-              <td>{{ roll.bill_type }}</td>
-              <td>{{ roll.date }}</td>
-            </tr>
+        <!-- {% raw %} -->
 
-            {% endraw %}
+          <tr dir-paginate="roll in bills | orderBy:sortKey:reverse | filter:search | itemsPerPage:10" ng-click="makeLink();">
+            <td>{{ roll.id }}</td>
+            <td>{{ roll.name }}</td>
+            <td>{{ roll.current_status }}</td>
+            <td>{{ roll.bill_type }}</td>
+            <td>{{ roll.date }}</td>
+          </tr>
 
-          </tbody>
-        </table>
-      </div>
+        <!-- {% endraw %} -->
+
+        </tbody>
+      </table>
+
+      <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true">
+      </dir-pagination-controls>
+
     </div>
 
-   
-  {% endblock %}
+    <div class="container col-md-3">
+      <div class="input-group">
+        <input type="text" ng-model="search" class="form-control" placeholder="Search Bills">
+      </div>
+    </div>
     
+  </div>
 
-
-
-
+  {% endblock %}
     
 </html>

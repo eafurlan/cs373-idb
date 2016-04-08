@@ -1,0 +1,1104 @@
+commit 47dbc7f400f7b9b4a3a4ff9e7dd671454bd2d017
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 15:00:47 2016 -0500
+
+    updated the flask models.py file to match original
+
+commit 3323575e24a0064f9376a80abe61bcf7fc6e0169
+Merge: 8ef0086 3c17763
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 14:59:11 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 8ef008640f8993234f8692538a4fddb6e591d6bd
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 14:58:48 2016 -0500
+
+    updates to about page and leg_templates page
+
+commit 3c17763bfbbef1811e50770a3279d10369fb5ab4
+Merge: d5f1153 b4bf881
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Thu Apr 7 14:17:29 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit d5f11534438408c7bfcf348d507457790054234a
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Thu Apr 7 14:17:08 2016 -0500
+
+    Add bill link attribute to models.py and db_setup_simple.py
+
+commit b4bf88189ed1784e28af474b82dc147b418a388a
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 13:44:06 2016 -0500
+
+    run button text changes depending on if tests running or not
+
+commit 862531609b8091486592e7a9966d58ffc83dba90
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Apr 7 13:40:28 2016 -0500
+
+    tests now run on button click
+
+commit 9c18355e244eaa2d5b40d756b8a01755d6ddefeb
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Apr 7 12:47:21 2016 -0500
+
+    glyphicons work now
+
+commit 8d44eba03b45c5a874f7cff52fa0cd149ed00fc5
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Apr 7 12:09:59 2016 -0500
+
+    show name instead of number for sponsor on bills page; show all bills sponsored
+    
+    need to figure out different way of displaying all bills sponsored
+
+commit 96decf92c2e0425ad1857ed516c6dc1d2af410c1
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Apr 7 09:44:21 2016 -0500
+
+    fixed output of tests on about page; changed name of 'people' files to legislators
+
+commit 1908fd5303bf131eee921d00418acd0496ec82fb
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Apr 7 09:37:27 2016 -0500
+
+    added query limit argument to api
+
+commit f93502433ede0434da0a7b9367c08ed6a469779f
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Apr 7 02:17:15 2016 -0500
+
+    pagination added to grid pages closes #25
+
+commit 1242cb42df91bc0409216810439096043c41c5cc
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Wed Apr 6 18:02:04 2016 -0500
+
+    Add json output
+
+commit 9590c75d341e2a5d934ded078f1c9c9dc9ff3044
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Wed Apr 6 17:15:01 2016 -0500
+
+    Change scraper to get only bills from the current session, and build association objects on the fly
+
+commit 9298ed8d5bf8bb7fcb1959a9821728327605b77e
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Wed Apr 6 15:36:20 2016 -0500
+
+    Changes to scraper and db load
+
+commit 0b9df004e5de3ebd9a17e0ce3c8d4a5781d67b8e
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Wed Apr 6 12:01:13 2016 -0500
+
+    Create README.md
+
+commit e9ed0c6e2005b974a6d51a464166d76d97182bca
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Wed Apr 6 11:58:06 2016 -0500
+
+    Moved testing to new schema with new user.
+
+commit 23634e0551e8a5239369f54be97f284275c7229d
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Wed Apr 6 09:50:56 2016 -0500
+
+    fix typo in sortPeople.js; changed all people urls to legislators
+
+commit c78b5d27f65b675a8811b4d2bada32871ff15f25
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Tue Apr 5 19:39:23 2016 -0500
+
+    made template for people on about page; closes #20
+
+commit 776035326a3be01ac42d277318686d58bdf27eaf
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Apr 5 15:30:13 2016 -0500
+
+    removed test api resource; added testing to views
+
+commit cd07414dcc9201aa40a2c0e5b3b601cefbcc2728
+Merge: 587c415 ac25237
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Apr 5 14:14:51 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit ac2523721d863356f5be93dcb32aacf0fd8b1ceb
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Apr 5 14:10:07 2016 -0500
+
+    tables load from our api now
+
+commit 587c4157556769d8588125184be24008cbb09445
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Apr 5 13:21:22 2016 -0500
+
+    added error page and api error handling
+
+commit ce6e705ad41b71ae23e13a6603412e26754f9bbd
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Apr 5 12:55:32 2016 -0500
+
+    more changes to travis.yml
+
+commit 6e7832ba86a1cddc0f981624b94fdfeb5ab775f0
+Merge: 5cd1edf d76862f
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Apr 5 12:50:51 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 5cd1edf41c0f859256fb0d6d1bd4d8ab0dc9431e
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Apr 5 12:50:29 2016 -0500
+
+    changes to travis config
+
+commit d76862f262a1e0f5fb5966fdc4f001e526f285ec
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Tue Apr 5 12:42:58 2016 -0500
+
+    pymysql fix for api as well
+
+commit 80cafe9144d4a87f270c7494930f3f67673cd1eb
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Apr 5 12:41:02 2016 -0500
+
+    Use pymysql to create session engine in views. better support for python3
+
+commit 7afc1e8ca601145f3656dea9ac5835585d8001a4
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Mon Apr 4 13:28:34 2016 -0500
+
+    completed api
+
+commit de7a0cef83419cd1f1002e4ce72ef0301e5ea050
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Sat Apr 2 14:12:17 2016 -0500
+
+    copied new models to app folder; implemented api
+    
+    wrote the code for the api, however, unable to test it because can’t
+    install mysqldb on computer
+
+commit 3aaebce8cfb181801e0f7b9512f24c41a9a3c9b2
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Fri Apr 1 13:55:20 2016 -0500
+
+    Added the dynamic loading of bills on legislator pages
+
+commit 3143875960227c94aed69f7719da24e3cd3fb0bc
+Merge: 09d310b b0455d6
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Fri Apr 1 12:28:40 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 09d310b3033614711c91724e691dfa24f7238f46
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Fri Apr 1 12:28:11 2016 -0500
+
+    Changed db_setup to use dev db
+
+commit b0455d63d11a2c35e557d7debd5f8df782948d80
+Merge: 19a93c6 819564b
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Mar 31 15:35:00 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 19a93c63fb2bb8ab312a95572be2acd21e48c288
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Mar 31 15:34:46 2016 -0500
+
+    added photo link attr to db; doesn't work
+
+commit 819564b39e4fb970ecaa98cef6f7139a99eb2219
+Merge: 226d702 d2fbaed
+Author: oliver <olive.croomes@utexas.edu>
+Date:   Thu Mar 31 15:20:42 2016 -0500
+
+    I hate you /usr/bin/mate
+
+commit 226d702596d7512de8ada6510b1ece8b02d4a349
+Author: oliver <olive.croomes@utexas.edu>
+Date:   Thu Mar 31 15:20:23 2016 -0500
+
+    Endpoint returns the actual result of the tests.
+
+commit d2fbaed75aef752cafb6431c5eed5213fd05eec2
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 31 14:59:20 2016 -0500
+
+    changes to db setup script
+
+commit 6fce817a32a1155d2f3cae3a28c12594f495d66c
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Mar 31 13:42:21 2016 -0500
+
+    modified docker scripts to use gunicorn server
+
+commit 6ef794b58506b7eeeb92304fe7ca6a87509a975f
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Mar 31 13:32:08 2016 -0500
+
+    about us page pulls from api now to get tests
+
+commit ad18e667f6f0480a3f550b59991b4c722f30130b
+Merge: e76879c f6977b4
+Author: oliver <olive.croomes@utexas.edu>
+Date:   Thu Mar 31 13:20:21 2016 -0500
+
+    I hate you /usr/bin/mate
+
+commit e76879cccb9621d6a66067abf2e3ee13f3dd2ec2
+Author: oliver <olive.croomes@utexas.edu>
+Date:   Thu Mar 31 13:16:43 2016 -0500
+
+    Created a GET endpoint for obtaining live test results.
+
+commit f6977b471aa19946487be614bd6fe6490481e48d
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Mar 31 13:06:13 2016 -0500
+
+    change grids to make more noticable that it's clickable
+
+commit aee2ebdf0254b63b25e4dd2dc0e7eb469de479e4
+Merge: f671821 22255d4
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Mar 29 15:43:25 2016 -0500
+
+    Merge branch 'master' into dev
+
+commit 22255d452e7f2f244daecc47517ef8526b5b9e11
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Mar 29 15:40:59 2016 -0500
+
+    front end work for unit tests on about page #27
+
+commit f671821925c1da24a59a59d456f878fac7c2f840
+Merge: a7cde45 41c306c
+Author: oliver <olive.croomes@utexas.edu>
+Date:   Tue Mar 29 15:31:20 2016 -0500
+
+    merging
+
+commit a7cde4521627fd8d2f9cbfe90d66d3b98d844332
+Author: oliver <olive.croomes@utexas.edu>
+Date:   Tue Mar 29 15:29:53 2016 -0500
+
+    Commiting a commit cause I forgot to commit.
+
+commit 41c306c69f24e1b35394c0855e4560d7b18bd128
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Mar 29 14:48:19 2016 -0500
+
+    Added reading in of bills
+
+commit 8aba46acbf9fe4e889e1d080720ec678a6a15220
+Merge: 8af3523 f583474
+Author: oliver <olive.croomes@utexas.edu>
+Date:   Tue Mar 29 14:26:19 2016 -0500
+
+    Merging
+
+commit 8af3523f1f7f993f45403713581694b0aea93e82
+Author: oliver <olive.croomes@utexas.edu>
+Date:   Tue Mar 29 14:25:39 2016 -0500
+
+    Added minor improvements and cleanups to tests
+
+commit f5834741568562c6d433ffa3187bfb346a1fc12f
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Mar 29 14:20:57 2016 -0500
+
+    Added DB setup file
+
+commit 745f3ac99993e741c60975da69cea41f1b942e74
+Author: oliver <olive.croomes@utexas.edu>
+Date:   Tue Mar 29 14:16:58 2016 -0500
+
+    Fixed Strings to be length 255 for compatability w/ mysql
+
+commit 06e0ba8959d7d2079acf3e54c0b2a9a1c130c9e2
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Tue Mar 29 11:54:35 2016 -0500
+
+    fix footer to be sticky on about page
+
+commit 55e38eec817d3e60ea20c1085b0956150c6e2476
+Merge: 4f84644 ae80cf9
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Mar 24 21:27:56 2016 -0500
+
+    Merge branch 'master' of https://github.com/eafurlan/cs373-idb
+
+commit 4f8464424ed79ab13757790e38078342a01b35e5
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Mar 24 21:20:15 2016 -0500
+
+    change Brian's image src to link on github
+
+commit 2ad8d47498549747a1f56857230dda8eb8be0768
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 20:37:20 2016 -0500
+
+    Changing brian2.JPG to brian2.jpg
+
+commit ae80cf93254f4c12b3a94e1431b896fb10febfa4
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 20:36:54 2016 -0500
+
+    Changing brian2.JPG to brian2.jpg
+
+commit 4d1c50276f081a076b002e5093fd41994447092c
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 19:11:37 2016 -0500
+
+    Added linking of people to their bills
+
+commit eba3316951d82dff10c92afb63a1783838fca1e3
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Mar 24 19:09:52 2016 -0500
+
+    fixes overflow on about us page. fix #24
+
+commit 216dbb0a15ad9f03b89f58c82ac5f9a207140063
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 18:38:42 2016 -0500
+
+    fixed issue with quote encoding on links in about page
+
+commit 653e53b27267d3e00594d453e16eb2f64d11dc4d
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 18:29:55 2016 -0500
+
+    removed cluster file
+
+commit 068475515dd79ecae2d0f87832b617eb860f982f
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 18:25:43 2016 -0500
+
+    fixed brian2.jpg
+
+commit 291a6fe67a73907c3c9da7990cedf64f684d4a48
+Merge: 22ad4eb 5ceae9c
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 18:20:52 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 22ad4ebcb5fbfb15c11159351133fac804d0d856
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 18:20:07 2016 -0500
+
+    Updated brian's bio
+
+commit 5ceae9c96b8dc69f265d36e69550483eb471d37c
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Mar 24 18:14:09 2016 -0500
+
+    added Brian's new picture in about page
+
+commit bf43e69e2284d2e0642b97fb0faec957ac3fb60f
+Author: Arman B <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 18:06:07 2016 -0500
+
+    Updated bios
+
+commit bfac35e9b7b7c818452800b4a3877f86ddbe90e6
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Mar 24 17:25:23 2016 -0500
+
+    added link to tools
+
+commit fbb4467cc298289496637156427decdfcfd4e5c9
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Mar 24 16:48:42 2016 -0500
+
+    clean up files
+
+commit e1bfe1f0cde5282dc1ce50d9e7469d032dcaebd3
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 16:47:23 2016 -0500
+
+    Added pydoc
+
+commit 0df750d28cd43f8e0196d7a97e6a98bfec988bcd
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Mar 24 16:23:55 2016 -0500
+
+    fixed video bug; added log
+
+commit 6c78a72b5a8cab7f25cfd1c0a513438fcbb89450
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Mar 24 16:07:05 2016 -0500
+
+    Changed video format; add about page info
+
+commit 06ccec14b19a1666677cd56e3577eb99b1fd63ee
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Thu Mar 24 16:00:16 2016 -0500
+
+    more documentation for models.py
+
+commit 30d4b1b4bf9c4f6d7f02febffe39b8891c521b1e
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Thu Mar 24 15:49:02 2016 -0500
+
+    Fix models.py documentation
+
+commit 63c8c657125e580db84a6a9adb169c0a3099c1c0
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Thu Mar 24 15:45:43 2016 -0500
+
+    Add comments to models.py
+
+commit 8ba00cab5883a30229d10cb6283179fe7987ba34
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Thu Mar 24 15:34:14 2016 -0500
+
+    Add UML diagram
+
+commit 2b37723b584b1ed8c1b5e38bfa21e2773fe3d1b0
+Merge: 63c0bc8 987ac70
+Author: oliver <olive.croomes@utexas.edu>
+Date:   Thu Mar 24 15:10:02 2016 -0500
+
+    merging
+
+commit 63c0bc8a6d8cbd1a916ebd9c2d4fe594ccf28fba
+Author: oliver <olive.croomes@utexas.edu>
+Date:   Thu Mar 24 15:09:09 2016 -0500
+
+    Finished creating tests. Added a decorator to clear the database before running each test. closes #7
+
+commit 987ac707b24010de492eda5bb4a309577a79b95a
+Author: oliveratutexas <olive.croomes@utexas.edu>
+Date:   Thu Mar 24 14:55:44 2016 -0500
+
+    added a docker.sh file with commands on how to build and start an image
+
+commit 6c34e8075ea5cb0af83c7fcc2f485790e54bfff9
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Mar 24 14:19:21 2016 -0500
+
+    broke scripts, but fixed them again
+
+commit d754f3269c2bb93bbc816b559a9d08d8cff4f9b2
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Mar 24 14:09:17 2016 -0500
+
+    changed navbar to change based on script
+
+commit 2847a60b2262116f297e74969989a71af21f27a4
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 14:01:13 2016 -0500
+
+    moved bills&ppl
+
+commit e85430b8a597b4b589181abc535cc785e0f3dd28
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 13:51:46 2016 -0500
+
+    dockerfile change
+
+commit c7244d1f5580d3f026e191c705c737d65f8a25c8
+Merge: 338bba0 f858640
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 13:41:35 2016 -0500
+
+    dockerfile fix
+
+commit 338bba0a90625921b224fcb4fe44084ce15cab5d
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 13:40:47 2016 -0500
+
+    dockerfile change
+
+commit f858640f943c37039e754a060f07dd0f443dd0f8
+Author: oliveratutexas <olive.croomes@utexas.edu>
+Date:   Thu Mar 24 13:34:46 2016 -0500
+
+    Dockerfile mod
+
+commit 0808b68f830a2cfc353585c744eca1cd38dd0d46
+Merge: 885ec43 30d49c7
+Author: oliver <olive.croomes@utexas.edu>
+Date:   Thu Mar 24 13:31:26 2016 -0500
+
+    Added a couple of tests for deleting things
+
+commit 885ec4377303f9b8798e7e59c03ad2219f3fdca8
+Author: Oliver Croomes <orc237@cs.utexas.edu>
+Date:   Thu Mar 24 13:30:11 2016 -0500
+
+    Added a couple of tests for deleting things
+
+commit 30d49c7e759f3583f2f7d9cfe2b6fc7c28feed94
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 13:29:35 2016 -0500
+
+    moved docker files
+
+commit d2c14e1c49fd77363b6fc3d7c0b2966d58c9f3d9
+Merge: 6e3643d 82993bf
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 13:24:34 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 6e3643dc8bbbe79e645c4c1622629ba934abb783
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 13:23:50 2016 -0500
+
+    new cluster file
+
+commit 82993bf9be748bdb53331f3497360602d35ee9fe
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Mar 24 13:22:51 2016 -0500
+
+    remove variable from rendering about page
+
+commit 421fe1373adaee8bfe730e3d0c36025b9abc4b80
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 13:15:39 2016 -0500
+
+    Added some docker files
+
+commit c0880f0631655f59811cea1ee92b04a95005c506
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Mar 24 13:12:40 2016 -0500
+
+    copied angular sorting to flask app
+
+commit 544851400b059b079191876af4cbc209b82520ea
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Mar 24 13:06:43 2016 -0500
+
+    included angular js in navbar.html
+
+commit 19b17fd61d90a79b353e3a43cdaa8e89066e8720
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 24 12:40:55 2016 -0500
+
+    Added mycluster access file
+
+commit 2ed23b4938dae2b8c8f6de8cb7c54ad9de99c246
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Mar 24 12:23:13 2016 -0500
+
+    removed about.txt in views.py
+
+commit 506b07c2f7897e46498225cce8935bb20cdcf2df
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Mar 24 11:09:41 2016 -0500
+
+    change people and bills; copy pasted clickable js into people.html
+    
+    now the table elements on the people page go to the person
+
+commit 357fc72a8945d3b5b18163faee2a32c80cca1552
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Wed Mar 23 20:23:51 2016 -0500
+
+    Fixes #21; updated table with different people
+
+commit cbf4133be1b3a024c90045fd7540c6e0ce41ccc1
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Wed Mar 23 14:24:11 2016 -0500
+
+    removed bread crumbs, scraped different people and bills, updated views to reflect new people and bills
+
+commit 4b02e29c947708c24c69bd3b4dbbe0725a7e66c7
+Merge: 80c411e bd61c69
+Author: oliveratutexas <olive.croomes@utexas.edu>
+Date:   Wed Mar 23 02:51:22 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 80c411e55532ce275a054ba906a3efff88000a1c
+Author: oliveratutexas <olive.croomes@utexas.edu>
+Date:   Wed Mar 23 02:51:08 2016 -0500
+
+    Created the __repl__ methods w/ a helper function. We can change it later.
+
+commit bd61c6995883461308db7c23a4ac5382a77666e2
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Tue Mar 22 21:54:10 2016 -0500
+
+    added navigation template to about and people pages
+
+commit ae356ab4688c0dd46cecc0ecb545708dbdb8b1bc
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Tue Mar 22 21:26:46 2016 -0500
+
+    applied template to home page
+
+commit 4a07b2c1a1c1c7ed75155406a0a7798b4c41ae5d
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Tue Mar 22 21:14:40 2016 -0500
+
+    fixed linking for styling
+    
+    closes #19
+
+commit 876c3dfa7d3f106d5d04a57ff816a61a53f40cd9
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Tue Mar 22 21:08:24 2016 -0500
+
+    flask templates for people and bills
+    
+    can view pages for people and bills
+    however, no styling
+
+commit cee32d608a51e8c8d037fc94ce2d13c83ab14947
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Mar 22 20:17:03 2016 -0500
+
+    added flask folder
+
+commit 740ba10af9dafc26836cbb231d899cb4f7a106db
+Merge: 9354efe 6b7ab3d
+Author: oliveratutexas <olive.croomes@utexas.edu>
+Date:   Tue Mar 22 17:09:23 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 9354efe05a290afb67c4d3b1a95f4d9693171071
+Author: oliveratutexas <olive.croomes@utexas.edu>
+Date:   Tue Mar 22 17:07:06 2016 -0500
+
+    Fixes
+    -----
+    
+    - Renamed the test to illustrate their purposes
+    - Created a couple more tests
+    - Added a couple comments to models
+
+commit 6b7ab3d9a04bc78918ef00433de18d6c8d2eeaba
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Mar 22 16:29:58 2016 -0500
+
+    made tables mobile-friendly. still need to limit column width
+
+commit bc685474925d6492f509ccd7e5821f74afc33009
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Mar 22 15:41:35 2016 -0500
+
+    got rid of breadcrumb and added sortable tables
+
+commit fe396a17d7e3a174d5edcc743a784cf1138e199b
+Merge: bbd3ccb 3addf34
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Mar 22 14:54:08 2016 -0500
+
+    Fixed deletion issue
+
+commit bbd3ccb9283f39858169f044e1669a1e13b1baaf
+Author: oliveratutexas <olive.croomes@utexas.edu>
+Date:   Tue Mar 22 14:27:00 2016 -0500
+
+    Changed file names
+
+commit 0131687220552c671bc8c49620a44853ac0ad230
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Mar 22 14:20:35 2016 -0500
+
+    scraped introduction date for bills
+
+commit bed1f190117463a021312f1f1e4eade164b7c120
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Tue Mar 22 14:11:12 2016 -0500
+
+    Add constructors to models.py
+
+commit 746865d6b90f8b4ad701cd2ecabb709be9d65e99
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Tue Mar 22 14:09:00 2016 -0500
+
+    Add model constructors and first 3 test cases
+
+commit 13bbd5089f3cc1c9f8b8d61873d240e26fe4377c
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Mar 22 13:54:32 2016 -0500
+
+    added links
+
+commit 00e818a9be09313c1ee917c99236ee48aa28db21
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Mar 22 13:52:38 2016 -0500
+
+    Full navbar fix to all pages
+
+commit 0c74a6102d6781ac3eec8a5e278e2e24edd3c54b
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Mar 22 13:48:59 2016 -0500
+
+    added links on bills pages as embedded content
+
+commit 44f3f096c69d3a5db786a80d4d003ed8ae07f9e3
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Mar 22 13:44:00 2016 -0500
+
+    changed scraper to pull links for bills
+
+commit b04d4da10b2e6a137f03c6a85d866f57909061f2
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Mar 22 13:37:44 2016 -0500
+
+    updated navbar on main pages
+
+commit 7c7e59b3b58d6de2ea46ab5852a47f636380fe92
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Mar 22 13:24:28 2016 -0500
+
+    Updated navbar for index page to be mobile friendly.
+
+commit ca4cb472b2e484e96eaf5467b7fd913d829f292e
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Mar 22 13:11:12 2016 -0500
+
+    added links for photos of people
+
+commit 68cc99a19d374b75d4e85ce8b1f522b0ccbcf5e7
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Mar 22 12:58:20 2016 -0500
+
+    style changes adn fixed jpg issue. fix #12
+
+commit 91033aedaad59578bb7573481a4eb842d2942fb2
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Mon Mar 21 22:41:12 2016 -0500
+
+    added about us page and fixed some issues with individual pages #5
+
+commit 6207ef5d921072244283413b8b8ac8a5625afec9
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Mon Mar 21 21:59:07 2016 -0500
+
+    added grid and individual pages
+
+commit 0214cb9e57b4702023697d7c5bb6b00beddefb61
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Mon Mar 21 19:46:51 2016 -0500
+
+    Added index and template html files and corresponding css.
+
+commit b6103da37909e9d19a463e0bc50c723c017b244e
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Mar 10 15:19:40 2016 -0600
+
+    change scraper to only add ids to cosponsor and sponsor list; updated dump files
+
+commit 209f2f9808116b53bda17b2cb6e250fcc02f76f0
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Mar 10 15:00:11 2016 -0600
+
+    beginning bootstrap - cover-index.html is current splash page
+
+commit 6d76bdfd43a0b74b40e57293c371bb185fe811de
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Thu Mar 10 14:51:13 2016 -0600
+
+    Additional documentation for models.py
+
+commit bcd55b55dd786e6593697b09e9d9cbe27c9cc75f
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Thu Mar 10 14:50:10 2016 -0600
+
+    Simplified sponsor/cosponsor relationship
+
+commit fd049def66a48c2c72dbdd5d3807faf9c6d85487
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Thu Mar 10 14:41:38 2016 -0600
+
+    Added models and relationships to models.py
+
+commit 115ba577a19f1c78f47764aa484ca1d63b184690
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 10 14:35:25 2016 -0600
+
+    Added more checks and targets to makefile.
+
+commit 372b012e0909b1160b0142ad1a91db8a928ba592
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Mar 10 12:56:07 2016 -0600
+
+    chaged pyscaper to scrape more info
+
+commit 9e1490bffbf66edf1e898837641e735cc99674cd
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Mar 10 12:49:56 2016 -0600
+
+    json dump files
+
+commit 492ce4080204296f793c9773c0dbaf1e998c7cac
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Mar 10 12:49:10 2016 -0600
+
+    added json dumping; files of json dump
+
+commit 94e3493cf9ea6d75d55820584ac09c41d9d005e4
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Mar 10 12:32:46 2016 -0600
+
+    Scraper written in python
+
+commit 9b916d4cc9dad865008ffd05ec654e1e610996ec
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Mar 8 15:03:04 2016 -0600
+
+    Added preliminary code for scraper
+
+commit ae5fb60826a2986625610e5220e756b3e6ff2057
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Mar 8 14:27:32 2016 -0600
+
+    testing javascipt scraper
+
+commit 3addf34257e6b339f09f0cadebc2e44b3630e105
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Mar 22 14:31:47 2016 -0500
+
+    added sortable table for bills
+
+commit 167e6ed077e92d8780351ccea6d86041fc817c6d
+Author: oliveratutexas <olive.croomes@utexas.edu>
+Date:   Tue Mar 22 14:27:00 2016 -0500
+
+    Changed file names
+
+commit 768ea19a5f8cda7377c96494a38ed3ba7fc40b1d
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Mar 22 14:20:35 2016 -0500
+
+    scraped introduction date for bills
+
+commit 90f429d87fe9851ec8b59378beda3534967e43d9
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Tue Mar 22 14:11:12 2016 -0500
+
+    Add constructors to models.py
+
+commit b767fbd098bf48de24c6c25fe7ff31446214eca4
+Merge: 2a50b09 7455cfb
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Tue Mar 22 14:09:14 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 2a50b0948c5613f6f861f931721bf4d33be554da
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Tue Mar 22 14:09:00 2016 -0500
+
+    Add model constructors and first 3 test cases
+
+commit 7455cfbe4c5be4b207baeb0c57067fbb4ded6f58
+Merge: b5aaa52 aa7fe44
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Mar 22 13:54:35 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit b5aaa527ef6b825d25411ae7d2560e6123b596c1
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Mar 22 13:54:32 2016 -0500
+
+    added links
+
+commit aa7fe446ddce1a35b7624ea5a7ee2c4e3358d245
+Merge: eb17ac6 7326ca4
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Mar 22 13:52:54 2016 -0500
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit eb17ac6e2677428e7de26bc1b7a2502200b3e871
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Mar 22 13:52:38 2016 -0500
+
+    Full navbar fix to all pages
+
+commit 7326ca46861fe05433e8ce6df13e7396e522453f
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Mar 22 13:48:59 2016 -0500
+
+    added links on bills pages as embedded content
+
+commit 55339d5c034f130483c1559d0fbd674b4dc22e8d
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Mar 22 13:44:00 2016 -0500
+
+    changed scraper to pull links for bills
+
+commit 22e948520951e62be732030da1f75366101a8ab8
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Mar 22 13:37:44 2016 -0500
+
+    updated navbar on main pages
+
+commit 5fb42dc77d7f1ea147b91696c95395cf59160426
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Tue Mar 22 13:24:28 2016 -0500
+
+    Updated navbar for index page to be mobile friendly.
+
+commit e5139d72a807a052eb9a67c0cdd47b00f415bc27
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Tue Mar 22 13:11:12 2016 -0500
+
+    added links for photos of people
+
+commit 26407b05e04c3bf87ffa800e17902885af9beb2b
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Mar 22 12:58:20 2016 -0500
+
+    style changes adn fixed jpg issue. fix #12
+
+commit f9eb07341a384be987a981ccb3d28cad36eb4d2b
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Mon Mar 21 22:41:12 2016 -0500
+
+    added about us page and fixed some issues with individual pages #5
+
+commit 819b8184e29037050ec09097fe1c7b6b4ccdfd8e
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Mon Mar 21 21:59:07 2016 -0500
+
+    added grid and individual pages
+
+commit 0d538e9c7188c80c1908fd45f4ef7e6adcf443bb
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Mon Mar 21 19:46:51 2016 -0500
+
+    Added index and template html files and corresponding css.
+
+commit 664c9cb56135f01449bdf549def4b15f1b532c59
+Author: chareth <lan.nguyen@utexas.edu>
+Date:   Tue Mar 15 17:54:38 2016 -0500
+
+    Added parameters and sample response for single legislator and bill
+
+commit fe26fc2598c5b99614cd581106ead7154ee57c28
+Author: chareth <lan.nguyen@utexas.edu>
+Date:   Thu Mar 10 15:20:47 2016 -0600
+
+    Transferring API Description file from Apiary.io
+
+commit 1e73d7e573d09754afbe0634aeea301a44841b42
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Mar 10 15:19:40 2016 -0600
+
+    change scraper to only add ids to cosponsor and sponsor list; updated dump files
+
+commit 9c902cc14594298c7ae29717d5159caa8d99f9b7
+Merge: 519f4fa fc8e810
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Mar 10 15:01:18 2016 -0600
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 519f4fa8f1a2bf02aa7e8de8a36580523119fbc3
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Mar 10 15:00:11 2016 -0600
+
+    beginning bootstrap - cover-index.html is current splash page
+
+commit fc8e810cec55fa39e4255f6da1545ab6405aaed6
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Thu Mar 10 14:51:13 2016 -0600
+
+    Additional documentation for models.py
+
+commit 6f678729a2c5f9bc4ddbf7e180868300ae561cca
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Thu Mar 10 14:50:10 2016 -0600
+
+    Simplified sponsor/cosponsor relationship
+
+commit 7e8cd734aff914e4e08d3e80846dc2b1ddccb54b
+Merge: c571e97 5ec257a
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Thu Mar 10 14:41:53 2016 -0600
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit c571e9719166ea5b41a8841045aa36f8ec5459f9
+Author: Brian Hodge <brianhodge@utexas.edu>
+Date:   Thu Mar 10 14:41:38 2016 -0600
+
+    Added models and relationships to models.py
+
+commit 5ec257a754a08fd12d3cda4799e86400eb605756
+Merge: 34cd58a 8f6d546
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 10 14:35:43 2016 -0600
+
+    Merge branch 'dev' of https://github.com/eafurlan/cs373-idb into dev
+
+commit 34cd58a3e2431caaecce26f0670404f4bf3709a7
+Author: Arman Baratifar <arman.baratifar@utexas.edu>
+Date:   Thu Mar 10 14:35:25 2016 -0600
+
+    Added more checks and targets to makefile.
+
+commit e54b8641fbaf1e1f1875fbf5d9ce89cfdaf17928
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Thu Mar 10 14:19:59 2016 -0600
+
+    Transferring API Description file from Apiary.io
+
+commit 8f6d546145688ef3b5219aabd4b7178bd4eb798a
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Mar 10 12:56:07 2016 -0600
+
+    chaged pyscaper to scrape more info
+
+commit 769debaae5f3552f29ead3bbd2f8153037ffe966
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Mar 10 12:49:56 2016 -0600
+
+    json dump files
+
+commit bb037e6d6f54ff714d51cc8d4a4c37e9b9ae217d
+Author: Lan Nguyen <lnguyen@cs.utexas.edu>
+Date:   Thu Mar 10 12:49:10 2016 -0600
+
+    added json dumping; files of json dump
+
+commit ab601bb7a41f04d34e50099fd766d0b904d35c45
+Author: Chareth Cutestory <nuugit@gmail.com>
+Date:   Thu Mar 10 12:32:46 2016 -0600
+
+    Scraper written in python
+
+commit ec44f103547388a776a512a862147c2ca01201e7
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Mar 8 15:03:04 2016 -0600
+
+    Added preliminary code for scraper
+
+commit 427c997dff42c94999d84d36dd3f598cc98d7465
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Mar 8 14:27:32 2016 -0600
+
+    testing javascipt scraper
+
+commit 0fdd89eb1f6f687b3c92ba9d33499b9518b348c1
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Mar 8 13:07:09 2016 -0600
+
+    first commit - all the files
+
+commit dc2395b568b73356a84f07d82c34ea9d09e766c9
+Author: eafurlan <furlaneaf@gmail.com>
+Date:   Tue Mar 8 12:41:52 2016 -0600
+
+    Initial commit

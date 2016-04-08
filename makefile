@@ -1,13 +1,13 @@
 FILES :=                            \
 tests.py						\
-models.py						\					                       
-# UML.pdf							\
-# apiary.apib 					\
-# IDB1.log						\
-# model.html						\
-.travis.yml												
- 
-    
+models.py						\
+uml.pdf							\
+apiary.apib 					\
+IDB1.log						\
+models.html						\
+.travis.yml
+
+
 
 check:
 	@not_found=0;                                 \
@@ -37,6 +37,9 @@ clean:
 config:
 	git config -l
 
+tests:
+	python3 tests.py
+
 scrub:
 	make clean
 	rm -f  model.html
@@ -46,7 +49,10 @@ models.html:
 	pydoc -w models
 
 IDB1.log:
-		git log > IDB1.log
+	git log > IDB1.log
+
+IDB2.log:
+	git log > IDB2.log
 
 status:
 	make clean
@@ -57,16 +63,11 @@ status:
 
 
 
-# test: RunNetflix.tmp TestNetflix.tmp
-
 # netflix-tests:
 # 	git clone https://github.com/cs373-spring-2016/netflix-tests.git
 
 # netflix.html: Netflix.py
 # 	pydoc3 -w Netflix
-
-# netflix.log:
-# 	git log > Netflix.log
 
 # RunNetflix.tmp: RunNetflix.in RunNetflix.out RunNetflix.py
 # 	./RunNetflix.py < RunNetflix.in > RunNetflix.tmp

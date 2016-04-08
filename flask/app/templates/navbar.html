@@ -14,6 +14,7 @@
     <!-- CSS files -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/video.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
 
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -40,16 +41,9 @@
 
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li ng-class="{ active: isActive('/people')}"><a href="/people.html">Members of Congress</a></li>
+              <li ng-class="{ active: isActive('/legislators')}"><a href="/legislators.html">Members of Congress</a></li>
               <li ng-class="{ active: isActive('/bills')}"><a href="/bills.html">Bills</a></li>
-              <li>
-                  <form class="navbar-form navbar-left" role="search">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                  </div>
-                </form>
-              </li>
-
+              
             </ul>
             
             <ul class="nav navbar-nav navbar-right">
@@ -64,10 +58,10 @@
     <div id="content">{% block content %}{% endblock %}</div>
 
     <!-- Footer -->
-    <nav class="navbar navbar-fixed-bottom">
+    <footer class="footer">
         <div class="container-fluid col-lg-12">
           <h5 class="text-center text-primary"><a href="/about.html">SWESquad</a></h5>
         </div>
-    </nav>
+    </footer>
   </body>
 </html>
