@@ -78,23 +78,29 @@ def render_bill(bill_id):
 	bill_obj = session.query(Bill).filter_by(id=bill_id).first()
 	bill_dict = bill_obj.__dict__
 
-	# if the bill does not have a sponsor key, assign it, and set value to -1
-	if 'sponsor' not in bill_dict.keys():
-		bill_dict['sponsor'] = -1
+	# querying for a sponsor
+	spon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='sponsor').first()
+	# if there isnt any sponsor, assign -1
 
-	else :
-		spon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='sponsor').first()
+
+
+
+	if spon_query:
 		spon_dict = spon_query[1].__dict__
 		spon_query_name_dict = spon_query[0].__dict__
 		name = spon_query_name_dict['firstname'] + " " + spon_query_name_dict['lastname']
 		bill_dict['sponsor'] = {'id': spon_dict['leg_id'] , 'name':name}
+	else :
+		bill_dict['sponsor'] = -1
 
 	cospon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='cosponsor').all()
-	cospon_dict_list = [x[0].__dict__ for x in cospon_query]
+	if cospon_query:
+		cospon_dict_list = [x[0].__dict__ for x in cospon_query]
 
-	cospon_dict_list_abbr = [{"name" : x["firstname"] +" " +x["lastname"], 'id':x["id"]} for x in cospon_dict_list]
-	bill_dict['cosponsor'] = cospon_dict_list_abbr
-	print(bill_dict['cosponsor'])
+		cospon_dict_list_abbr = [{"name" : x["firstname"] +" " +x["lastname"], 'id':x["id"]} for x in cospon_dict_list]
+		bill_dict['cosponsor'] = cospon_dict_list_abbr
+	else:
+		bill_dict['cosponsor'] = -1
 
 	return render_template('bills_template.html', bill = bill_dict)
 
