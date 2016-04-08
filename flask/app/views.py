@@ -89,13 +89,12 @@ def render_bill(bill_id):
 		name = spon_query_name_dict['firstname'] + " " + spon_query_name_dict['lastname']
 		bill_dict['sponsor'] = {'id': spon_dict['leg_id'] , 'name':name}
 
+	cospon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='cosponsor').all()
+	cospon_dict_list = [x[0].__dict__ for x in cospon_query]
 
-
-	# finding the sponsor
-
-	# TODO: pull list of cosponsors
-	# cospon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='cosponsor')
-	# cospon_dict_list = [x.__dict__ for x in cospon_query[]]
+	cospon_dict_list_abbr = [{"name" : x["firstname"] +" " +x["lastname"], 'id':x["id"]} for x in cospon_dict_list]
+	bill_dict['cosponsor'] = cospon_dict_list_abbr
+	print(bill_dict['cosponsor'])
 
 	return render_template('bills_template.html', bill = bill_dict)
 
