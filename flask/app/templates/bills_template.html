@@ -4,26 +4,31 @@
 {% extends "navbar.html" %}
 
 {% block content %}
+      
+  <script src="{{ url_for('static', filename='scripts/toggle.js') }}"></script>
 
-	<div class="container-fluid col-md-6">
-      <h1>{{bill.name}}</h1>
-      <h4><div class="text-muted">ID: </div>{{bill.id}}</h4>
-      <h4><div class="text-muted">Status: </div>{{bill.current_status}}</h4>
-      <h4><div class="text-muted">Type: </div>{{bill.bill_type}}</h4>
-      <h4><div class="text-muted">Date Introduced: </div>{{bill.date}}</h4>
-      <h4><div class="text-muted">Sponsor: </div><a href="/legislators/{{bill.sponsor.id}}">{{bill.sponsor.name}}</a></h4>
-      {% if bill.cosponsor != None %}
-      <h4><div class="text-muted"  data-toggle="collapse" role="button" ng-click="collapsed = !collapsed">Cosponsors: 
-            <span ng-show="collapsed" class="glyphicon glyphicon-chevron-down"></span>
-            <span ng-show="!collapsed" class="glyphicon glyphicon-chevron-up"></span>
-      </div>
-      	{% for c in bill.cosponsor %}
-      	<a href="/legislators/{{c}}">{{c.id}}>{{c.name}}</a>
-      	{%  endfor %}
-      </h4>
-      {% endif %}
-      <h4><div class="text-muted">Link to more information: </div> <a href="{{bill.link}}">{{bill.link}}</a></h4>
-    </div>
+      
+	<div class="container-fluid col-md-6" ng-app="toggleApp" ng-controller="mainController">
+    <h1>{{bill.name}}</h1>
+    <h4><div class="text-muted">ID: </div>{{bill.id}}</h4>
+    <h4><div class="text-muted">Status: </div>{{bill.current_status}}</h4>
+    <h4><div class="text-muted">Type: </div>{{bill.bill_type}}</h4>
+    <h4><div class="text-muted">Date Introduced: </div>{{bill.date}}</h4>
+    <h4><div class="text-muted">Sponsor: </div><a href="/legislators/{{bill.sponsor.id}}">{{bill.sponsor.name}}</a></h4>
+    {% if bill.cosponsor != None %}
+    <h4><a class="text-muted"  data-toggle="collapse" role="button" data-target="#sponsored" ng-click="collapsed = !collapsed">Cosponsors: 
+          <span ng-show="collapsed" class="glyphicon glyphicon-chevron-down"></span>
+          <span ng-show="!collapsed" class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+          <div id="sponsored" class="collapse">
+          	{% for c in bill.cosponsor %}
+          	<a href="/legislators/{{c}}">{{c.id}}>{{c.name}}</a>
+          	{%  endfor %}
+          </div>
+    </h4>
+    {% endif %}
+    <h4><div class="text-muted">Link to more information: </div> <a href="{{bill.link}}">{{bill.link}}</a></h4>
+  </div>
 
 {% endblock %}
 
