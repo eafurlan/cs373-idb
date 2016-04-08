@@ -14,7 +14,9 @@
     <h4><div class="text-muted">Status: </div>{{bill.current_status}}</h4>
     <h4><div class="text-muted">Type: </div>{{bill.bill_type}}</h4>
     <h4><div class="text-muted">Date Introduced: </div>{{bill.date}}</h4>
+    {% if bill.sponsor > 0 %}
     <h4><div class="text-muted">Sponsor: </div><a href="/legislators/{{bill.sponsor.id}}">{{bill.sponsor.name}}</a></h4>
+    {% endif %}
     {% if bill.cosponsor != None %}
     <h4><a class="text-muted"  data-toggle="collapse" role="button" data-target="#sponsored" ng-click="collapsed = !collapsed">Cosponsors: 
           <span ng-show="collapsed" class="glyphicon glyphicon-chevron-down"></span>

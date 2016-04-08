@@ -78,11 +78,20 @@ def render_bill(bill_id):
 	bill_obj = session.query(Bill).filter_by(id=bill_id).first()
 	bill_dict = bill_obj.__dict__
 
-	spon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='sponsor').first()
-	spon_dict = spon_query[1].__dict__
-	spon_query_name_dict = spon_query[0].__dict__
-	name = spon_query_name_dict['firstname'] + " " + spon_query_name_dict['lastname']
-	bill_dict['sponsor'] = {'id': spon_dict['leg_id'] , 'name':name}
+	# if the bill does not have a sponsor key, assign it, and set value to -1
+	if 'sponsor' not in bill_dict.keys():
+		bill_dict['sponsor'] = -1
+
+	else :
+		spon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='sponsor').first()
+		spon_dict = spon_query[1].__dict__
+		spon_query_name_dict = spon_query[0].__dict__
+		name = spon_query_name_dict['firstname'] + " " + spon_query_name_dict['lastname']
+		bill_dict['sponsor'] = {'id': spon_dict['leg_id'] , 'name':name}
+
+
+
+	# finding the sponsor
 
 	# TODO: pull list of cosponsors
 	# cospon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='cosponsor')
