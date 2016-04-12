@@ -11,17 +11,17 @@
 	<div class="container-fluid col-md-6" ng-app="toggleApp" ng-controller="mainController">
     <h1>{{bill.name}}</h1>
     <h4><div class="text-muted">ID: </div>{{bill.id}}</h4>
-    <h4><div class="text-muted">Status: </div>{{bill.current_status}}</h4>
+    <h4><div class="text-muted" title="bill.status_info">Status: </div>{{bill.current_status}}</h4>
     <h4><div class="text-muted">Type: </div>{{bill.bill_type}}</h4>
     <h4><div class="text-muted">Date Introduced: </div>{{bill.date}}</h4>
     {% if bill.sponsor != None %}
     <h4><div class="text-muted">Sponsor: </div><a href="/legislators/{{bill.sponsor.id}}">{{bill.sponsor.name}}</a></h4>
     {% endif %}
     {% if bill.cosponsor != None %}
-    <h4><a class="text-muted"  data-toggle="collapse" role="button" data-target="#sponsored" ng-click="collapsed = !collapsed">Cosponsors:
+    <h4><div class="text-muted"  data-toggle="collapse" role="button" data-target="#sponsored" title="These are the legislators who support this bill" ng-click="collapsed = !collapsed">Cosponsors:
           <span ng-show="collapsed" class="glyphicon glyphicon-chevron-up"></span>
           <span ng-show="!collapsed" class="glyphicon glyphicon-chevron-down"></span>
-    </a>
+    </div>
           <div id="sponsored" class="collapse">
           	{% for c in bill.cosponsor %}
           	<a href="/legislators/{{c.id}}">{{c.name}}, </a>
