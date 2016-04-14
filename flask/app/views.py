@@ -13,6 +13,7 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 
+
 @app.route('/')
 @app.route('/index/')
 @app.route('/index.html')
@@ -28,10 +29,11 @@ def people_page():
 @app.route('/about/')
 @app.route('/about.html')
 def about():
-	data = open('about.txt').read()
-	group = json.loads(data)
+	with app.open_resource('static/text/about.txt') as data:
+		data = data.read()
+		data = data.decode("utf-8")
+		group = json.loads(str(data))
 	return render_template("about.html", group = group)
-
 
 @app.route('/bills/')
 @app.route('/bills.html')

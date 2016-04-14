@@ -4,6 +4,7 @@ jQuery(document).ready(function($) {
     	//var $btn = $(this).button('Running...');
     	$(this).html('Running ... ');
     	$("#unitTestAlert").removeClass("alert-success");
+      $("#unitTestAlert").text("");
     	$.get("/test", function(data){
    			$("#unitTestAlert").html( data.test_text );
    			$(unitTestButton).html('Run');
