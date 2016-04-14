@@ -39,6 +39,12 @@ def bills_page():
 
 	return render_template("bills.html")
 
+@app.route('/pokemon/')
+@app.route('/pokemon.html')
+def pokemon_page():
+
+	return render_template("pokemon.html")
+
 @app.route('/legislators/<person_id>')
 def render_person(person_id):
 	leg_query = session.query(Legislator).filter_by(id=person_id)
