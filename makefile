@@ -1,7 +1,7 @@
 FILES :=                            \
 tests.py						\
 models.py						\
-uml.pdf							\
+UML.pdf							\
 apiary.apib 					\
 IDB1.log						\
 models.html						\
