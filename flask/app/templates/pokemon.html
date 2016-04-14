@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  {% extends "navbar.html" %}
+
+  
+  {% block content %}
+  <script src="{{ url_for('static', filename='../static/scripts/clickable.js') }}"></script>
+  <script src="{{ url_for('static', filename='../static/scripts/pokeLoader.js') }}"></script>
+  
+  <div class="container col-md-4">
+    <div id="card" class="img-rounded">
+      <div id="inner-card">
+        <div>
+          <span id="title">Pokemon Name</span>
+          <span id="hp">300 HP<span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></span>
+        </div>
+        <div id="image">
+        </div>
+        <div id="moveList">
+          <span id="move"><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span> Super Attack</span>
+          <span id="movePoints">+30</span>
+        </div>
+        <div id="bottomBar">
+          <span id="weakness">Weakness</span>
+          <span id="resistance">Resistance</span>
+          <span id="retreat">Retreat Cost</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </br>
+
+  <div class="container col-md-8" ng-app="pokeApp" ng-controller="mainController">
+    <div class="panel panel-default" ng-repeat="type in typenames">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{type}} Pokemon</h3>
+      </div>
+      <div class="panel-body" ng-repeat="pokemon in pokemon_collection">
+        <button class="btn btn-info" type="button">
+          {{pokemon}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+    
+</html>
