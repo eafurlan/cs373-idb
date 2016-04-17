@@ -1,37 +1,48 @@
-var sortApp = angular.module('pokeApp', ['angularUtils.directives.dirPagination']);
+var pokeApp = angular.module('pokeApp', ['ui.bootstrap']);
 
-sortApp.config(['$locationProvider', function($locationProvider) {
+pokeApp.config(['$locationProvider', function($locationProvider) {
      $locationProvider.html5Mode(true);
 }]);
 
-sortApp.controller('mainController', function($scope, $http, $location) {
- 	$scope.types = [];
- 	$scope.typeNames = [];
- 	$scope.pokemon_collection = [];
-  
-  // Load bills from our API
-	$http({
-		method: 'GET',
-		url: 'http://swecune.com/api/v1/type'
-	}).success(function (result){
-		$scope.types = result;
-		$scope.typeNames = [x["name"] for x in $scope.types] //LOL, no python
+pokeApp.controller('mainController', function($scope, $http, $location) {
+ 	$scope.pokemon = [];
+ 	$scope.pokemon_name = "";
+ 	$scope.pokemon_type = "";
+ 	$scope.pokemon_hp = 0;
+ 	$scope.pokemon_move_1 = [];
+ 	$scope.pokemon_move_2 = [];
+ 	imgUrl = 'https://b1c01bf8eafe786b36c877247c911d2fb8db34b3-www.googledrive.com/host/0Bwhv4pFNwLa8WVhmUmsxN1ExOVU/static/img/';
+
+	// $http.jsonp('http://swecune.com/api/type')
+	// .then(function(json) {
+	// 	$scope.types = json.data.data;
+	// 	$scope.typeNames = $scope.type.map(function(val){
+	// 		return val["name"];
+	// 	});
+	// });
+
+	$http.jsonp('http://swecune.com/api/pokemon?offset=0&pokemon_per_page=100')
+	.then(function(json) {
+		$scope.pokemon = json.data.data;
+		console.log(json.data.data);
 	});
 
-	$scope.getPokemon = function(typeID){
-		$scope.pokemon_collection = $scope.types[typeID]["pokemon"]
+	$scope.draw = function(){
+		num = Math.floor(Math.random($scope.pokemon.length))
+		pokemon = $scope.pokemon[num]
+		$scope.pokemon_name = pokemon["name"]
 	}
 
-	$scope.sort = function(keyname){
-		$scope.sortKey     = keyname; // set the default sort type
-  		$scope.reverse  = !$scope.reverse;  // set the default sort order
+	$scope.getColor = function(type){
+		switch(type){
+			case 1://water
+				$scope.color = "blue";
+				break;
+			default:
+				$scope.color = "gray";
+				break;
+		}
 	}
-
-	$scope.makeLink = function () {
-  		$scope.selected = this.roll;
-        path_to_bill = $scope.selected.id + "";
-        window.location = "bills/"+path_to_bill;
-	};
   
 });
 
