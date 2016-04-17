@@ -2,11 +2,12 @@ import sqlalchemy
 import datetime
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
+from sawhoosh.model import Base, new_uuid
 
 from sqlalchemy import create_engine
 engine = create_engine('sqlite:///:memory:', echo=True)
 
-Base = declarative_base()
+#Base = declarative_base()
 
 from sqlalchemy import Table, ForeignKey, Column, Integer, String, Date
 
