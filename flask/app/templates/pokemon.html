@@ -5,6 +5,9 @@
 
   
   {% block content %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pokemon.css') }}">
+
+
   <script src="{{ url_for('static', filename='../static/scripts/clickable.js') }}"></script>
   <script src="{{ url_for('static', filename='../static/scripts/pokeLoader.js') }}"></script>
   
@@ -21,11 +24,36 @@
           <span id="move"><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span> Super Attack</span>
           <span id="movePoints">+30</span>
         </div>
-        <div id="bottomBar">
-          <span id="weakness">Weakness</span>
-          <span id="resistance">Resistance</span>
-          <span id="retreat">Retreat Cost</span>
-        </div>
+        <table class="bottomBar">
+          <thead>
+            <tr>
+              <th>Weakness</th>
+              <th>Resistance</th>
+              <th>Retreat Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></td>
+              <td><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></td>
+              <td><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></td>
+            </tr>
+          </tbody>
+        </table>
+<!--         <div id="bottomBar">
+          <span id="weakness" class="bottomBar">
+            <div>Weakness</div>
+            <div class="glyphicon glyphicon-certificate" aria-hidden="true"></div>
+          </span>
+          <span id="resistance" class="bottomBar">
+            <div>Resistance</div>
+            <div class="glyphicon glyphicon-certificate" aria-hidden="true"></div>
+          </span>
+          <span id="retreat" class="bottomBar">
+            <div>Retreat Cost</div>
+            <div class="glyphicon glyphicon-certificate" aria-hidden="true"></div>
+          </span>
+        </div> -->
       </div>
     </div>
   </div>
