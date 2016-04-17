@@ -152,6 +152,94 @@ class TestQuery(unittest.TestCase):
 		no_instances = session.query(Bill).all()
 		self.assertEqual(0, len(no_instances))
 
+	@single_session
+	def test11_test_cosponsor_relation(self):
+		test_bill = Bill(id=6)
+		test_legis = Legislator(id = 13)
+		
+		sba = SponsorBillAssociation()
+		sba.bill = test_bill
+		sba.type_of_sponsorship = "cosponsor"
+		test_legis.sponsored_bills.append(sba)
+		
+
+		session.add(test_bill)
+		session.add(test_legis)
+		session.commit()
+		
+		cur_sba = session.query(SponsorBillAssociation).filter_by(type_of_sponsorship='cosponsor').first()
+		self.assertEqual(cur_sba.bill_id,6)
+
+	@single_session
+	def test12_test_many_cosponsors(self):
+
+		test_legis = Legislator(id = 14)
+		for i in range(7,11):
+			test_bill = Bill(id=i)
+			sba = SponsorBillAssociation()
+			sba.bill = test_bill
+			sba.type_of_sponsorship = "cosponsor"
+			if i == 10 :
+				sba.type_of_sponsorship = "sponsor"
+			test_legis.sponsored_bills.append(sba)
+			session.add(test_bill)
+		
+		session.add(test_legis)
+		session.commit()
+		
+		cur_sba = session.query(SponsorBillAssociation).filter_by(type_of_sponsorship='cosponsor').all()
+
+		self.assertEqual(len(cur_sba),3)
+		cur_sba = session.query(SponsorBillAssociation).filter_by(type_of_sponsorship='sponsor').all()
+		self.assertEqual(len(cur_sba),1)
+
+	@single_session
+	def test13_test_many_sponsors(self):
+
+		test_legis = Legislator(id = 15)
+		for i in range(11,15):
+			test_bill = Bill(id=i)
+			sba = SponsorBillAssociation()
+			sba.bill = test_bill
+			sba.type_of_sponsorship = "sponsor"
+			if i == 14 :
+				sba.type_of_sponsorship = "cosponsor"
+			test_legis.sponsored_bills.append(sba)
+			session.add(test_bill)
+		
+		session.add(test_legis)
+		session.commit()
+		
+		
+		cur_sba = session.query(SponsorBillAssociation).filter_by(type_of_sponsorship='sponsor').all()
+
+		self.assertEqual(len(cur_sba),3)
+		cur_sba = session.query(SponsorBillAssociation).filter_by(type_of_sponsorship='cosponsor').all()
+		self.assertEqual(len(cur_sba),1)
+
+	@single_session
+	def test14_test_undefined_sponsors(self):
+
+		test_legis = Legislator(id = 15)
+		for i in range(15,19):
+			test_bill = Bill(id=i)
+			sba = SponsorBillAssociation()
+			sba.bill = test_bill
+			
+			test_legis.sponsored_bills.append(sba)
+			session.add(test_bill)
+		
+		session.add(test_legis)
+		session.commit()
+		
+		
+		cur_sba = session.query(SponsorBillAssociation).filter_by(type_of_sponsorship='sponsor').all()
+
+		self.assertEqual(len(cur_sba),0)
+
+
+		
+
 
 if __name__ == "__main__":
 	#TODO - see if we have to create a different SQL DB
