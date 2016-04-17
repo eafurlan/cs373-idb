@@ -43,7 +43,7 @@
           <tr dir-paginate="roll in bills | orderBy:sortKey:reverse | filter:search | itemsPerPage:10" ng-click="makeLink();">
             <td>{{ roll.id }}</td>
             <td>{{ roll.name }}</td>
-            <td title="{{roll.status_info}}">{{ roll.current_status }}</td>
+            <td>{{ roll.current_status }}</td>
             <td>{{ roll.bill_type }}</td>
             <td>{{ roll.date }}</td>
           </tr>
