@@ -237,8 +237,37 @@ class TestQuery(unittest.TestCase):
 
 		self.assertEqual(len(cur_sba),0)
 
+# Arman Tests 
 
-		
+	@single_session
+	def test15_test_add_bill(self):
+		test_bill = Bill(id=1)
+
+		session.add(test_bill)
+		session.commit()
+
+	@single_session
+	def test16_test_add_leg(self):
+		test_leg = Legislator(id=1)
+
+		session.add(test_leg)
+		session.commit()
+
+	@single_session
+	def test17_test_add_bill_stress(self):
+		for i in range(1,50):
+			test_bill = Bill(id = i)
+			session.add(test_bill)
+			session.commit()
+
+	@single_session
+	def test18_test_add_leg_stress(self):
+		for i in range(1,50):
+			test_leg = Legislator(id = i)
+			session.add(test_leg)
+			session.commit()
+
+# End arman tests
 
 
 if __name__ == "__main__":
