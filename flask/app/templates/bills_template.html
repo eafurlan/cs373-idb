@@ -11,7 +11,7 @@
 	<div class="container-fluid col-md-6" ng-app="toggleApp" ng-controller="mainController">
     <h1>{{bill.name}}</h1>
     <h4><div class="text-muted">ID: </div>{{bill.id}}</h4>
-    <h4><div class="text-muted" title="bill.status_info">Status: </div>{{bill.current_status}}</h4>
+    <h4 title="{{bill.status_info}}"><div class="text-muted" >Status: </div>{{bill.current_status}}</h4>
     <h4><div class="text-muted">Type: </div>{{bill.bill_type}}</h4>
     <h4><div class="text-muted">Date Introduced: </div>{{bill.date}}</h4>
     {% if bill.sponsor != None %}

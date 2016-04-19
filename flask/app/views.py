@@ -104,6 +104,7 @@ def render_bill(bill_id):
 
 
 	bill_dict['current_status'] = bill_dict['current_status'].replace('_', ' ')
+	bill_dict['bill_type'] = bill_dict['bill_type'].replace('_', ' ')
 
 	# querying for a sponsor
 	spon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='sponsor').first()
