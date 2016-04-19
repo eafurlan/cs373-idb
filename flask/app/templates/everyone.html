@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "navbar.html" %} {% block content %}
+<script src="{{ url_for('static', filename='scripts/sortEveryone.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/clickable.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/dirPagination.js') }}"></script>
+<div id="table-holder" class="col-md-9">
+    <!-- Table -->
+        <h2>Search Results</h2>
+
+    <div class="container-fluid" ng-app="sortApp" ng-controller="mainController">
+        <div class="table-responsive col-md-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th ng-click="sort('id')"><a href="">Id</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('firstname')"><a href="">First Name</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='firstname'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('lastname')"><a href="">Last Name</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='lastname'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('title')"><a href="">Title</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='title'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('party')"><a href="">Party</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='party'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('start_date')"><a href="">Start Date</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='start_date'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('state')"><a href="">State</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='state'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- {% raw %} -->
+                    <tr dir-paginate="roll in people | orderBy:sortKey:reverse | filter:search | itemsPerPage:10" ng-click="makeLink();">
+                        <td>{{ roll.id }}</td>
+                        <td>{{ roll.firstname }}</td>
+                        <td>{{ roll.lastname }}</td>
+                        <td>{{ roll.title }}</td>
+                        <td>{{ roll.party }}</td>
+                        <td>{{ roll.start_date }}</td>
+                        <td>{{ roll.state }}</td>
+                    </tr>
+                    <!-- {% endraw %} -->
+                </tbody>
+            </table>
+            <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true">
+            </dir-pagination-controls>
+        </div>
+        <!-- first bill table -->
+        <div class="table-responsive col-md-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th ng-click="sort('id')"><a href="">ID</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('name')"><a href="">Title</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('current_status')"><a href="">Status</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='current_status'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('bill_type')"><a href="">Type</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='bill_type'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('date')"><a href="">Date</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='date'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- {% raw %} -->
+                    <tr dir-paginate="roll in bills | orderBy:sortKey:reverse | filter:search | itemsPerPage:10" ng-click="makeLink();">
+                        <td>{{ roll.id }}</td>
+                        <td>{{ roll.name }}</td>
+                        <td>{{ roll.current_status }}</td>
+                        <td>{{ roll.bill_type }}</td>
+                        <td>{{ roll.date }}</td>
+                    </tr>
+                    <!-- {% endraw %} -->
+                </tbody>
+            </table>
+            <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true">
+            </dir-pagination-controls>
+        </div>
+        <!--second table-->
+        <div class="table-responsive col-md-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th ng-click="sort('id')"><a href="">Id</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('firstname')"><a href="">First Name</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='firstname'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('lastname')"><a href="">Last Name</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='lastname'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('title')"><a href="">Title</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='title'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('party')"><a href="">Party</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='party'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('start_date')"><a href="">Start Date</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='start_date'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('state')"><a href="">State</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='state'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- {% raw %} -->
+                    <tr dir-paginate="roll in people | orderBy:sortKey:reverse | filter:search | itemsPerPage:10" ng-click="makeLink();">
+                        <td>{{ roll.id }}</td>
+                        <td>{{ roll.firstname }}</td>
+                        <td>{{ roll.lastname }}</td>
+                        <td>{{ roll.title }}</td>
+                        <td>{{ roll.party }}</td>
+                        <td>{{ roll.start_date }}</td>
+                        <td>{{ roll.state }}</td>
+                    </tr>
+                    <!-- {% endraw %} -->
+                </tbody>
+            </table>
+            <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true">
+            </dir-pagination-controls>
+        </div>
+
+        <!-- second bill table -->
+        <div class="table-responsive col-md-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th ng-click="sort('id')"><a href="">ID</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('name')"><a href="">Title</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('current_status')"><a href="">Status</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='current_status'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('bill_type')"><a href="">Type</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='bill_type'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                        <th ng-click="sort('date')"><a href="">Date</a>
+                            <span class="glyphicon sort-icon" ng-show="sortKey=='date'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- {% raw %} -->
+                    <tr dir-paginate="roll in bills | orderBy:sortKey:reverse | filter:search | itemsPerPage:10" ng-click="makeLink();">
+                        <td>{{ roll.id }}</td>
+                        <td>{{ roll.name }}</td>
+                        <td>{{ roll.current_status }}</td>
+                        <td>{{ roll.bill_type }}</td>
+                        <td>{{ roll.date }}</td>
+                    </tr>
+                    <!-- {% endraw %} -->
+                </tbody>
+            </table>
+            <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true">
+            </dir-pagination-controls>
+        </div>
+    </div>
+    <!-- end table_holder -->
+</div>
+<div class="container col-md-3">
+    <div class="input-group">
+        <input type="text" ng-model="search" class="form-control" placeholder="Search Legislators">
+        </span>
+    </div>
+</div>
+{% endblock %}
+
+</html>
