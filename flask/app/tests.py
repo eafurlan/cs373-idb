@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 #from sqlalchemy import create_engine
 #from sqlalchemy.orm import db.sessionmaker, relationship
 from flask import Flask
-from app import app
+#from app import app
 
 from models import *
 
@@ -34,7 +34,7 @@ def single_session(func):
 class TestQuery(unittest.TestCase):
 
 	@single_session
-	def test1_create_db.session_test(self):
+	def test1_create_session_test(self):
 		no_instances = db.session.query(Bill).all()
 		self.assertEqual(0, len(no_instances))
 
@@ -151,7 +151,7 @@ class TestQuery(unittest.TestCase):
 		self.assertEqual(len(q_item.sponsors),2)
 
 	@single_session
-	def test10_test_empty_db.session(self):
+	def test10_test_empty_session(self):
 		
 		no_instances = db.session.query(Bill).all()
 		self.assertEqual(0, len(no_instances))
@@ -161,17 +161,16 @@ class TestSearch(unittest.TestCase):
     def test1_search_objects(self):
         test_bill_1 = Bill(id=0,name="Oliver's Bill",current_status="Committee",date="",link="")
         test_bill_2 = Bill(id=0,name="Bill's Bill",current_status="Committee",date="",link="")
-        db.session.add(test_bill_1, test_bill_2)
+        db.session.add(test_bill_1)
+        db.session.add(test_bill_2)
         db.session.commit()
-        Bill.query.whoosh_search('Oliver')
+        search_results = Bill.query.whoosh_search('Oliver')
+        self.assertEqual(0,len(search_results))
     
 
 if __name__ == "__main__":
     global db
-    app['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://travis1:swesquad123@172.99.70.111:3306/ildb_travis'
-    db = SQLAlchemy(app) 
-
-    db.
-	Base.metadata.create_all(engine)
-	unittest.main()
-	Base.metadata.drop_all(engine)
+    #app['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://travis1:swesquad123@172.99.70.111:3306/ildb_travis'
+    #db = SQLAlchemy(app) 
+    db = SQLAlchemy()
+    unittest.main()
