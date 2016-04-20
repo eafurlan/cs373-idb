@@ -25,6 +25,12 @@ def people_page():
 
 	return render_template("legislators.html")
 
+@app.route('/everyone.html')
+def everyone_page():
+
+	return render_template("everyone.html")
+
+
 @app.route('/about/')
 @app.route('/about.html')
 def about():
