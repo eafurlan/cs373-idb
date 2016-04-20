@@ -16,7 +16,7 @@ def model_repr(yourself):
 		yourself
 	"""
 	val = "%s:\n" % (yourself.__class__)
-	def stupid(you):
+	def decoration(you):
 		for attr, value in yourself.__dict__.items():
 			yield attr, value
 	val =  "".join([str((a,b)) for a,b in stupid(yourself) if not a.startswith('__') and not callable(getattr(yourself,a))])
