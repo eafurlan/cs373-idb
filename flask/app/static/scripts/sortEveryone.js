@@ -49,16 +49,96 @@ sortApp.filter('bill_AND_search', function() {
             }
 
             all_terms = search.split(' ');
+            data.forEach(function(datum) {
+            var concatted =datum.name  + 
+            	datum.bill_type + 
+            	datum.current_status +  
+            	datum.id + 
+            	datum.date;
+
+                push_flag = true;
+                all_terms.forEach(function(term) {
+                    if (!(concatted.includes(term))) {
+                        push_flag = false;
+                    }
+                });
+                if (push_flag) {
+                    filtered_data.push(datum);
+                }
+
+            });
+
+            return filtered_data;
+        } //end inner func
+
+});
+
+
+
+sortApp.filter('people_AND_search', function() {
+
+    return function(data, search) {
+
+            filtered_data = [];
+            if (!search) {
+                return filtered_data;
+            }
+
+            all_terms = search.split(' ');
 
             data.forEach(function(datum) {
                 push_flag = true;
+                var concatted = datum.birthday + datum.description 
+            						+ datum.lastname 
+            						+ datum.firstname 
+            						+ datum.party
+									+ datum.start_date
+									+ datum.state
+									+ datum.title
+									+ datum.twitter
+									+ datum.youtube;
                 all_terms.forEach(function(term) {
-                    if (!(datum.name.toLowerCase().includes(term)  || 
-                    	datum.bill_type.toLowerCase().includes(term) || 
-                    	datum.current_status.includes(term) || 
-                    	datum.id === parseInt(term) || 
-                    	datum.date.includes(term))) {
+                    if (!(concatted.includes(term))) {
                         push_flag = false;
+                    }
+                })
+                if (push_flag) {
+                    filtered_data.push(datum);
+                }
+
+            });
+
+            return filtered_data;
+        } //end inner func
+
+});
+
+
+sortApp.filter('people_OR_search', function() {
+
+    return function(data, search) {
+
+            filtered_data = [];
+            if (!search) {
+                return filtered_data;
+            }
+
+            all_terms = search.split(' ');
+
+            data.forEach(function(datum) {
+                push_flag = false;
+                var concatted = datum.birthday + datum.description 
+            						+ datum.lastname 
+            						+ datum.firstname 
+            						+ datum.party
+									+ datum.start_date
+									+ datum.state
+									+ datum.title
+									+ datum.twitter
+									+ datum.youtube;
+                all_terms.forEach(function(term) {
+                    if (concatted.includes(term)) {
+                        push_flag = true;
                     }
                 })
                 if (push_flag) {
