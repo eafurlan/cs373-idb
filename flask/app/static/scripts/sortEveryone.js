@@ -14,13 +14,17 @@ sortApp.filter('bill_OR_search', function() {
             if (!search) {
                 return filtered_data;
             }
-
-            all_terms = search.split(' ')
+            all_terms = search.toLowerCase().split(' ')
 
             data.forEach(function(datum) {
                 push_flag = false;
                 all_terms.forEach(function(term) {
-                    if (datum.name.includes(term)) {
+                    if (datum.name.toLowerCase().includes(term)  || 
+                    	datum.bill_type.toLowerCase().includes(term) || 
+                    	datum.current_status.includes(term) || 
+                    	datum.id === parseInt(term) || 
+                    	datum.date.includes(term)) {
+                        
                         push_flag = true;
                     }
                 })
@@ -39,7 +43,6 @@ sortApp.filter('bill_AND_search', function() {
 
     return function(data, search) {
 
-
             filtered_data = [];
             if (!search) {
                 return filtered_data;
@@ -50,7 +53,11 @@ sortApp.filter('bill_AND_search', function() {
             data.forEach(function(datum) {
                 push_flag = true;
                 all_terms.forEach(function(term) {
-                    if (!datum.name.includes(term)) {
+                    if (!(datum.name.toLowerCase().includes(term)  || 
+                    	datum.bill_type.toLowerCase().includes(term) || 
+                    	datum.current_status.includes(term) || 
+                    	datum.id === parseInt(term) || 
+                    	datum.date.includes(term))) {
                         push_flag = false;
                     }
                 })
