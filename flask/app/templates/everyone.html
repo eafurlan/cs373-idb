@@ -4,36 +4,38 @@
 <script src="{{ url_for('static', filename='scripts/sortEveryone.js') }}"></script>
 <script src="{{ url_for('static', filename='scripts/clickable.js') }}"></script>
 <script src="{{ url_for('static', filename='scripts/dirPagination.js') }}"></script>
-<div id="search_area" class="col-md-12">
-    <div class="container col-md-9">
-        <h2>Search Results</h2>
-    </div>
-</div>
-</div>
-<div id="table-holder" class="col-md-9">
+<script src="{{ url_for('static', filename='scripts/dirPagination.js') }}"></script>
+<div id="table-holder" class="col-md-8 col-md-offset-2">
     <!-- Table -->
-    <div class="container-fluid" ng-app="sortApp" ng-controller="mainController">
-        <div class="input-group">
-            <input type="text" ng-model="search" class="form-control" placeholder="search">
-            </span>
-        </div>
-        <!-- AND BILL TABLE -->
-        <div class="col-md-12">
-            <div class="table-responsive col-md-6">
+    <h2>Search Results</h2>
+    <div class="container-fluid " ng-app="sortApp" ng-controller="mainController">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="input-group">
+                    <input type="text" ng-model="search" class="form-control" placeholder="...search For">
+                    <span class="glyphicon glyphicon-search input-group-addon"></span>
+                </div>
+            </div>
+            <!-- SEARCH RESULTS -->
+            <div class="panel-footer">
                 <!-- {% raw %} -->
                 <div class="panel panel-default" dir-paginate="roll in everyone | orderBy:sortKey:reverse | all_search:search | itemsPerPage: 10" ng-click="makeLink();">
+                    <div ng-if="!everyone">
+                        <h1> Loading Data </h1>
+                    </div>
                     <!-- BILL RESULTS -->
                     <div ng-if=" roll._category === 'Bill' ">
-                        <div class="panel-body">
+                        <div class="panel-body table-hover">
                             <h4>{{roll.name}}</h4>
                             <div class="panel-block">
                                 <span class="text-left">{{roll.date}}</span>
                             </div>
                         </div>
                         <div class="panel-footer">
-                            <span class="label label-default">{{roll.current_status}} </span>
-                            <span class="label label-default">{{roll.bill_type}} </span>
-                            <span style="float: right">{{roll.id}}</span>
+                            <span class="label label-default">{{roll.current_status}}</span>
+                            <span class="label label-default">{{roll.bill_type}}</span>
+                            <span class="label label-default">{{roll.id}}</span>
+                            <span style="float: right">{{roll._query_type}}</span>
                         </div>
                     </div>
                     <!--PERSON RESULTS -->
@@ -46,21 +48,23 @@
                         </div>
                         <div class="panel-footer">
                             <span class="label label-default">{{roll.party}}</span>
-                            <span class="label label-default">{{roll.state}} </span>
-                            <span style="float: right">{{roll.id}}</span>
+                            <span class="label label-default">{{roll.state}}</span>
+                            <span class="label label-default">{{roll.id}}</span>
+                            <span style="float: right">{{roll._query_type}}</span>
                         </div>
                     </div>
                 </div>
                 <!-- {% endraw %} -->
-                <!-- <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true">
-            </dir-pagination-controls> -->
+                <div class="row">
+                    <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true">
+                    </dir-pagination-controls>
+                </div>
             </div>
-            <!--END BILL TABLE-->
-            
-            
+            <!--END SEARCH RESULTS-->
         </div>
     </div>
-    <!-- end table_holder -->
+</div>
+<!-- end table_holder -->
 </div>
 {% endblock %}
 
