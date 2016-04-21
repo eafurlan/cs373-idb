@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  {% extends "navbar.html" %}
+
+  
+  {% block content %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pokemon.css') }}">
+
+  <script src="{{ url_for('static', filename='../static/scripts/pokeLoader.js') }}"></script>
+
+  <div class="container-fluid cards" ng-app="pokeApp" ng-controller="mainController">
+      <!-- <div class="col-md-2"></div> -->
+      <div class="col-md-4 col-md-offset-2">
+      <div class="card">
+        <div id="outer-card" class="img-rounded">
+          <div id="inner-card">
+            <div>
+              <span id="title">{{pokemon_name}}</span>
+              <span id="hp">300 HP<span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></span>
+            </div>
+            <div id="image">
+            </div>
+            <div id="moveList">
+              <span id="move"><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span> Super Attack</span>
+              <span id="movePoints">+30</span>
+            </div>
+            <table class="bottomBar">
+              <thead>
+                <tr>
+                  <th>Weakness</th>
+                  <th>Resistance</th>
+                  <th>Retreat Cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></td>
+                  <td><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></td>
+                  <td><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <img ng-click="draw()" src="../static/img/card.png" height="400px" width="300px">
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+    
+</html>

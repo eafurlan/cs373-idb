@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "navbar.html" %} {% block content %}
+<script src="{{ url_for('static', filename='scripts/sortEveryone.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/clickable.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/dirPagination.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/hilitor.js') }}"></script>
+<div id="table-holder" class="col-md-8 col-md-offset-2">
+    <!-- Table -->
+    <h2>Search Results</h2>
+    <div class="container-fluid " ng-app="sortApp" ng-controller="mainController">
+
+        <div ng-show="loading" class=" container-fluid" >
+            <img src="{{url_for('static', filename='../static/img/searchLoading.gif')}}" style="margin-left:auto; margin-right: auto; display: block;"> <h4 align="center" class="text-muted">Data is loading...</h4></img> 
+        </div>
+    
+
+        <div class="panel panel-default" ng-hide="loading">
+            <div class="panel-body">
+                <div class="input-group">
+                    <input id="search-bar" type="text" class="form-control" placeholder="WAITING FOR DATA" disabled>
+                    <span class="glyphicon glyphicon-search input-group-addon" ng-click="run_highlighter(search)"></span>
+                    <!-- ON ENTER, ON CLICK TRIGGERING TODO -->
+                    <!-- TODO - ASYNCHRONOUS UPDATE DEBUGGING -->
+                    <!-- Okay, so what I want to do is............click search to trigger the filtering. I need to see if there is an angular "thing" that triggers renderingbased on-->
+                </div>
+            </div>
+            <!-- SEARCH RESULTS -->
+            <div class="panel-footer" id="hide_panel" >
+                <h2 id="result-holder" style="visibility: hidden"> Here are your <span id="result-count"></span> search results </h2>
+                <!-- {% raw %} -->
+                <div id="content" class="panel panel-default" dir-paginate="roll in filtered | itemsPerPage: 10" ng-click="makeLink();">
+                    
+                    
+                    <!-- BILL RESULTS -->
+                    <div ng-if=" roll._category === 'Bill' ">
+                        <div class="panel-body table-hover">
+                            <h4>{{roll.name}}</h4>
+                            <div class="panel-block">
+                                <span class="text-left">{{roll.date}}</span>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="label label-default" style="display: inline">{{roll.current_status}}</div>
+                            <div class="label label-default" style="display: inline">{{roll.bill_type}}</div>
+                            <div class="label label-default" style="display: inline">{{roll.id}}</div>
+                            <span style="float: right">{{roll._query_type}}</span>
+                        </div>
+                    </div>
+                    <!--PERSON RESULTS -->
+                    <div ng-if=" roll._category === 'Person' ">
+                        <div class="panel-body">
+                            <h4>{{roll.title}} {{roll.firstname}} {{roll.lastname}}</h4>
+                            <div class="panel-block">
+                                <span class="text-left">{{roll.start_date}}</span>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="label label-default" style="display: inline">{{roll.party}}</div>
+                            <div class="label label-default" style="display: inline">{{roll.state}}</div>
+                            <div class="label label-default" style="display: inline">{{roll.id}}</div>
+                            <span style="float: right">{{roll._query_type}}</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- {% endraw %} -->
+                <div class="row">
+                    <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true">
+                    </dir-pagination-controls>
+                </div>
+            </div>
+            <!--END SEARCH RESULTS-->
+        </div>
+    </div>
+</div>
+<!-- end table_holder -->
+</div>
+{% endblock %}
+
+</html>

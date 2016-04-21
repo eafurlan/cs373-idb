@@ -6,13 +6,15 @@ sortApp.config(['$locationProvider', function($locationProvider) {
 
 sortApp.controller('mainController', function($scope, $http, $location) {
  	$scope.people = [];
-  
+  	$scope.loading = true;
+
   // Load people from our API
 	$http({
 		method: 'GET',
 		url: '/api/legislators'
 	}).success(function (result){
 		$scope.people = result;
+		$scope.loading = false;
 	});
 
 	$scope.sort = function(keyname){

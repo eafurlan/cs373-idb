@@ -24,15 +24,13 @@
 
       {% if sponsored_bill_association != None %}
 
-     
-
       <h4>
 
-        <a class="text-muted" data-toggle="collapse" role="button" data-target="#sponsored" ng-click="sponsor_collapsed = !sponsor_collapsed">
+        <div class="text-muted" data-toggle="collapse" role="button" data-target="#sponsored" title="{{person.firstname}} {{person.lastname}} was the first legislator to introduce these bills for consideration." ng-click="sponsor_collapsed = !sponsor_collapsed">
           Bills Sponsored
           <span ng-show="sponsor_collapsed" class="glyphicon glyphicon-chevron-down"></span>
           <span ng-show="!sponsor_collapsed" class="glyphicon glyphicon-chevron-up"></span>
-        </a>
+        </div>
 
         <div id="sponsored" class="collapse">
         {% for bill in sponsored_bill_association%}
@@ -44,7 +42,7 @@
       {% endif %}
 
       {% if cosponsored_bill_association%}
-      <h4><div class="text-muted"  data-toggle="collapse" role="button" data-target="#cosponsored" ng-click="cosponsor_collapsed = !cosponsor_collapsed">
+      <h4><div class="text-muted"  data-toggle="collapse" role="button" data-target="#cosponsored" title="{{person.firstname}} {{person.lastname}} supports these bills" ng-click="cosponsor_collapsed = !cosponsor_collapsed">
         Bills Cosponsored
           <span ng-show="cosponsor_collapsed" class="glyphicon glyphicon-chevron-down"></span>
           <span ng-show="!cosponsor_collapsed" class="glyphicon glyphicon-chevron-up"></span>

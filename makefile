@@ -4,6 +4,8 @@ models.py						\
 UML.pdf							\
 apiary.apib 					\
 IDB1.log						\
+IDB2.log						\
+IDB3.log						\
 models.html						\
 .travis.yml
 
@@ -53,6 +55,9 @@ IDB1.log:
 
 IDB2.log:
 	git log > IDB2.log
+
+IDB3.log:
+	git log > IDB3.log
 
 status:
 	make clean

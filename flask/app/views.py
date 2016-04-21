@@ -13,6 +13,7 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 
+
 @app.route('/')
 @app.route('/index/')
 @app.route('/index.html')
@@ -25,19 +26,33 @@ def people_page():
 
 	return render_template("legislators.html")
 
+@app.route('/search/')
+@app.route('/everyone.html')
+def everyone_page():
+
+	return render_template("everyone.html")
+
+
 @app.route('/about/')
 @app.route('/about.html')
 def about():
-	data = open('about.txt').read()
-	group = json.loads(data)
+	with app.open_resource('static/text/about.txt') as data:
+		data = data.read()
+		data = data.decode("utf-8")
+		group = json.loads(str(data))
 	return render_template("about.html", group = group)
-
 
 @app.route('/bills/')
 @app.route('/bills.html')
 def bills_page():
 
 	return render_template("bills.html")
+
+@app.route('/pokemon/')
+@app.route('/pokemon.html')
+def pokemon_page():
+
+	return render_template("pokemon.html")
 
 @app.route('/legislators/<person_id>')
 def render_person(person_id):
@@ -78,12 +93,28 @@ def render_bill(bill_id):
 	bill_obj = session.query(Bill).filter_by(id=bill_id).first()
 	bill_dict = bill_obj.__dict__
 
+	# logic to create tooltip to define what the current status of the bill is 
+	if bill_dict['current_status'] == 'referred':
+		bill_dict['status_info'] = 'This bill has been passed to committe to debate, research, or amend this bill.'
+	elif bill_dict['current_status'] == 'enacted_signed':
+		bill_dict['status_info'] = 'This bill is part of the law'
+	elif bill_dict['current_status'] == 'pass_over_house':
+		bill_dict['status_info'] = 'This bill has been passed in the House.'
+	elif bill_dict['current_status'] == 'reported':
+		bill_dict['status_info'] = 'A committee has formally submitted this bill to its parent chamber/comittee.'
+	elif bill_dict['current_status'] == 'pass_over_senate':
+		bill_dict['status_info'] = 'This bill has been passed in the Senate.'
+	elif bill_dict['current_status'] == 'passed_simpleres':
+		bill_dict['status_info'] = 'This resolution does not have the force of the law and affects just the chamber of Congress.'
+	elif bill_dict['current_status'] == 'passed_concurrentres':
+		bill_dict['status_info'] = 'This resolution does not have the force of the law and affects both the House and the Senate. It is used for matters that affect the rules of Congress or to express the sentiment of Congress.'
+
+
+	bill_dict['current_status'] = bill_dict['current_status'].replace('_', ' ')
+	bill_dict['bill_type'] = bill_dict['bill_type'].replace('_', ' ')
+
 	# querying for a sponsor
 	spon_query = session.query(Legislator, SponsorBillAssociation).join(SponsorBillAssociation).filter(SponsorBillAssociation.bill_id==bill_id).filter(SponsorBillAssociation.type_of_sponsorship=='sponsor').first()
-	# if there isnt any sponsor, assign -1
-
-
-
 
 	if spon_query:
 		spon_dict = spon_query[1].__dict__
