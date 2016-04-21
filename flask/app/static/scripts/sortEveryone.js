@@ -6,14 +6,15 @@ sortApp.config(['$locationProvider', function($locationProvider) {
 
 
 
-sortApp.filter('all_search',function(){
-
-
-    return function(data,search){
+/*
+    TEEN DRINKING AND CODE REPLICATION ARE VERY VERY BAD
+    I STILL GOT A FAKE SEARCH DOE
+*/
+var butt = function(data,search){
         
         filtered_data = [];
-        data_and = []
-        data_or = []
+        data_and = [];
+        data_or = [];
 
         //Null and length check
         if (!search || search.length < 2) {
@@ -86,13 +87,13 @@ sortApp.filter('all_search',function(){
         return filtered_data;
     }
 
-})
 
 
 
 sortApp.controller('mainController', function($scope, $http, $location) {
     $scope.people = [];
     $scope.everyone = [];
+    $scope.filtered = [];
     $scope.loading = true;
     $http({
         method: 'GET',
@@ -119,11 +120,15 @@ sortApp.controller('mainController', function($scope, $http, $location) {
         document.getElementById('search-bar').placeholder = "INPUT SEARCH";
     });
 
+
     $scope.run_highlighter = function(search){
-        var myHilitor = new Hilitor("content");
-        document.getElementById("hide_panel").style.visibility = "visible";
+        $scope.filtered =  butt($scope.everyone,document.getElementById("search-bar").value);
+        //document.getElementById("hide_panel").style.visibility = "visible";
+        //console.log(document.getElementById("content"));
+        setTimeout(function(){var myHilitor = new Hilitor("content");
         myHilitor.setMatchType("left");
-        myHilitor.apply(search);
+        myHilitor.apply(document.getElementById("search-bar").value);},500);
+
     }
 
     $scope.hide_everything = function(){

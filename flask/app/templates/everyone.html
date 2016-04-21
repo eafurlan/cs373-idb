@@ -18,17 +18,18 @@
         <div class="panel panel-default" ng-hide="loading">
             <div class="panel-body">
                 <div class="input-group">
-                    <input id="search-bar" type="text" ng-model="search" class="form-control" ng-change="hide_everything()" placeholder="WAITING FOR DATA" disabled>
+                    <input id="search-bar" type="text" class="form-control" placeholder="WAITING FOR DATA" disabled>
                     <span class="glyphicon glyphicon-search input-group-addon" ng-click="run_highlighter(search)"></span>
                     <!-- ON ENTER, ON CLICK TRIGGERING TODO -->
                     <!-- TODO - ASYNCHRONOUS UPDATE DEBUGGING -->
+                    <!-- Okay, so what I want to do is............click search to trigger the filtering. I need to see if there is an angular "thing" that triggers renderingbased on-->
                 </div>
             </div>
             <!-- SEARCH RESULTS -->
-            <div class="panel-footer" id="hide_panel" style="visibility: hidden">
+            <div class="panel-footer" id="hide_panel" >
                 <!-- {% raw %} -->
-                <div id="content" class="panel panel-default" dir-paginate="roll in everyone | orderBy:roll._query_type | all_search:search | itemsPerPage: 10" ng-click="makeLink();">
-                    <div ng-if="!everyone">
+                <div id="content" class="panel panel-default" dir-paginate="roll in filtered | itemsPerPage: 10" ng-click="makeLink();">
+                    <div ng-if="!filtered">
                         <h1> Loading Data </h1>
                     </div>
                     <!-- BILL RESULTS -->
