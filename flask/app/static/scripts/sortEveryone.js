@@ -5,117 +5,6 @@ sortApp.config(['$locationProvider', function($locationProvider) {
 }]);
 
 
-sortApp.filter('bill_OR_search', function() {
-
-    return function(data, search) {
-
-            filtered_data = [];
-            
-            if (!search || search.length < 2) {
-                return filtered_data;
-            }
-            all_terms = search.toLowerCase().split(' ')
-
-            data.forEach(function(datum) {
-                push_flag = false;
-                all_terms.forEach(function(term) {
-                    if (datum.name.toLowerCase().includes(term)  || 
-                    	datum.bill_type.toLowerCase().includes(term) || 
-                    	datum.current_status.includes(term) || 
-                    	datum.id === parseInt(term) || 
-                    	datum.date.includes(term)) {
-                        
-                        push_flag = true;
-                    }
-                });
-                if (push_flag) {
-                    datum._category = "Bill";
-                    filtered_data.push(datum);
-                }
-            });
-
-            return filtered_data;
-        } //end inner func
-
-});
-
-
-sortApp.filter('bill_AND_search', function() {
-
-    return function(data, search) {
-
-            filtered_data = [];
-            if (!search || search.length < 2) {
-                return filtered_data;
-            }
-
-            all_terms = search.split(' ');
-            data.forEach(function(datum) {
-            var concatted =datum.name  + 
-            	datum.bill_type + 
-            	datum.current_status +  
-            	datum.id + 
-            	datum.date;
-
-                push_flag = true;
-                all_terms.forEach(function(term) {
-                    if (!(concatted.includes(term))) {
-                        push_flag = false;
-                    }
-                });
-                if (push_flag) {
-                    datum._category = "Bill";
-                    filtered_data.push(datum);
-                }
-
-            });
-
-            return filtered_data;
-        } //end inner func
-
-});
-
-
-
-sortApp.filter('people_AND_search', function() {
-
-    return function(data, search) {
-
-            filtered_data = [];
-            if (!search || search.length < 2) {
-                return filtered_data;
-            }
-
-            all_terms = search.split(' ');
-            data.forEach(function(datum) {
-                push_flag = true;
-                var concatted = datum.birthday + datum.description 
-            						+ datum.lastname 
-            						+ datum.firstname 
-            						+ datum.party
-									+ datum.start_date
-									+ datum.state
-									+ datum.title
-									+ datum.twitter
-									+ datum.youtube;
-                all_terms.forEach(function(term) {
-                    if (!(concatted.includes(term))) {
-                        push_flag = false;
-                    }
-                });
-                if (push_flag) {
-                                        datum._category = "Person";
-
-                    filtered_data.push(datum);
-                }
-
-            });
-
-            return filtered_data;
-        } //end inner func
-
-});
-
 
 sortApp.filter('all_search',function(){
 
@@ -147,15 +36,13 @@ sortApp.filter('all_search',function(){
 
             if(datum._category === 'Person'){
                 all_attribs = datum.birthday 
-                                + datum.description 
                                 + datum.lastname 
                                 + datum.firstname 
                                 + datum.party
                                 + datum.start_date
                                 + datum.state
-                                + datum.title
-                                + datum.twitter
-                                + datum.youtube;
+                                + datum.title;
+                                
             }
 
             /*Goes through every search term.
@@ -193,45 +80,6 @@ sortApp.filter('all_search',function(){
 
 })
 
-sortApp.filter('people_OR_search', function() {
-
-    return function(data, search) {
-
-            filtered_data = [];
-            if (!search || search.length < 2) {
-                return filtered_data;
-            }
-
-            all_terms = search.split(' ');
-
-            data.forEach(function(datum) {
-                push_flag = false;
-                var concatted = datum.birthday + datum.description 
-            						+ datum.lastname 
-            						+ datum.firstname 
-            						+ datum.party
-									+ datum.start_date
-									+ datum.state
-									+ datum.title
-									+ datum.twitter
-									+ datum.youtube;
-                all_terms.forEach(function(term) {
-                    if (concatted.includes(term)) {
-                        push_flag = true;
-                    }
-                });
-                if (push_flag) {
-                    datum._category = "Person";
-
-                    filtered_data.push(datum);
-                }
-
-            });
-
-            return filtered_data;
-        } //end inner func
-
-});
 
 
 sortApp.controller('mainController', function($scope, $http, $location) {
@@ -259,7 +107,11 @@ sortApp.controller('mainController', function($scope, $http, $location) {
         $scope.everyone = $scope.everyone.concat($scope.bills);
     });
 
-
+    $scope.run_highlighter = function(search){
+        var myHilitor = new Hilitor("search");
+        myHilitor.apply("highlight words");
+        myHilitor.setMatchType("left");
+    }
 
 
     $scope.makeLink = function () {

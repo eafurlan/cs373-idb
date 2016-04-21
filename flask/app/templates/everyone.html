@@ -4,7 +4,7 @@
 <script src="{{ url_for('static', filename='scripts/sortEveryone.js') }}"></script>
 <script src="{{ url_for('static', filename='scripts/clickable.js') }}"></script>
 <script src="{{ url_for('static', filename='scripts/dirPagination.js') }}"></script>
-<script src="{{ url_for('static', filename='scripts/dirPagination.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/hilitor.js') }}"></script>
 <div id="table-holder" class="col-md-8 col-md-offset-2">
     <!-- Table -->
     <h2>Search Results</h2>
@@ -19,7 +19,7 @@
             <!-- SEARCH RESULTS -->
             <div class="panel-footer">
                 <!-- {% raw %} -->
-                <div class="panel panel-default" dir-paginate="roll in everyone | orderBy:sortKey:reverse | all_search:search | itemsPerPage: 10" ng-click="makeLink();">
+                <div id="content" class="panel panel-default" dir-paginate="roll in everyone | orderBy:sortKey:reverse | all_search:search | itemsPerPage: 10" ng-click="makeLink();">
                     <div ng-if="!everyone">
                         <h1> Loading Data </h1>
                     </div>
