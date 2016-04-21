@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  {% extends "navbar.html" %}
+
+  
+  {% block content %}
+  <script src="{{ url_for('static', filename='../static/scripts/sortBills.js') }}"></script>
+  <script src="{{ url_for('static', filename='../static/scripts/clickable.js') }}"></script>
+  <script src="{{ url_for('static', filename='../static/scripts/dirPagination.js') }}"></script>
+   
+	<div class="container-fluid" ng-app="sortApp" ng-controller="mainController">
+
+      <div class="table-responsive col-md-9">
+        <table class="table table-bordered table-hover">
+
+          <thead>
+            <tr>
+              <th ng-click="sort('id')"><a href="">Id</a>
+                <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+              </th>
+              <th ng-click="sort('name')"><a href="">Name</a>
+                <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+              </th>
+              <th ng-click="sort('context')"><a href="">Last Context</a>
+                <span class="glyphicon sort-icon" ng-show="sortKey=='context'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+              </th>
+                                  
+            </tr>
+          </thead>
+
+          <tbody>
+            <!-- {% raw %} -->
+            <tr dir-paginate="roll in people | orderBy:sortKey:reverse | filter:search | itemsPerPage:10" ng-click="makeLink();">
+              <td>{{ roll.id }}</td>
+              <td>{{ roll.name }}</td>
+              <td>{{ roll.context }}</td>
+            </tr>
+            <!-- {% endraw %} -->
+          </tbody>
+        </table>
+
+        <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true" >
+        </dir-pagination-controls>
+
+      </div>
+
+
+  {% endblock %}
+    
+</html>

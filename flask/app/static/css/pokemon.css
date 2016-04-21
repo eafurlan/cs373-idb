@@ -1,0 +1,90 @@
+
+#card{
+	margin-left: auto;
+	margin-right: 200px;
+	background: gold;
+	width: 300px;
+	height: 400px;
+	font-size: 16px;
+    font-family: "News Cycle","Arial Narrow Bold",sans-serif;
+    font-weight: 700;
+    box-shadow: 1px 1px 1px grey;
+    border-radius: 15px;
+}
+
+img{
+	float:left;
+	margin-left:200px;
+    box-shadow: 2px 2px 2px grey;
+    border-radius: 15px;
+}
+
+#inner-card{
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #00ffff;
+	width: 270px;
+	height: 370px;
+}
+
+#title{
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#hp{
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#image{
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 20%;
+	transform: translateY(-20%);
+	background: #000000;
+	width: 250px;
+	height: 150px;
+}
+
+#moveList{
+    position: relative;
+	top: 30%;
+	transform: translateY(-30%);
+}
+
+#move{
+	font-size: 14px;
+    float: left;
+    margin-left: 20px;
+}
+
+#movePoints{
+	font-size: 18px;
+    float: right;
+    margin-right: 30px;
+}
+
+.bottomBar{
+	width: 250px;
+	text-align: center;
+	font-size: 12px;
+    font-weight: 500;
+    position: relative;
+	top: 45%;
+	transform: translateY(-45%);
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}
+
+.bottomBar th{
+	text-align: center;
+	border-top: 1px solid #000;
+}

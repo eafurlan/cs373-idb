@@ -98,7 +98,6 @@ class TestResource(Resource):
 			tmpout = tmpout.replace('\n','<br/>')
 			tmperr = err.decode('utf-8')
 			tmperr = tmperr.replace('\n','<br/>')
-			print("output_text:\n" + str(output_text), "stderr:\n" + str(err))
 			test_text = tmpout + "<br/>" + tmperr
 			return {'test_text': test_text}
 		except subprocess.CalledProcessError:

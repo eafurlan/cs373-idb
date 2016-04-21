@@ -6,6 +6,7 @@ sortApp.config(['$locationProvider', function($locationProvider) {
 
 sortApp.controller('mainController', function($scope, $http, $location) {
  	$scope.bills = [];
+ 	$scope.loading = true;
   
   // Load bills from our API
 	$http({
@@ -13,6 +14,7 @@ sortApp.controller('mainController', function($scope, $http, $location) {
 		url: '/api/bills'
 	}).success(function (result){
 		$scope.bills = result;
+		$scope.loading = false;
 	});
 
 	$scope.sort = function(keyname){

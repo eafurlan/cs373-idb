@@ -12,7 +12,7 @@
     background: url(polina.jpg) no-repeat;
     background-size: cover;
 }
-.container h1 {
-    color: white;
-}
 
+#content {
+    color: black;
+}

@@ -10,8 +10,10 @@
   <script src="{{ url_for('static', filename='../static/scripts/dirPagination.js') }}"></script>
    
 	<div class="container-fluid" ng-app="sortApp" ng-controller="mainController">
-
-    <div class="table-responsive col-md-9">
+    <div ng-show="loading" class=" container-fluid" >
+      <img src="{{url_for('static', filename='../static/img/loadbills.gif')}}" style="margin-left:auto; margin-right: auto; display: block;"> <h4 align="center" class="text-muted"> Congress is working on it. This may take a while...</h4></img> 
+    </div>
+    <div class="table-responsive col-md-9" ng-hide="loading">
       <table class="table table-bordered table-hover">
 
         <thead>
@@ -56,7 +58,7 @@
 
     </div>
 
-    <div class="container col-md-3">
+    <div class="container col-md-3" ng-hide="loading">
       <div class="input-group">
         <input type="text" ng-model="search" class="form-control" placeholder="Search Bills">
       </div>
