@@ -1,12 +1,12 @@
 [
-	
+
 	{
 		"name": "Arman Baratifar",
 		"bio": "Arman is a Senior graduating in May. His responsibilities for the project included hosting the pages using Flask, deploying the app, and doing some front end development and testing.",
 		"pic" : "http://abaratif.github.io/images/headshot.jpg",
 		"commits":"63",
 		"issues": "10",
-		"unit tests": "4"
+		"unittests": "4"
 	},
 	{
 		"name": "Brian Hodge",
@@ -20,9 +20,9 @@
 		"name": "Liz Furlan",
 		"bio": "Liz is a senior, graduating this May. She is also taking Computational Brain and Networks this semester. Her primary responsibility for the ILDb has been front-end work; she created the html and css for most of the pages you see here, as well as incorporating AngularJS and jQuery to add functionality to the pages.",
 		"pic" : "https://raw.githubusercontent.com/eafurlan/cs373-idb/master/flask/app/static/img/liz.jpg",
-		"commits": "49",
+		"commits": "51",
 		"issues": "20 (but these were made collaboratively)",
-		"unittests": "4"
+		"unittests": "5"
 	},
 	{
 		"name": "Oliver Croomes II",
