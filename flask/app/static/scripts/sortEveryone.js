@@ -12,6 +12,8 @@ sortApp.filter('all_search',function(){
     return function(data,search){
         
         filtered_data = [];
+        data_and = []
+        data_or = []
 
         //Null and length check
         if (!search || search.length < 2) {
@@ -70,11 +72,17 @@ sortApp.filter('all_search',function(){
 
             if(push_flag)
             {
-                filtered_data.push(datum);
+                if(datum._query_type == 'AND'){
+                    data_and.push(datum);
+                }else{
+                    data_or.push(datum)
+                }
+                //filtered_data.push(datum);
             }
 
         });
-
+        
+        filtered_data = data_and.concat(data_or);
         return filtered_data;
     }
 
@@ -85,9 +93,10 @@ sortApp.filter('all_search',function(){
 sortApp.controller('mainController', function($scope, $http, $location) {
     $scope.people = [];
     $scope.everyone = [];
+    $scope.loading = true;
     $http({
         method: 'GET',
-        url: 'http://0.0.0.0:8080/api/legislators'
+        url: '/api/legislators'
     }).success(function(result) {
         $scope.people = result;
         $scope.people.forEach(function(person){
@@ -98,7 +107,7 @@ sortApp.controller('mainController', function($scope, $http, $location) {
 
     $http({
         method: 'GET',
-        url: 'http://0.0.0.0:8080/api/bills'
+        url: '/api/bills'
     }).success(function(result) {
         $scope.bills = result;
         $scope.bills.forEach(function(bill){
@@ -106,6 +115,7 @@ sortApp.controller('mainController', function($scope, $http, $location) {
         });
         $scope.everyone = $scope.everyone.concat($scope.bills);
         document.getElementById('search-bar').disabled = false;
+        $scope.loading = false;
         document.getElementById('search-bar').placeholder = "INPUT SEARCH";
     });
 
