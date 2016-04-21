@@ -6,11 +6,8 @@ sortApp.config(['$locationProvider', function($locationProvider) {
 
 
 
-/*
-    TEEN DRINKING AND CODE REPLICATION ARE VERY VERY BAD
-    I STILL GOT A FAKE SEARCH DOE
-*/
-var butt = function(data,search){
+
+var search_filter = function(data,search){
         
         filtered_data = [];
         data_and = [];
@@ -122,7 +119,7 @@ sortApp.controller('mainController', function($scope, $http, $location) {
 
 
     $scope.run_highlighter = function(search){
-        $scope.filtered =  butt($scope.everyone,document.getElementById("search-bar").value);
+        $scope.filtered =  search_filter($scope.everyone,document.getElementById("search-bar").value);
         //document.getElementById("hide_panel").style.visibility = "visible";
         //console.log(document.getElementById("content"));
         setTimeout(function(){var myHilitor = new Hilitor("content");
