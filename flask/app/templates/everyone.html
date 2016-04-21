@@ -9,7 +9,13 @@
     <!-- Table -->
     <h2>Search Results</h2>
     <div class="container-fluid " ng-app="sortApp" ng-controller="mainController">
-        <div class="panel panel-default">
+
+        <div ng-show="loading" class=" container-fluid" >
+            <img src="{{url_for('static', filename='../static/img/searchLoading.gif')}}" style="margin-left:auto; margin-right: auto; display: block;"> <h4 align="center" class="text-muted">Data is loading...</h4></img> 
+        </div>
+    
+
+        <div class="panel panel-default" ng-hide="loading">
             <div class="panel-body">
                 <div class="input-group">
                     <input id="search-bar" type="text" ng-model="search" class="form-control" placeholder="WAITING FOR DATA" ng-change="run_highlighter(search)" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" disabled>

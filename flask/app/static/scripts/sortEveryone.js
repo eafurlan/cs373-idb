@@ -85,6 +85,7 @@ sortApp.filter('all_search',function(){
 sortApp.controller('mainController', function($scope, $http, $location) {
     $scope.people = [];
     $scope.everyone = [];
+    $scope.loading = true;
     $http({
         method: 'GET',
         url: 'http://0.0.0.0:8080/api/legislators'
@@ -106,6 +107,7 @@ sortApp.controller('mainController', function($scope, $http, $location) {
         });
         $scope.everyone = $scope.everyone.concat($scope.bills);
         document.getElementById('search-bar').disabled = false;
+        $scope.loading = false;
         document.getElementById('search-bar').placeholder = "INPUT SEARCH";
     });
 
