@@ -1,7 +1,18 @@
 
-#card{
-	margin-left: auto;
-	margin-right: 200px;
+.cards{
+	width: 100%;
+	text-align: center;
+	float: center;
+	padding: 20px 0;
+}
+
+.card{
+	padding: 20px;
+	margin: 0 auto;
+	display: inline-block;
+}	
+
+#outer-card{
 	background: gold;
 	width: 300px;
 	height: 400px;
@@ -13,8 +24,6 @@
 }
 
 img{
-	float:left;
-	margin-left:200px;
     box-shadow: 2px 2px 2px grey;
     border-radius: 15px;
 }

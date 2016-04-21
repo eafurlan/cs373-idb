@@ -4,6 +4,7 @@ UML.pdf							\
 apiary.apib 					\
 IDB1.log						\
 IDB2.log						\
+IDB3.log						\
 models.html						\
 .travis.yml
 
