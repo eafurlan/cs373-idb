@@ -105,6 +105,8 @@ sortApp.controller('mainController', function($scope, $http, $location) {
             bill._category = 'Bill';
         });
         $scope.everyone = $scope.everyone.concat($scope.bills);
+        document.getElementById('search-bar').disabled = false;
+        document.getElementById('search-bar').placeholder = "INPUT SEARCH";
     });
 
     $scope.run_highlighter = function(search){
