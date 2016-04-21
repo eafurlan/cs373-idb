@@ -108,9 +108,9 @@ sortApp.controller('mainController', function($scope, $http, $location) {
     });
 
     $scope.run_highlighter = function(search){
-        var myHilitor = new Hilitor("search");
-        myHilitor.apply("highlight words");
+        var myHilitor = new Hilitor("content");
         myHilitor.setMatchType("left");
+        myHilitor.apply(search);
     }
 
 
