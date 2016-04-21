@@ -12,14 +12,16 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="input-group">
-                    <input id="search-bar" type="text" ng-model="search" class="form-control" placeholder="WAITING FOR DATA" ng-change="run_highlighter(search)" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" disabled>
-                    <span class="glyphicon glyphicon-search input-group-addon"></span>
+                    <input id="search-bar" type="text" ng-model="search" class="form-control" ng-change="hide_everything()" placeholder="WAITING FOR DATA" disabled>
+                    <span class="glyphicon glyphicon-search input-group-addon" ng-click="run_highlighter(search)"></span>
+                    <!-- ON ENTER, ON CLICK TRIGGERING TODO -->
+                    <!-- TODO - ASYNCHRONOUS UPDATE DEBUGGING -->
                 </div>
             </div>
             <!-- SEARCH RESULTS -->
-            <div class="panel-footer">
+            <div class="panel-footer" id="hide_panel" style="visibility: hidden">
                 <!-- {% raw %} -->
-                <div id="content" class="panel panel-default" dir-paginate="roll in everyone | orderBy:sortKey:reverse | all_search:search | itemsPerPage: 10" ng-click="makeLink();">
+                <div id="content" class="panel panel-default" dir-paginate="roll in everyone | orderBy:roll._query_type | all_search:search | itemsPerPage: 10" ng-click="makeLink();">
                     <div ng-if="!everyone">
                         <h1> Loading Data </h1>
                     </div>

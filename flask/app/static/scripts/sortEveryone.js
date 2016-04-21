@@ -111,10 +111,14 @@ sortApp.controller('mainController', function($scope, $http, $location) {
 
     $scope.run_highlighter = function(search){
         var myHilitor = new Hilitor("content");
+        document.getElementById("hide_panel").style.visibility = "visible";
         myHilitor.setMatchType("left");
         myHilitor.apply(search);
     }
 
+    $scope.hide_everything = function(){
+        document.getElementById("hide_panel").style.visibility = "hidden";
+    }
 
     $scope.makeLink = function () {
      		
