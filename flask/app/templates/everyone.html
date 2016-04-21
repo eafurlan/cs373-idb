@@ -27,11 +27,11 @@
             </div>
             <!-- SEARCH RESULTS -->
             <div class="panel-footer" id="hide_panel" >
+                <h2 id="result-holder" style="visibility: hidden"> Here are your <span id="result-count"></span> search results </h2>
                 <!-- {% raw %} -->
                 <div id="content" class="panel panel-default" dir-paginate="roll in filtered | itemsPerPage: 10" ng-click="makeLink();">
-                    <div ng-if="!filtered">
-                        <h1> Loading Data </h1>
-                    </div>
+                    
+                    
                     <!-- BILL RESULTS -->
                     <div ng-if=" roll._category === 'Bill' ">
                         <div class="panel-body table-hover">
