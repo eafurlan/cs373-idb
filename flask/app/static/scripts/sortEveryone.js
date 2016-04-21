@@ -88,7 +88,7 @@ sortApp.controller('mainController', function($scope, $http, $location) {
     $scope.loading = true;
     $http({
         method: 'GET',
-        url: 'http://0.0.0.0:8080/api/legislators'
+        url: '/api/legislators'
     }).success(function(result) {
         $scope.people = result;
         $scope.people.forEach(function(person){
@@ -99,7 +99,7 @@ sortApp.controller('mainController', function($scope, $http, $location) {
 
     $http({
         method: 'GET',
-        url: 'http://0.0.0.0:8080/api/bills'
+        url: '/api/bills'
     }).success(function(result) {
         $scope.bills = result;
         $scope.bills.forEach(function(bill){
