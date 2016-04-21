@@ -12,6 +12,8 @@ sortApp.filter('all_search',function(){
     return function(data,search){
         
         filtered_data = [];
+        data_and = []
+        data_or = []
 
         //Null and length check
         if (!search || search.length < 2) {
@@ -70,11 +72,17 @@ sortApp.filter('all_search',function(){
 
             if(push_flag)
             {
-                filtered_data.push(datum);
+                if(datum._query_type == 'AND'){
+                    data_and.push(datum);
+                }else{
+                    data_or.push(datum)
+                }
+                //filtered_data.push(datum);
             }
 
         });
-
+        
+        filtered_data = data_and.concat(data_or);
         return filtered_data;
     }
 
