@@ -8,14 +8,18 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/pokemon.css') }}">
 
   <script src="{{ url_for('static', filename='../static/scripts/pokeLoader.js') }}"></script>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-route.js"></script>
+  <!-- ng-app and ng-controller included here -->
   <div class="container-fluid cards" ng-app="pokeApp" ng-controller="mainController">
       <!-- <div class="col-md-2"></div> -->
       <div class="col-md-4 col-md-offset-2">
+      <!-- hi doesn't show up, only Hi -->
+      {{hi}} Hi
       <div class="card">
         <div id="outer-card" class="img-rounded">
           <div id="inner-card">
             <div>
+              <!-- pokemon_name not pulled - why?? -->
               <span id="title">{{pokemon_name}}</span>
               <span id="hp">300 HP<span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></span>
             </div>
@@ -35,6 +39,7 @@
               </thead>
               <tbody>
                 <tr>
+                <!-- Will need to replace these with type-based icons eventually -->
                   <td><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></td>
                   <td><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></td>
                   <td><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></td>

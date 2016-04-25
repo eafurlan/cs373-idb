@@ -1,47 +1,68 @@
-var pokeApp = angular.module('pokeApp', []);
+var pokeApp = angular.module('pokeApp', ['ngRoute']);
 
 pokeApp.controller('mainController', function($scope, $http) {
- 	$scope.pokemon;
- 	$scope.pokemon_name = "";
+	//Variables to be used in html
+ 	$scope.hi = "hi";
+ 	//Grabbed dummy data for Ivysaur to test webpage - didn't work :( 
+ 	$scope.pokemon = jQuery.parseJSON('{"id": 2, "name": "Ivysaur", "stats": [{"base_stat": 60, "name": "speed"}, {"base_stat": 80, "name": "special_defense"}, {"base_stat": 80, "name": "special_attack"}, {"base_stat": 63, "name": "defense"}, {"base_stat": 62, "name": "attack"}, {"base_stat": 60, "name": "hp"}], "primary_type": 12, "secondary_type": 4, "average_stats": 67, "moves": [14, 15, 20, 22, 29, 33, 34, 36, 38, 45, 70, 72, 73, 74, 75, 76, 77, 79, 81, 92, 99, 102, 104, 111, 113, 115, 117, 148, 156, 164, 173, 174, 182, 188, 189, 202, 203, 207, 210, 213, 214, 216, 218, 219, 230, 235, 237, 241, 249, 263, 267, 282, 290, 331, 363, 388, 402, 412, 445, 447, 474, 496, 497, 520, 590]}');
+ 	$scope.pokemon_name = "HI!";
  	$scope.pokemon_type = "";
  	$scope.pokemon_hp = 0;
+ 	$scope.pokemon_move_1;
  	$scope.pokemon_move_1_name = "";
  	$scope.pokemon_move_1_power = 0;
  	$scope.pokemon_move_1_type = 0;
+ 	$scope.pokemon_move_2;
  	$scope.pokemon_move_2_name = "";
  	$scope.pokemon_move_2_power = 0;
  	$scope.pokemon_move_2_type = 0;
  	$scope.pokemon_color = "gray";
  	$scope.pokemon_img = "";
+ 	//url for all the pictures - go here to see a list of image names. Has type and pokemon .png's
  	img_url = 'https://b1c01bf8eafe786b36c877247c911d2fb8db34b3-www.googledrive.com/host/0Bwhv4pFNwLa8WVhmUmsxN1ExOVU/static/img/';
 
+ 	// jsonp_url - "http://ildb.me/get/?url=<swecune.com/api/pokemon/"+num+">&callback=?'"
+
 	$scope.draw = function(){
+		//Get a random pokemon's id number (pokemon id numbers go from 1 to 721)
 		num = Math.ceil(Math.random(721))
-		console.log("trying to get pokemon number"+num)
-		$http.jsonp('http://swecune.com/api/pokemon/'+num)
-		.then(function(res){
-			console.log(res);
-			$scope.pokemon = res;
-		});
-		console.log($scope.pokemon);
-		$scope.pokemon_name = $scope.pokemon["name"];
-		$scope.pokemon_type = img_url+"type_"+$scope.pokemon["primary_type"]+".png";
-		$scope.pokemon_hp = $scope.pokemon["stats"][1]["base_stat"];
-		move_1 = $scope.pokemon["moves"][1];
-		$http.jsonp('http://swecune.com/api/move/'+move_1)
-		.then(function(res){
-			$scope.pokemon_move_1_name = res["name"];
-			$scope.pokemon_move_1_power = res["power"];
-			$scope.pokemon_move_1_type = img_url+"type_"+res["move_type"]+".png";
-		});
-		move_2 = $scope.pokemon["moves"][2];
-		$http.jsonp('http://swecune.com/api/move/'+move_2)
-		.then(function(res){
-			$scope.pokemon_move_2_name = res["name"];
-			$scope.pokemon_move_2_power = res["power"];
-			$scope.pokemon_move_2_type = img_url+"type_"+res["move_type"]+".png";
-		});
-		populateTypeBasedInfo($scope.pokemon["primary_type"])
+		//One possible way of getting the api data - currently not working
+		// $http.jsonp('http://swecune.com/api/pokemon/'+num)
+		// .then(function(res){
+		// 	console.log("in function")
+		// 	console.log(res.data + "");
+		// 	$scope.pokemon = JSON.parse(res.data + "");
+		// });
+		//Another possible way - not working too. Need to look into the callback field in the url.
+		// $.ajax({
+		//   url: "http://ildb.me/get/?url=<swecune.com/api/pokemon/"+num+">&callback=?JSON_CALLBACK",
+		//   dataType: 'jsonp',
+		//   scriptCharset: 'UTF-8',
+		//   success: function(data) {
+		//     console.log(data);
+		// }});
+		//Assigning variables that will be used in the html
+		$scope.pokemon_name = $scope.pokemon.name;
+		$scope.pokemon_type = img_url+"type_"+$scope.pokemon.primary_type+".png";
+		$scope.pokemon_hp = $scope.pokemon.stats[1].base_stat;
+		move_1 = $scope.pokemon.moves[1];
+		//SHOULD be getting the move info to fill in the variables
+		// $http.jsonp('http://swecune.com/api/move/'+move_1)
+		// .then(function(res){
+		// 	$scope.pokemon_move_1_name = res.data.name;
+		// 	$scope.pokemon_move_1_power = res.data.power;
+		// 	$scope.pokemon_move_1_type = img_url+"type_"+res.data.move_type+".png";
+		// });
+		move_2 = $scope.pokemon.moves[2];
+		//Again, SHOULD be getting move data
+		// $http.jsonp('http://swecune.com/api/move/'+move_2)
+		// .then(function(res){
+		// 	$scope.pokemon_move_2_name = res.data.name;
+		// 	$scope.pokemon_move_2_power = res.data.power;
+		// 	$scope.pokemon_move_2_type = img_url+"type_"+res.data.move_type+".png";
+		// });
+		//Get type-based info - may need to add weaknesses in this function?
+		populateTypeBasedInfo($scope.pokemon.primary_type)
 	}
 
 	populateTypeBasedInfo = function(type){
