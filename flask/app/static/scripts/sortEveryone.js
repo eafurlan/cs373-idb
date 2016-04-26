@@ -129,9 +129,12 @@ sortApp.controller('mainController', function($scope, $http, $location) {
         document.getElementById("result-count").appendChild(document.createTextNode($scope.filtered.length));
         //document.getElementById("hide_panel").style.visibility = "visible";
         //console.log(document.getElementById("content"));
-        setTimeout(function(){var myHilitor = new Hilitor("content");
-        myHilitor.setMatchType("left");
-        myHilitor.apply(document.getElementById("search-bar").value);
+        search_value = document.getElementById("search-bar").value
+        setInterval(function(){
+        
+        var myHilitor = new Hilitor("content");
+        myHilitor.setMatchType("open");
+        myHilitor.apply(search_value);
 
         span.appendChild( document.createTextNode("some new content") );
 
