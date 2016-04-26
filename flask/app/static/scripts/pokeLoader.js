@@ -19,7 +19,7 @@ pokeApp.controller('mainController', function($scope, $http) {
  	$scope.pokemon; //jQuery.parseJSON('{"id": 2, "name": "Ivysaur", "stats": [{"base_stat": 60, "name": "speed"}, {"base_stat": 80, "name": "special_defense"}, {"base_stat": 80, "name": "special_attack"}, {"base_stat": 63, "name": "defense"}, {"base_stat": 62, "name": "attack"}, {"base_stat": 60, "name": "hp"}], "primary_type": 12, "secondary_type": 4, "average_stats": 67, "moves": [14, 15, 20, 22, 29, 33, 34, 36, 38, 45, 70, 72, 73, 74, 75, 76, 77, 79, 81, 92, 99, 102, 104, 111, 113, 115, 117, 148, 156, 164, 173, 174, 182, 188, 189, 202, 203, 207, 210, 213, 214, 216, 218, 219, 230, 235, 237, 241, 249, 263, 267, 282, 290, 331, 363, 388, 402, 412, 445, 447, 474, 496, 497, 520, 590]}');
  	$scope.pokemon_name = "Name";
  	$scope.pokemon_type = 1;
- 	$scope.pokemon_type_img = getTypeImg(1);
+ 	$scope.pokemon_type_img;
  	$scope.pokemon_hp = 50;
  	$scope.move_1 = 5;
  	$scope.move_1_name = "";
@@ -43,39 +43,39 @@ pokeApp.controller('mainController', function($scope, $http) {
  	// jsonp_url - "http://ildb.me/get/?url=<swecune.com/api/pokemon/"+num+">&callback=?'"
 	renderCard = function(json_stuff){
 
-		$scope.data = json_stuff;
+		// console.log(json_stuff[0]);
 
-		console.log($scope.pokemon_name);
-		$scope.pokemon = $scope.data[0];
-		$scope.pokemon_name = $scope.pokemon.name;
-		$scope.pokemon_type = $scope.pokemon.primary_type;
-		$scope.pokemon_type_img = getTypeImg($scope.pokemon.type);
-		$scope.pokemon_hp = $scope.pokemon.stats[1].base_stat;
+		$scope.pokemon_name = json_stuff[0].name;
+		$scope.pokemon_type = json_stuff[0].primary_type;
+		$scope.pokemon_type_img = getTypeImg(json_stuff[0].primary_type);
+		$scope.pokemon_img = getPokemonImg(json_stuff[0].id);
+		$scope.pokemon_hp = json_stuff[0].stats[1].base_stat;
 		
-		$scope.move_1 = $scope.data[1];
-		$scope.move_1_name = $scope.move_1.name;
-		$scope.move_1_power = $scope.move_1.power;
-		$scope.move_1_type = $scope.move_1.move_type;
-		$scope.move_1_type_img = getTypeImg($scope.move_1_type);
+		// $scope.move_1 = $scope.data[1];
+		// $scope.move_1_name = $scope.move_1.name;
+		// $scope.move_1_power = $scope.move_1.power;
+		// $scope.move_1_type = $scope.move_1.move_type;
+		// $scope.move_1_type_img = getTypeImg($scope.move_1_type);
 
-		$scope.move_2 = $scope.data[2];
-		$scope.move_2_name = $scope.move_2.name;
-		$scope.move_2_power = $scope.move_2.power;
-		$scope.move_2_type = $scope.move_2.move_type;
-		$scope.move_2_type_img = getTypeImg($scope.move_2_type);
+		// $scope.move_2 = $scope.data[2];
+		// $scope.move_2_name = $scope.move_2.name;
+		// $scope.move_2_power = $scope.move_2.power;
+		// $scope.move_2_type = $scope.move_2.move_type;
+		// $scope.move_2_type_img = getTypeImg($scope.move_2_type);
 
-		$scope.move_3 = $scope.data[3];
-		$scope.move_3_name = $scope.move_3.name;
-		$scope.move_3_power = $scope.move_3.power;
-		$scope.move_3_type = $scope.move_3.move_type;
-		$scope.move_3_type_img = getTypeImg($scope.move_3_type);
+		// $scope.move_3 = $scope.data[3];
+		// $scope.move_3_name = $scope.move_3.name;
+		// $scope.move_3_power = $scope.move_3.power;
+		// $scope.move_3_type = $scope.move_3.move_type;
+		// $scope.move_3_type_img = getTypeImg($scope.move_3_type);
 
-		populateTypeBasedInfo($scope.pokemon_type);
+		// populateTypeBasedInfo($scope.pokemon_type);
 	};	
 
 	$scope.draw = function(){
 		//Get a random pokemon's id number (pokemon id numbers go from 1 to 721)
-		num = Math.ceil(Math.random(721))
+		num = Math.ceil(Math.random() * (721 - 1) + 1);
+		console.log(num);
 
 	// Load pokemon from API
 
@@ -84,7 +84,7 @@ pokeApp.controller('mainController', function($scope, $http) {
 		method: 'GET',
 		url: '/api/pokemon/'+num
 	}).success(function (result){
-		console.log(num)
+		// console.log(num);
 		renderCard(result);
 		// $scope.data = result;
 		// console.log($scope.data);
