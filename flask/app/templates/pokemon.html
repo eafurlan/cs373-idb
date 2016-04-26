@@ -5,11 +5,12 @@
 
   
   {% block content %}
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/pokemon.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/pokemon.css') }}">
 
   <script src="{{ url_for('static', filename='../static/scripts/pokeLoader.js') }}"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-route.js"></script>
   <!-- ng-app and ng-controller included here -->
+  {% raw %}
   <div class="container-fluid cards" ng-app="pokeApp" ng-controller="mainController">
       <!-- <div class="col-md-2"></div> -->
       <div class="col-md-4 col-md-offset-2">
@@ -57,7 +58,7 @@
       </div>
     </div>
   </div>
-
+  {% endraw %}
   {% endblock %}
     
 </html>
