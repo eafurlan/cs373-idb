@@ -6,6 +6,7 @@ from app.models import *
 from app import app
 import subprocess
 import os
+import requests
 
 engine = create_engine('mysql+pymysql://dev1:swesquad@172.99.70.111:3306/ildb_prod')
 Session = sessionmaker(bind=engine)
@@ -104,4 +105,19 @@ class TestResource(Resource):
 			return {'test_text':'The process returned with an error'}
 		except subprocess.TimeoutExpired:
 			return {'test_text':'The tests took too long to run. Check the server'}
+
+class Pokemon(Resource):
+	def get(self, id):
+		url = 'http://swecune.com/api/pokemon/'+str(id)
+		api_response = requests.get(url).json()
+		result = []
+		result.append(api_response)
+		for i in range(2):
+			url2 = 'http://swecune.com/api/move/'+str(api_response['moves'][i])
+			result.append(requests.get(url2).json())
+
+
+		return result
+
+
 			
