@@ -112,7 +112,7 @@ class Pokemon(Resource):
 		api_response = requests.get(url).json()
 		result = []
 		result.append(api_response)
-		for i in range(2):
+		for i in range(3):
 			url2 = 'http://swecune.com/api/move/'+str(api_response['moves'][i])
 			result.append(requests.get(url2).json())
 
