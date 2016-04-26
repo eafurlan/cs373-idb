@@ -14,21 +14,23 @@
   <div class="container-fluid cards" ng-app="pokeApp" ng-controller="mainController">
       <!-- <div class="col-md-2"></div> -->
       <div class="col-md-4 col-md-offset-2">
-      <!-- hi doesn't show up, only Hi -->
-      {{hi}} Hi
       <div class="card">
         <div id="outer-card" class="img-rounded">
-          <div id="inner-card">
+          <div id="inner-card" ng-style="{background: pokemon_color}" ng-model="pokemon_color">
             <div>
-              <!-- pokemon_name not pulled - why?? -->
               <span id="title">{{pokemon_name}}</span>
-              <span id="hp">300 HP<span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></span>
+              <span id="hp">{{pokemon_hp}} HP<img class="small" src={{pokemon_type_img}} alt={{pokemon_type}}></span>
             </div>
             <div id="image">
+            <img class="large" src={{pokemon_img}} alt={{pokemon_name}}>
             </div>
-            <div id="moveList">
-              <span id="move"><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span> Super Attack</span>
-              <span id="movePoints">+30</span>
+            <div class="moveList">
+              <div class="move"><img class="small" src={{pokemon_move_1_type_img}} alt={{pokemon_move_1_type}}>{{pokemon_move_1_name}}</div>
+              <div class="movePoints">+{{pokemon_move_1_type}}</div>
+            </div>
+            <div class="moveList">
+              <div class="move"><img class="small" src={{pokemon_move_2_type_img}} alt={{pokemon_move_2_type}}>{{pokemon_move_2_name}}</div>
+              <div class="movePoints">+{{pokemon_move_2_type}}</div>
             </div>
             <table class="bottomBar">
               <thead>
@@ -41,9 +43,9 @@
               <tbody>
                 <tr>
                 <!-- Will need to replace these with type-based icons eventually -->
-                  <td><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></td>
-                  <td><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></td>
-                  <td><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></td>
+                  <td><img class="small" src={{pokemon_type_img}} alt={{pokemon_type}}></td>
+                  <td><img class="small" src={{pokemon_type_img}} alt={{pokemon_type}}></td>
+                  <td><img class="small" src={{pokemon_type_img}} alt={{pokemon_type}}></td>
                 </tr>
               </tbody>
             </table>
@@ -54,7 +56,7 @@
 
     <div class="col-md-4">
       <div class="card">
-        <img ng-click="draw()" src="../static/img/card.png" height="400px" width="300px">
+        <img class="card_back" ng-click="draw()" src="../static/img/card.png" height="400px" width="300px">
       </div>
     </div>
   </div>

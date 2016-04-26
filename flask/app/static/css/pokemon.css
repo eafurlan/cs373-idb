@@ -23,7 +23,7 @@
     border-radius: 15px;
 }
 
-img{
+.card-back{
     box-shadow: 2px 2px 2px grey;
     border-radius: 15px;
 }
@@ -62,19 +62,33 @@ img{
 	height: 150px;
 }
 
-#moveList{
+.small{
+	width: 22px;
+	height: 25px;
+}
+
+.large{
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	display: block;
+	clip: rect(0px, 140px, 140px, 0px);
+}
+
+.moveList{
     position: relative;
 	top: 30%;
 	transform: translateY(-30%);
+	width:100%;
 }
 
-#move{
+.move{
 	font-size: 14px;
     float: left;
     margin-left: 20px;
 }
 
-#movePoints{
+.movePoints{
 	font-size: 18px;
     float: right;
     margin-right: 30px;
