@@ -11,44 +11,31 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-route.js"></script>
   <!-- ng-app and ng-controller included here -->
   {% raw %}
-  <div class="container-fluid cards" ng-app="pokeApp" ng-controller="mainController">
+  <div class="container-fluid cards" ng-app="pokeApp" ng-controller="mainController" data-ng-init="init()">
       <!-- <div class="col-md-2"></div> -->
       <div class="col-md-4 col-md-offset-2">
       <div class="card">
         <div id="outer-card" class="img-rounded">
-          <div id="inner-card" ng-style="{background: pokemon_color}"ng-model="pokemon_color">
+          <div id="inner-card" ng-style="{background: pokemon_color}" ng-model="pokemon_color">
             <div>
               <span id="title">{{pokemon_name}}</span>
               <span id="hp">{{pokemon_hp}} HP<img class="small" src={{pokemon_type_img}} alt={{pokemon_type}}></span>
             </div>
-            <div id="image">
-            <img class="large" src={{pokemon_img}} alt={{pokemon_name}}>
+            <div id="image" class="">
+              <img class="large" src={{pokemon_img}} alt={{pokemon_name}}>
             </div>
             <div class="moveList row">
-              <div class="move"><img class="small" src={{pokemon_move_1_type_img}} alt={{pokemon_move_1_type}}>{{pokemon_move_1_name}}</div>
-              <div class="movePoints">+{{pokemon_move_1_type}}</div>
+              <div class="move"><img class="small" src={{move_1_type_img}} alt={{move_1_type}}> {{move_1_name}}</div>
+              <div class="movePoints">+{{move_1_type}}</div>
             </div>
             <div class="moveList row">
-              <div class="move"><img class="small" src={{pokemon_move_2_type_img}} alt={{pokemon_move_2_type}}>{{pokemon_move_2_name}}</div>
-              <div class="movePoints">+{{pokemon_move_2_type}}</div>
+              <div class="move"><img class="small" src={{move_2_type_img}} alt={{move_2_type}}> {{move_2_name}}</div>
+              <div class="movePoints">+{{move_2_type}}</div>
             </div>
-<!--             <table class="bottomBar">
-              <thead>
-                <tr>
-                  <th>Weakness</th>
-                  <th>Resistance</th>
-                  <th>Retreat Cost</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                Will need to replace these with type-based icons eventually
-                  <td><img class="small" src={{pokemon_type_img}} alt={{pokemon_type}}></td>
-                  <td><img class="small" src={{pokemon_type_img}} alt={{pokemon_type}}></td>
-                  <td><img class="small" src={{pokemon_type_img}} alt={{pokemon_type}}></td>
-                </tr>
-              </tbody>
-            </table> -->
+            <div class="moveList row">
+              <div class="move"><img class="small" src={{move_3_type_img}} alt={{move_3_type}}> {{move_3_name}}</div>
+              <div class="movePoints">+{{move_3_type}}</div>
+            </div>
           </div>
         </div>
       </div>
